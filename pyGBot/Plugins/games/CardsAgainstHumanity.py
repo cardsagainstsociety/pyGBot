@@ -72,7 +72,6 @@ class CardsAgainstHumanity(BasePlugin):
         self.round_players = []
         self.blackdeck = list(BLACKCARDS)
         random.shuffle(self.blackdeck)
-        print "%i cards in Black deck" % len(self.blackdeck)
         self.whitedeck = list(WHITECARDS)
         random.shuffle(self.whitedeck)
         self.judgeindex = 0
@@ -135,7 +134,6 @@ class CardsAgainstHumanity(BasePlugin):
         self.bot.pubout(self.channel, "This round's Card Czar is \x02\x0312%s\x0F." % self.live_players[self.judgeindex])
         
         self.blackcard = self.blackdeck.pop(0)
-        print "Popping black card: %s" % self.blackcard
         if self.blackcard[2] == 1:
             self.bot.pubout(self.channel, "The new black card is: \"\x02\x033%s\x0F\". Please play ONE card from your hand using '!play <number>'." % (self.blackcard[0]))
         elif self.blackcard[2] == 2:
@@ -186,7 +184,6 @@ class CardsAgainstHumanity(BasePlugin):
                 self.bot.pubout(self.channel, "%s now has %i Awesome Points. %s wins!" % (user, len(self.woncards[user]), user))
                 self.endgame()
                 return True
-        print len(self.blackdeck)
         if len(self.blackdeck) == 0:
             self.bot.pubout(self.channel, "There are no more black cards. The game is over!")
             self.endgame()
