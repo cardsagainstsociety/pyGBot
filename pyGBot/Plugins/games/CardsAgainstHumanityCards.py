@@ -1,4 +1,3 @@
-
 # Card lists. 
 ##    Most cards used come from Cards Against Humanity, licenced under
 ##    a Creative Commons Attribution - Noncommercial - Share Alike 
@@ -317,7 +316,7 @@ WHITECARDS = [
 'Home video of Oprah sobbing into a Lean Cuisine',
 'Homeless people',
 'Hot people',
-'Hot pockets',
+'Hot Pockets',
 'Hulk Hogan',
 'Hunting accidents',
 'Hurricane Katrina',
@@ -628,7 +627,6 @@ WHITECARDS = [
 'Hope',
 'A gassy antelope',
 'Classist undertones',
-'Hot POckets',
 'Dropping a chandelier on your enemies and riding the rope up',
 'Euphoria by Calvin Klein',
 'Self-Loathing',
