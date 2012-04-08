@@ -337,7 +337,7 @@ class CardsAgainstHumanity(BasePlugin):
                     while len(self.hands[user]) < 9 + self.blackcard[1]:
                         self.hands[user].append(self.whitedeck.pop(0))
                 hand = []
-                for i in range (1, 9 + self.blackcard[1]):
+                for i in range (1, 10 + self.blackcard[1]):
                     hand.append("%i: \x034%s\x0F" % (i, self.hands[user][i-1]))
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
             else:
