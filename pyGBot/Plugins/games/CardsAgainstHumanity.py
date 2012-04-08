@@ -291,7 +291,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "A new game is starting. Currently %i players: %s" % (len(self.live_players), ", ".join(self.live_players)))
         elif self.gamestate == "InProgress":
             self.bot.pubout(self.channel, "Player order: %s. %s is the current Card Czar. Current black card is: \x033%s\x0F" % (", ".join(self.live_players), self.live_players[self.judgeindex], self.blackcard[0]))
-            self.cmd_scores(self, args, channel, user)
+            self.cmd_scores(args, channel, user)
                 
     def cmd_status(self, args, channel, user):
         self.cmd_stats(args, channel, user)
@@ -334,11 +334,10 @@ class CardsAgainstHumanity(BasePlugin):
                         self.hands[user].append(self.whitedeck.pop(0))
                     self.hands[user].sort()
                 else:
-                    while len(self.hands[user]) < 10:
+                    while len(self.hands[user]) < 9 + self.blackcard[1]:
                         self.hands[user].append(self.whitedeck.pop(0))
-                        self.privreply(user, "You draw: \x034%s\x0F: %s" % (self.hands[user][len(self.hands[user])-1], WHITECARDS[self.hands[user][len(self.hands[user])-1]]))
                 hand = []
-                for i in range (1, 8):
+                for i in range (1, 9 + self.blackcard[1]):
                     hand.append("%i: \x034%s\x0F" % (i, self.hands[user][i-1]))
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
             else:
