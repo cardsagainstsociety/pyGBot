@@ -134,11 +134,11 @@ class CardsAgainstHumanity(BasePlugin):
         self.bot.pubout(self.channel, "This round's Card Czar is \x02\x0312%s\x0F." % self.live_players[self.judgeindex])
         
         self.blackcard = self.blackdeck.pop(0)
-        if self.blackcard[2] == 1:
+        if self.blackcard[1] == 1:
             self.bot.pubout(self.channel, "The new black card is: \"\x02\x033%s\x0F\". Please play ONE card from your hand using '!play <number>'." % (self.blackcard[0]))
-        elif self.blackcard[2] == 2:
+        elif self.blackcard[1] == 2:
             self.bot.pubout(self.channel, "The new black card is: \"\x02\x033%s\x0F\". Please play TWO cards from your hand, in desired order, using '!play <number> <number>'." % (self.blackcard[0]))
-        elif self.blackcard[2] == 3:
+        elif self.blackcard[1] == 3:
             self.bot.pubout(self.channel, "The new black card is: \"\x02\x033%s\x0F\". Please play THREE cards from your hand, in desired order, using '!play <number> <number> <number>'." % (self.blackcard[0]))
         
         self.deal()
@@ -194,14 +194,14 @@ class CardsAgainstHumanity(BasePlugin):
     def deal(self):
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
-                while len(self.hands[user]) < 10 + self.blackcard[1]:
+                while len(self.hands[user]) < 9 + self.blackcard[1]:
                     self.hands[user].append(self.whitedeck.pop(0))
                     self.privreply(user, "You draw: \x034%s\x0F." % (self.hands[user][len(self.hands[user])-1]))
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
                 self.hands[user].sort()
                 hand = []
-                for i in range (1, 11 + self.blackcard[1]):
+                for i in range (1, 10 + self.blackcard[1]):
                     hand.append("%i: \x034%s\x0F" % (i, self.hands[user][i-1]))
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
         
@@ -213,11 +213,11 @@ class CardsAgainstHumanity(BasePlugin):
                     cardplayed = True
             if user in self.live_players and user not in self.playedcards and user != self.live_players[self.judgeindex] and self.judging == False and cardplayed == False:
                 try:
-                    if len(args) == self.blackcard[2]:
+                    if len(args) == self.blackcard[1]:
                         playcards = []
                         valid = True
                         for cardnum in args:
-                            if int(cardnum) > 0 and int(cardnum) <= (10 + self.blackcard[1]):
+                            if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
                                 playcards.append(self.hands[user][int(cardnum)-1])
                             else:
                                 valid = False
@@ -229,7 +229,7 @@ class CardsAgainstHumanity(BasePlugin):
                             self.reply(channel, user, "You have played your card(s).")
                             self.checkroundover()
                     else:
-                        self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[2])
+                        self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
                 except:
                     self.reply(channel, user, "Please use the card's number.")
             elif user not in self.live_players:
