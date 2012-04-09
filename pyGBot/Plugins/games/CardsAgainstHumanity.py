@@ -198,7 +198,6 @@ class CardsAgainstHumanity(BasePlugin):
                     self.privreply(user, "You draw: \x034%s\x0F." % (self.hands[user][len(self.hands[user])-1]))
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
-                self.hands[user].sort()
                 hand = []
                 for i in range (1, 10 + self.blackcard[1]):
                     hand.append("%i: \x034%s\x0F" % (i, self.hands[user][i-1]))
