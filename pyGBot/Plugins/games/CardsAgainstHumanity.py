@@ -20,6 +20,7 @@ import sys, string, random, time
 from pyGBot import log
 from pyGBot.BasePlugin import BasePlugin
 from CardsAgainstHumanityCards import WHITECARDS, BLACKCARDS
+from CardsAgainstHumanityCustom import CUSTWHITECARDS, CUSTBLACKCARDS
 
 class CardsAgainstHumanity(BasePlugin):
     def __init__(self, bot, options):
@@ -70,9 +71,9 @@ class CardsAgainstHumanity(BasePlugin):
         self.players = []
         self.live_players = []
         self.round_players = []
-        self.blackdeck = list(BLACKCARDS)
+        self.blackdeck = BLACKCARDS + CUSTWHITECARDS
         random.shuffle(self.blackdeck)
-        self.whitedeck = list(WHITECARDS)
+        self.whitedeck = WHITECARDS + CUSTWHITECARDS
         random.shuffle(self.whitedeck)
         self.judgeindex = 0
         self.hands={}
@@ -80,8 +81,6 @@ class CardsAgainstHumanity(BasePlugin):
         self.playedcards = {}
         self.woncards = {}
         self.cardstowin = 0
-        self.playamount = 0
-        self.drawamount = 0
         self.channel = None
         self.timer = 0
         self.judging = False
