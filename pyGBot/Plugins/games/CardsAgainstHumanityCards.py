@@ -70,7 +70,7 @@ BLACKCARDS = [
 ['____: kid-tested, mother-approved.',1],
 ['____? There\'s an app for that.',1],
 ['I got 99 problems but ____ ain\'t one.',1],
-['Maybe she\'s born with it. Maybe it\'s ____.', 0, 1],
+['Maybe she\'s born with it. Maybe it\'s ____.', 1],
 ['What\'s the next Happy Meal toy?',1],
 ['Anthropologists have recently discovered a primitive tribe that worships ____.',1],
 ['It\'s a pity that kids these days are all getting involved with ____.',1],
@@ -611,7 +611,7 @@ WHITECARDS = [
 'Erectile dysfunction',
 'The chronic',
 'Heartwarming orphans',
-'Tangled Slinkys'
+'Tangled Slinkys',
 'A moment of silence',
 'Sharing needles',
 'The inevitable heat death of the universe',
