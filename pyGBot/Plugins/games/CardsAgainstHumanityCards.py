@@ -83,7 +83,7 @@ BLACKCARDS = [
 ['____ is a slippery slope that leads to ____.',2],
 ['Dear Abby, I\'m having some problems with ____ and would like your advice.',1],
 ['In 1,000 years, when paper money is but a distant memory, ____ will be our currency.',1],
-['In M. Night Syamalan\'s new movie, Bruce Willis discovers that ____ had really been ____ all along.',2],
+['In M. Night Shyamalan\'s new movie, Bruce Willis discovers that ____ had really been ____ all along.',2],
 ['A romantic, candlelit dinner would be incomplete without ____.',1],
 ['Next from J. K. Rowling: Harry Potter and the Chamber of ____.',1],
 ['In a world ravaged by ____, our only solace is ____.',2],
