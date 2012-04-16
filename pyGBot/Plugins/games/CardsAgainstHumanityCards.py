@@ -191,7 +191,6 @@ WHITECARDS = [
 'Being rich',
 'Bestiality',
 'Bill Nye the Science Guy',
-'Bingeing and purging',
 'Bitches',
 'Black people',
 'Blue Ice',
