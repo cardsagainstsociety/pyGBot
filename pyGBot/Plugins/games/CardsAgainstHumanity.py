@@ -330,7 +330,7 @@ class CardsAgainstHumanity(BasePlugin):
                     self.hands[user] = []
                     for i in range(1, 11):
                         self.hands[user].append(self.whitedeck.pop(0))
-                    self.hands[user].sort()
+                    #self.hands[user].sort()
                 else:
                     while len(self.hands[user]) < 9 + self.blackcard[1]:
                         self.hands[user].append(self.whitedeck.pop(0))
