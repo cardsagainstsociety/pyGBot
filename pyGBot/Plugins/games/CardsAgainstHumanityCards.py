@@ -310,7 +310,7 @@ WHITECARDS = [
 'Harry Potter erotica',
 'Have some more kugel',
 'Heath Ledger',
-'Her Royal Highness, Queen Elizabeth II.',
+'Her Royal Highness, Queen Elizabeth II',
 'Historically black colleges',
 'Home video of Oprah sobbing into a Lean Cuisine',
 'Homeless people',
