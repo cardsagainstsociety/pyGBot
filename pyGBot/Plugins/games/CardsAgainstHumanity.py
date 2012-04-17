@@ -225,9 +225,9 @@ class CardsAgainstHumanity(BasePlugin):
                             for removecards in playcards:
                                 self.hands[user].remove(removecards)
                             if self.blackcard[1] == 1:
-                                self.reply(channel, user, "You have played your card.")
+                                self.bot.pubout(channel, "%s: You have played your card." % user)
                             else:
-                                self.reply(channel, user, "You have played your cards.")
+                                self.bot.pubout(channel, "%s: You have played your cards." % user)
                             self.checkroundover()
                     else:
                         self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
