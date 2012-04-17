@@ -71,7 +71,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.players = []
         self.live_players = []
         self.round_players = []
-        self.blackdeck = BLACKCARDS + CUSTWHITECARDS
+        self.blackdeck = BLACKCARDS + CUSTBLACKCARDS
         random.shuffle(self.blackdeck)
         self.whitedeck = WHITECARDS + CUSTWHITECARDS
         random.shuffle(self.whitedeck)
