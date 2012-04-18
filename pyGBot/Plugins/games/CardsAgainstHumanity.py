@@ -200,7 +200,7 @@ class CardsAgainstHumanity(BasePlugin):
         extra = 0
         if self.blackcard[1] == 3:
             extra = 2
-        if self.blackcard[1] == 2 and self.variants["packing"][1]:
+        if self.blackcard[1] == 2 and self.variants["packingheat"][1]:
             extra = 1
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
@@ -236,9 +236,9 @@ class CardsAgainstHumanity(BasePlugin):
                             for removecards in playcards:
                                 self.hands[user].remove(removecards)
                             if self.blackcard[1] == 1:
-                                self.bot.pubout(channel, "%s: You have played your card." % user)
+                                self.bot.pubout(self.channel, "%s: You have played your card." % user)
                             else:
-                                self.bot.pubout(channel, "%s: You have played your cards." % user)
+                                self.bot.pubout(self.channel, "%s: You have played your cards." % user)
                             self.checkroundover()
                     else:
                         self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
