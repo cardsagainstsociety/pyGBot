@@ -110,11 +110,10 @@ BLACKCARDS = [
 
 WHITECARDS = [
 '"Tweeting"',
-# Numbers mess up colors. Recommend leaving the space.
-' 13375P34K',
-' 2 Girls 1 Cup',
-' 42',
-' 8 oz. of sweet Mexican black-tar heroin',
+'13375P34K',
+'2 Girls 1 Cup',
+'42',
+'8 oz. of sweet Mexican black-tar heroin',
 'A big hoopla about nothing',
 'A bleached asshole',
 'A can of whoop-ass',
