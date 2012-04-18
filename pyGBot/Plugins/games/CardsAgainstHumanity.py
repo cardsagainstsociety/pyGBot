@@ -492,13 +492,13 @@ class CardsAgainstHumanity(BasePlugin):
         self.reply(channel, user, "Unlike most of the party games you've played before, Cards Against Humanity is as despicable and awkward as you and your friends.")
         self.reply(channel, user, "The game is simple. Each round, one player asks a question from a Black Card, and everyone else answers with their funniest White Card.")
         
-    def cmd_variants(self, args, channel, user):
+    def cmd_variant(self, args, channel, user):
         for i in range (0, len(args)):
             args[i] = args[i].lower()
         if len(args) == 0:
             varstring = ""
             for variant in self.variants.keys():
-                varstring = varstring + variant.title() + ": " + str(self.variants[variant][1]) + ", "
+                varstring = varstring + variant.title() + ": " + ("On" if self.variants[variant][1] else "Off") + ", "
             varstring = varstring[:len(varstring) - 2]
             self.reply(channel, user, "Current variants: %s" % varstring)
         if len(args) == 1:
