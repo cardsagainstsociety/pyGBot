@@ -53,7 +53,6 @@ class GBot(irc.IRC):
     # Server Message Handler
     ############################################################################
     def irc_unknown(self, prefix, command, params):
-        print "%s: %s %s" % (command, prefix, params)
         if command == 'PRIVMSG':
             self.privmsg(prefix, params[0], params[1])
         if command == 'NOTICE':
