@@ -46,8 +46,33 @@ CHANNEL_PREFIXES = '&#!+'
 # Max message length, as defined by RFC 2812 Section 2.3 (includes trailing CRLF)
 MAX_COMMAND_LENGTH = 512
 
-class GBot(irc.IRCClient):
+class GBot(irc.IRC):
     ''' No longer just an IRC Texas Holdem tournament dealer. '''
+    
+    ############################################################################
+    # Server Message Handler
+    ############################################################################
+    def irc_unknown(self, prefix, command, params):
+        print "%s: %s %s" % (command, prefix, params)
+        if command == 'PRIVMSG':
+            self.privmsg(prefix, params[0], params[1])
+        if command == 'NOTICE':
+            self.noticed(prefix, params[0], params[1])
+        if command == 'PART':
+            self.userLeft(prefix, params[0])
+        if command == 'QUIT':
+            self.userQuit(prefix, params[0])
+        if command == 'JOIN':
+            self.userJoined(prefix, params[0])
+        if command == 'NICK':
+            self.userRenamed(prefix, params[0])
+        if command == 'MODE':
+            pass # No event for mode changes
+        if command == 'TOPIC':
+            self.topicUpdated(prefix, params[0], params[3])
+        if command == 'PING':
+            # Ping? Pong!
+            self.sendLine("PONG :%s" % params[0])
 
     ############################################################################
     # Public Plugin API Methods
@@ -56,7 +81,7 @@ class GBot(irc.IRCClient):
         """ Send a message to a channel. """
         msgOut = format.encodeOut(msg)
         channelOut = format.encodeOut(channel)
-        self.say(channel=channelOut, message=msgOut)
+        self.sendLine(":%s PRIVMSG %s :%s" % (self.nickname, channelOut, msgOut))
         
         # strip color codes
         log.chatlog.info('[PUB->%s]%s' % (channelOut, format.strip(msgOut)))
@@ -65,7 +90,7 @@ class GBot(irc.IRCClient):
         """ Send a message to a user. """
         msgOut = format.encodeOut(msg)
         userOut = format.encodeOut(user)
-        self.msg(user=userOut, message=msgOut)
+        self.sendLine(":%s PRIVMSG %s :%s" % (self.nickname, userOut, msgOut))
         
         # strip color codes
         log.chatlog.info('[PRV->%s]%s' % (userOut, format.strip(msgOut)))
@@ -88,7 +113,7 @@ class GBot(irc.IRCClient):
         """ Send a notice to a user. """
         msgOut = format.encodeOut(msg)
         userOut = format.encodeOut(user)
-        self.notice(user=userOut, message=msgOut)
+        self.sendLine(":%s NOTICE %s :%s" % (self.nickname, userOut, msgOut))
 
         # strip color codes
         log.chatlog.info('[NTE->%s]%s' % (userOut, format.strip(msgOut)))
@@ -98,29 +123,28 @@ class GBot(irc.IRCClient):
         userOut = format.encodeOut(user)
         channelOut = format.encodeOut(channel)
         self.sendLine("INVITE %s %s" % (userOut, channelOut))
-        
         log.chatlog.info('[INVITE->%s] %s' % (userOut, channelOut))
         
     def join(self, channel, key=None):
         """ Join a channel. """
         channelOut = format.encodeOut(channel)
-        if key:
-            keyOut = format.encodeOut(key)
-            irc.IRCClient.join(self, channelOut, keyOut)
-        else:
-            irc.IRCClient.join(self, channelOut)
+#        if key:
+#            keyOut = format.encodeOut(key)
+#            irc.IRC.join(self, channelOut, keyOut)
+#        else:
+        self.sendLine(":%s JOIN #%s" % (self.nickname, channelOut))
     
     def part(self, channel, reason=None):
         """ Part a channel. """
         channelOut = format.encodeOut(channel)
         reasonOut = format.encodeOut(reason)
-        irc.IRCClient.part(self, channelOut, reasonOut)
+        self.sendLine(":%s PART %s :%s" % (self.nickname, channelOut, reasonOut))
 
     def actout(self,channel, msg):
         """ Send an action (/me command) to a channel. """
         msgOut = format.encodeOut(msg)
         channelOut = format.encodeOut(channel)
-        self.me(channel=channelOut, action=msgOut)
+        self.sendLine(":%s ACTION %s :%s" % (self.nickname, channelOut, msgOut))
 
         # strip color codes
         log.chatlog.info('[ACT->%s]%s' % (channelOut, format.strip(msgOut)))
@@ -260,6 +284,13 @@ class GBot(irc.IRCClient):
             self.opernick = conf['IRC']['opernick']
         if conf['IRC'].has_key('operpass'):
             self.operpass = conf['IRC']['operpass']
+            
+        if conf['IRC'].has_key('serverpass'):
+            self.serverpass = conf['IRC']['serverpass']
+        if conf['IRC'].has_key('servername'):
+            self.servername = conf['IRC']['servername']
+        if conf['IRC'].has_key('serverdesc'):
+            self.serverdesc = conf['IRC']['serverdesc']
 
         if conf['IRC'].has_key('ircpass'):
             self.password = conf['IRC']['ircpass']
@@ -302,18 +333,31 @@ class GBot(irc.IRCClient):
     ############################################################################
     def connectionMade(self):
         """ Called when a connection is made. """
-        irc.IRCClient.connectionMade(self)
+        self.performLogin = False
+        self.lineRate = None
+        
+        # Send server introduction
+        self.sendLine("PASS :%s" % self.serverpass)
+        self.sendLine("SERVER %s 1 :%s" % (self.servername, self.serverdesc))
+        
+        # Establish a user
+        self.sendLine("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
+
+        self.timertask.start(1.0) # 1-second timer granularity
+
+        irc.IRC.connectionMade(self)
         log.logger.info("[connected at %s]" %\
                         time.asctime(time.localtime(time.time())))
 
-        self.timertask.start(1.0) # 1-second timer granularity
+        for channel in self.factory.channels:
+            self.join(channel)
 
         # Call Event Handler
         self.events.bot_connect()
 
     def connectionLost(self, reason):
         """ Called when a connection is shut down. """
-        irc.IRCClient.connectionLost(self, reason)
+        irc.IRC.connectionLost(self, reason)
             
         log.logger.info("[disconnected at %s:%s]" %\
               (time.asctime(time.localtime(time.time())), reason))
@@ -330,10 +374,8 @@ class GBot(irc.IRCClient):
     ############################################################################
     def signedOn(self):
         """ Called when the bot has succesfully signed on to the server. """
-        self.regNickServ()
-        self.modestring(self.nickname, self.usermodes)
-        for channel in self.factory.channels:
-            self.join(channel)
+        #self.regNickServ()
+        #self.modestring(self.nickname, self.usermodes)
 
     def regNickServ(self):
         """ (private) Identify with NickServ from the configuration info. """
