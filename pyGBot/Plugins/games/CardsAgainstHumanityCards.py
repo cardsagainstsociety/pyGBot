@@ -670,7 +670,6 @@ WHITECARDS = [
 'A homoerotic volleyball montage',
 'The milk man',
 'Wifely duties',
-'The Blood of Christ',
 'Actually taking candy from a baby',
 'Jibber-jabber',
 'A brain tumor',
