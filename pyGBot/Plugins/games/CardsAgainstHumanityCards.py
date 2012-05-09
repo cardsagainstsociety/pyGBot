@@ -628,7 +628,6 @@ WHITECARDS = [
 'Dropping a chandelier on your enemies and riding the rope up',
 'Euphoria by Calvin Klein',
 'Self-Loathing',
-'The Dance of the Sugar Plum Fairy',
 'Switching to Geico',
 'Former President George W. Bush',
 'College',
