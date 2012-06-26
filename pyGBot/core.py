@@ -53,20 +53,25 @@ class GBot(irc.IRC):
     # Server Message Handler
     ############################################################################
     def irc_unknown(self, prefix, command, params):
+        print ":%s %s :%s" % (command, prefix, " ".join(params))
         if command == 'PRIVMSG':
-            self.privmsg(prefix, params[0], params[1])
+            if params[1].startswith("\x01ACTION"):
+                self.recaction(prefix, params[0].lstrip("#"), params[1].lstrip("\x01ACTION").rstrip("\x01"))
+            else:
+                self.recprivmsg(prefix, params[0].lstrip("#"), params[1])
         if command == 'NOTICE':
-            self.noticed(prefix, params[0], params[1])
+            self.noticed(prefix, params[0].lstrip("#"), params[1])
         if command == 'PART':
-            self.userLeft(prefix, params[0])
+            self.userLeft(prefix, params[0].lstrip("#"))
         if command == 'QUIT':
-            self.userQuit(prefix, params[0])
+            self.userQuit(prefix, params[0].lstrip("#"))
         if command == 'JOIN':
-            self.userJoined(prefix, params[0])
+            self.userJoined(prefix, params[0].lstrip("#"))
         if command == 'NICK':
             self.userRenamed(prefix, params[0])
         if command == 'MODE':
-            pass # No event for mode changes
+            # No event for this
+            pass
         if command == 'TOPIC':
             self.topicUpdated(prefix, params[0], params[3])
         if command == 'PING':
@@ -78,9 +83,12 @@ class GBot(irc.IRC):
     ############################################################################
     def pubout(self, channel, msg):
         """ Send a message to a channel. """
+        
         msgOut = format.encodeOut(msg)
-        channelOut = format.encodeOut(channel)
+        channelOut = "#" + format.encodeOut(channel)
+        
         self.sendLine(":%s PRIVMSG %s :%s" % (self.nickname, channelOut, msgOut))
+        #self.privmsg(self.nickname, channelOut, msgOut)
         
         # strip color codes
         log.chatlog.info('[PUB->%s]%s' % (channelOut, format.strip(msgOut)))
@@ -124,14 +132,12 @@ class GBot(irc.IRC):
         self.sendLine("INVITE %s %s" % (userOut, channelOut))
         log.chatlog.info('[INVITE->%s] %s' % (userOut, channelOut))
         
-    def join(self, channel, key=None):
+    def joinchannel(self, nick, channel):
         """ Join a channel. """
-        channelOut = format.encodeOut(channel)
-#        if key:
-#            keyOut = format.encodeOut(key)
-#            irc.IRC.join(self, channelOut, keyOut)
-#        else:
-        self.sendLine(":%s JOIN #%s" % (self.nickname, channelOut))
+        channelOut = "#" + format.encodeOut(channel)
+        self.sendLine(":%s JOIN %s" % (self.nickname, channelOut))
+        #self.join(nick, channelOut)
+        self.joined(channel)
     
     def part(self, channel, reason=None):
         """ Part a channel. """
@@ -340,7 +346,7 @@ class GBot(irc.IRC):
         self.sendLine("SERVER %s 1 :%s" % (self.servername, self.serverdesc))
         
         # Establish a user
-        self.sendLine("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
+        # self.sendLine("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
 
         self.timertask.start(1.0) # 1-second timer granularity
 
@@ -348,8 +354,7 @@ class GBot(irc.IRC):
         log.logger.info("[connected at %s]" %\
                         time.asctime(time.localtime(time.time())))
 
-        for channel in self.factory.channels:
-            self.join(channel)
+        self.signedOn()
 
         # Call Event Handler
         self.events.bot_connect()
@@ -373,8 +378,12 @@ class GBot(irc.IRC):
     ############################################################################
     def signedOn(self):
         """ Called when the bot has succesfully signed on to the server. """
-        #self.regNickServ()
-        #self.modestring(self.nickname, self.usermodes)
+        self.hostname = "localhost"
+        print self.servername
+        self.createUser(self.nickname)
+        for channel in self.factory.channels:
+            print "Joining %s" % channel
+            self.joinchannel(self.nickname, channel)
 
     def regNickServ(self):
         """ (private) Identify with NickServ from the configuration info. """
@@ -385,16 +394,21 @@ class GBot(irc.IRC):
         if hasattr(self, 'idnick') and hasattr(self, 'idpass'):
             self.privout('%s' % (self.idnick,), 'identify %s' % (self.idpass,))
 
+    def createUser(self, nick):
+        print "Creating user %s" % nick
+        line = "NICK %s 1 %i %s %s %s 0 %s %s :%s" % (nick, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname)
+        self.sendLine(line)
+        print line
 
     def joined(self, channel):
         """ Called when the bot joins a channel. """
         log.logger.info('[I have joined %s]' % (channel,))
 
         # Set modes
-        if hasattr(self, 'plusmodes'):
-            self.mode(channel, True, self.plusmodes)
-        if hasattr(self, 'minusmodes'):
-            self.mode(channel, False, self.minusmodes)
+#        if hasattr(self, 'plusmodes'):
+#            self.mode(channel, True, self.plusmodes)
+#        if hasattr(self, 'minusmodes'):
+#            self.mode(channel, False, self.minusmodes)
         
         # Call Event Handler
         channelIn = format.decodeIn(channel)
@@ -427,7 +441,7 @@ class GBot(irc.IRC):
         # Call Event Handler
         self.events.msg_notice(userIn, msgIn)
 
-    def privmsg(self, user, channel, msg):
+    def recprivmsg(self, user, channel, msg):
         """ Called when the bot receives a message (from channel or user). """
         user = user.split('!', 1)[0]
         userIn = format.decodeIn(user)
@@ -454,7 +468,7 @@ class GBot(irc.IRC):
             # Call Event Handler
             self.events.msg_channel(channelIn, userIn, msgIn)
 
-    def action(self, user, channel, msg):
+    def recaction(self, user, channel, msg):
         """ Called when the bot sees someone do an action (/me). """
         user = user.split('!', 1)[0]
         userIn = format.decodeIn(user)
