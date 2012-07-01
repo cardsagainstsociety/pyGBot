@@ -44,7 +44,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.do_command(channel, user, string.strip(a[1]))
         elif message[0]=='!' and (len(message) > 1) and message[1]!='!':
             self.do_command(channel, user, string.strip(message[1:]))
-            
+
     def msg_private(self, user, message):
         self.do_command(user, user, message)
 

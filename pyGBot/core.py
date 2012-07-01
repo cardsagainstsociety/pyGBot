@@ -135,21 +135,24 @@ class GBot(irc.IRC):
     def joinchannel(self, nick, channel):
         """ Join a channel. """
         channelOut = "#" + format.encodeOut(channel)
-        self.sendLine(":%s JOIN %s" % (self.nickname, channelOut))
+        nickOut = format.encodeOut(nick)
+        self.sendLine(":%s JOIN %s" % (nickOut, channelOut))
         #self.join(nick, channelOut)
         self.joined(channel)
     
-    def part(self, channel, reason=None):
+    def part(self, nick, channel, reason=None):
         """ Part a channel. """
         channelOut = format.encodeOut(channel)
         reasonOut = format.encodeOut(reason)
-        self.sendLine(":%s PART %s :%s" % (self.nickname, channelOut, reasonOut))
+        nickOut = format.encodeOut(nick)
+        self.sendLine(":%s PART %s :%s" % (nickOut, channelOut, reasonOut))
 
-    def actout(self,channel, msg):
+    def actout(self, nick, channel, msg):
         """ Send an action (/me command) to a channel. """
         msgOut = format.encodeOut(msg)
         channelOut = format.encodeOut(channel)
-        self.sendLine(":%s ACTION %s :%s" % (self.nickname, channelOut, msgOut))
+        nickOut = format.encodeOut(nick)
+        self.sendLine(":%s ACTION %s :%s" % (nickOut, channelOut, msgOut))
 
         # strip color codes
         log.chatlog.info('[ACT->%s]%s' % (channelOut, format.strip(msgOut)))
@@ -594,13 +597,14 @@ class GBotFactory(protocol.ClientFactory):
     def clientConnectionLost(self, connector, reason):
         """ Called when a client's connection is shut down. Attempts to
         reconnect to the server. """
-
+        time.sleep(5)
         connector.connect()
 
     def clientConnectionFailed(self, connector, reason):
         """ Called when a client's connection fails. Log the error and exit. """
         log.logger.critical('connection failed: %s', (str(reason),))
-        reactor.stop()
+        time.sleep(5)
+        connector.connect()
 
 def run():
     """ Run GBot. Called from the pyGBot bootstrap script. """
