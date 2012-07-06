@@ -160,8 +160,9 @@ class CardsAgainstHumanity(BasePlugin):
                     allplayed = False
         if allplayed:
             self.bot.pubout(self.channel, "All cards have been played.")
-            self.judging = True
-            self.beginjudging()
+            if not self.judging:
+                self.judging = True
+                self.beginjudging()
             
     def beginjudging(self):
         if self.judging == True:
@@ -397,13 +398,14 @@ class CardsAgainstHumanity(BasePlugin):
                     if self.judgeindex == len(self.live_players):
                         self.judgeindex = 0
                     if user == judge:
+                        self.judging = False
                         self.bot.pubout(self.channel, "The Card Czar is now %s." % self.live_players[self.judgeindex])
                         judge = self.live_players[self.judgeindex]
                         for i in range(0, len(self.playedcards)):
                             if self.playedcards[i-1][0] == judge:
                                 self.playedcards.remove(self.playedcards[i-1])
                     else:
-                        self.judgeindex = self.live_players.index(judge)  
+                        self.judgeindex = self.live_players.index(judge)
                 self.checkroundover()
             else:
                 self.reply(channel, user, "You are not in this game.")
@@ -437,6 +439,7 @@ class CardsAgainstHumanity(BasePlugin):
                             if self.judgeindex == len(self.live_players):
                                 self.judgeindex = 0
                             if player == judge:
+                                self.judging = False
                                 self.bot.pubout(self.channel, "The Card Czar is now %s." % self.live_players[self.judgeindex])
                                 judge = self.live_players[self.judgeindex]
                                 for i in range(0, len(self.playedcards)):
