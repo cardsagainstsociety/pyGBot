@@ -53,7 +53,7 @@ class GBot(irc.IRC):
     # Server Message Handler
     ############################################################################
     def irc_unknown(self, prefix, command, params):
-        print ":%s %s :%s" % (command, prefix, " ".join(params))
+        log.logger.debug(":%s %s :%s" % (command, prefix, " ".join(params)))
         if command == 'PRIVMSG':
             if params[1].startswith("\x01ACTION"):
                 self.recaction(prefix, params[0].lstrip("#"), params[1].lstrip("\x01ACTION").rstrip("\x01"))
@@ -269,11 +269,11 @@ class GBot(irc.IRC):
         try:
             conf = ConfigObj('pyGBot.ini')
         except IOError, msg:
-            print "Cannot open config file: ", msg
+            log.logger.error("Cannot open config file: " + msg)
             sys.exit(1)
 
         if conf.has_key('IRC') == False:
-            print "Config file does not contain IRC connection information."
+            log.logger.error("Config file does not contain IRC connection information.")
             sys.exit(1)
 
         if conf['IRC'].has_key('nick'):
@@ -299,6 +299,8 @@ class GBot(irc.IRC):
             self.servername = conf['IRC']['servername']
         if conf['IRC'].has_key('serverdesc'):
             self.serverdesc = conf['IRC']['serverdesc']
+        if conf['IRC'].has_key('virtualhost'):
+            self.virtualhost = conf['IRC']['virtualhost']
 
         if conf['IRC'].has_key('ircpass'):
             self.password = conf['IRC']['ircpass']
@@ -382,10 +384,8 @@ class GBot(irc.IRC):
     def signedOn(self):
         """ Called when the bot has succesfully signed on to the server. """
         self.hostname = "localhost"
-        print self.servername
         self.createUser(self.nickname)
         for channel in self.factory.channels:
-            print "Joining %s" % channel
             self.joinchannel(self.nickname, channel)
 
     def regNickServ(self):
@@ -398,10 +398,12 @@ class GBot(irc.IRC):
             self.privout('%s' % (self.idnick,), 'identify %s' % (self.idpass,))
 
     def createUser(self, nick):
-        print "Creating user %s" % nick
-        line = "NICK %s 1 %i %s %s %s 0 %s %s :%s" % (nick, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname)
+        log.logger.debug("Creating user %s" % nick)
+        print self.virtualhost
+        line = "NICK %s 1 %i %s %s %s 0 %s %s :%s" % (nick, int(time.time()), self.nickname, self.virtualhost, self.servername, self.usermodes, self.hostname, self.realname)
         self.sendLine(line)
-        print line
+        self.modestring(nick, self.usermodes)
+        
 
     def joined(self, channel):
         """ Called when the bot joins a channel. """

@@ -22,6 +22,15 @@ host = irc.quakenet.org
 port = 6667
 ssl = false
 
+# Service values
+
+servername = trilby.dritznet.me
+serverpass = lInK
+serverdesc = Trilby
+
+# Determines host of created users
+virtualhost = pybot.github.com 
+
 # These values specify a local address to bind to. 'host' and 'port' are 
 # preferred. Uncomment these to enable them.
 
@@ -40,6 +49,7 @@ realname = pyGBot
 
 # This value specifies any user modes to set when connecting. Common modes may
 # include +x (hide hostname) etc.
+# As a service, usermodes will be set on created users.
 
 usermodes = 
 
@@ -80,10 +90,9 @@ channel = pyGBot
 # plusmodes = abc
 # minusmodes = def
 
-# The following value should be kept as is, since it controls how long the bot
-# will delay posting subsequent lines to avoid triggering anti-flood measures.
+# The following value can be anything as a service
 
-flooddelay = 2
+flooddelay = 0
 
 # The following values can be changed to locate log files differently (for
 # instance, you might want to log to a www-capable directory to make it
