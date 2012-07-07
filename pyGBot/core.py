@@ -386,51 +386,40 @@ class GBot(irc.IRC):
 
     def joined(self, channel):
         """ Called when the bot joins a channel. """
-        log.logger.info('[I have joined %s]' % (channel,))
+        log.logger.info('[Joined #%s]' % (channel))
         
         # Call Event Handler
-        channelIn = format.decodeIn(channel)
-        self.channels.append(channelIn)
-        self.events.bot_join(channelIn)
+        self.channels.append(channel)
+        self.events.bot_join(channel)
 
     def left(self, channel):
         """ Called when the bot leaves a channel. """
-        channelIn = format.decodeIn(channel)
-        if channelIn in self.channels:
-            self.channels.remove(channelIn)
+        if channel in self.channels:
+            self.channels.remove(channel)
 
     def kickedFrom(self, channel, kicker, message):
         """ Called when the bot is kicked from a channel. """
-        channelIn = format.decodeIn(channel)
-        kickerIn = format.decodeIn(kicker)
-        messageIn = format.decodeIn(message)
         if channelIn in self.channels:
-            self.channels.remove(channelIn)
-        self.events.bot_kicked(channelIn, kickerIn, messageIn)
+            self.channels.remove(channel)
+        self.events.bot_kicked(channel, kicker, message)
 
     def noticed(self, user, channel, msg):
         """ Called when the bot receives a NOTICE. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
         log.chatlog.info('[NTE<-]<%s> %s' % (user, msg))
 
         # Call Event Handler
-        self.events.msg_notice(userIn, msgIn)
+        self.events.msg_notice(user, msg)
 
     def recprivmsg(self, user, channel, msg):
         """ Called when the bot receives a message (from channel or user). """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
 
         # Private message to me
         if channel.upper() == self.nickname.upper():
             # If auth msg has password, censor it for logging
-            if msgIn.startswith('auth'):
-                msgNoPwd = msgIn.split(' ')
+            if msg.startswith('auth'):
+                msgNoPwd = msg.split(' ')
                 if len(msgNoPwd) > 2:
                     msgNoPwd[2] = '*' * 8
                 msgNoPwd = ' '.join(msgNoPwd)
@@ -438,87 +427,67 @@ class GBot(irc.IRC):
             else:
                 log.chatlog.info('[PRV<-]<%s> %s' % (user, msg))
             # Call Event Handler
-            self.events.msg_private(userIn, msgIn)
+            self.events.msg_private(user, msg)
 
         # Public message
         else:
             log.chatlog.info('[PUB<-]<%s> %s' % (user, msg))
             # Call Event Handler
-            self.events.msg_channel(channelIn, userIn, msgIn)
+            self.events.msg_channel(channel, user, msg)
 
     def recaction(self, user, channel, msg):
         """ Called when the bot sees someone do an action (/me). """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
         log.chatlog.info('* %s %s' % (user, msg))
 
         # Call Event Handler
-        self.events.msg_action(channelIn, userIn, msgIn)
+        self.events.msg_action(channel, user, msg)
 
     def topicUpdated(self, user, channel, newTopic):
         """ Called when the bot sees the channel topic change. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        newTopicIn = format.decodeIn(newTopic)
         log.chatlog.info('Topic for %s set by %s: %s' % (channel, user, newTopic))
 
         # Call Event Handler
-        self.events.channel_topic(channelIn, userIn, newTopicIn)
+        self.events.channel_topic(channel, user, newTopic)
 
     def userJoined(self, user, channel):
         """Called when the bot sees a user joining a channel. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
         log.chatlog.info('%s joined %s' % (user, channel))
 
         # Call Event Handler
-        self.events.user_join(channelIn, userIn)
+        self.events.user_join(channel, user)
 
     def userLeft(self, user, channel):
         """Called when the bot sees a user leaving a channel. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
         log.chatlog.info('%s has left %s' % (user, channel))
 
         # Call Event Handler
-        self.events.user_part(channelIn, userIn)
+        self.events.user_part(channel, user)
 
     def userKicked(self, user, channel, kicker, message):
         """ Called when the bot sees a user get kicked. """
-        user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        kickerIn = format.decodeIn(kicker)
-        messageIn = format.decodeIn(message)
-        
+        user = user.split('!', 1)[0]        
         log.chatlog.info('%s was kicked from %s by %s (reason: %s)' % (user, channel, kicker, message))
 
-        self.events.user_kicked(channelIn, userIn, kickerIn, messageIn)
+        self.events.user_kicked(channel, user, kicker, message)
 
     def userQuit(self, user, quitMessage):
         """ Called when the bot sees a user disconnect from the network. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        quitMsgIn = format.decodeIn(quitMessage)
-        
         log.chatlog.info("%s has quit [%s]" % (user, quitMessage))
         
         # Call Event Handler
-        self.events.user_quit(userIn, quitMsgIn)
+        self.events.user_quit(user, quitMsg)
 
     def userRenamed(self, oldname, newname):
         """Called when the bot sees a user change their nickname from oldname to
         newname. """
-        oldnameIn = format.decodeIn(oldname)
-        newnameIn = format.decodeIn(newname)
         log.chatlog.info('%s is now known as %s' % (oldname, newname))
         # Call Event Handler
-        self.events.user_nickchange(oldnameIn, newnameIn)
+        self.events.user_nickchange(oldname, newname)
 
 class GBotFactory(protocol.ClientFactory):
     """A factory for tbots.
