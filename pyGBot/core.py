@@ -53,7 +53,12 @@ class GBot(irc.IRC):
     # Server Message Handler
     ############################################################################
     def irc_unknown(self, prefix, command, params):
-        log.logger.debug(":%s %s :%s" % (command, prefix, " ".join(params)))
+        log.logger.debug("Handling input: %s %s %s" % (command, prefix, " ".join(params)))
+        prefix = format.decodeIn(prefix)
+        command = format.decodeIn(command)
+        for i in range(0, len(params)):
+            params[i] = format.decodeIn(params[i])            
+        
         if command == 'PRIVMSG':
             if params[1].startswith("\x01ACTION"):
                 self.recaction(prefix, params[0].lstrip("#"), params[1].lstrip("\x01ACTION").rstrip("\x01"))
@@ -70,114 +75,90 @@ class GBot(irc.IRC):
         if command == 'NICK':
             self.userRenamed(prefix, params[0])
         if command == 'MODE':
-            # No event for this
+            # TODO: Create a MODE event
             pass
         if command == 'TOPIC':
             self.topicUpdated(prefix, params[0], params[3])
         if command == 'PING':
             # Ping? Pong!
-            self.sendLine("PONG :%s" % params[0])
+            self.sendline("PONG :%s" % params[0])
+            
+    ############################################################################
+    # Output Handler
+    ############################################################################
+    
+    def sendline(self, msg):
+        if msg.startswith("PASS"):
+            log.logger.debug("Send line: PASS :****")
+        else:
+            log.logger.debug("Send line: %s" % msg)
+
+        msg = format.encodeOut(msg)
+        self.sendLine(msg)
 
     ############################################################################
     # Public Plugin API Methods
     ############################################################################
     def pubout(self, channel, msg):
         """ Send a message to a channel. """
-        
-        msgOut = format.encodeOut(msg)
-        channelOut = "#" + format.encodeOut(channel)
-        
-        self.sendLine(":%s PRIVMSG %s :%s" % (self.nickname, channelOut, msgOut))
-        #self.privmsg(self.nickname, channelOut, msgOut)
-        
-        # strip color codes
-        log.chatlog.info('[PUB->%s]%s' % (channelOut, format.strip(msgOut)))
+        self.sendline(":%s PRIVMSG #%s :%s" % (self.nickname, channel, msg))
+        log.chatlog.info('[PUB->%s]%s' % (channel, format.strip(msg)))
 
     def privout(self, user, msg):
         """ Send a message to a user. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        self.sendLine(":%s PRIVMSG %s :%s" % (self.nickname, userOut, msgOut))
-        
-        # strip color codes
-        log.chatlog.info('[PRV->%s]%s' % (userOut, format.strip(msgOut)))
+        self.sendline(":%s PRIVMSG %s :%s" % (self.nickname, user, msg))
+        log.chatlog.info('[PRV->%s]%s' % (user, format.strip(msg)))
 
     def replyout(self, channel, user, msg):
         """ Send a reply. If channel is None, the reply is sent to the user;
         otherwise, it is sent to the channel. Use this in plugins or commands
         when an incoming message can be either from a channel or a user and the
         outgoing message should be resent to the source. """
-        
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
         if channel is None:
-            self.privout(userOut, msgOut)
+            self.privout(user, msg)
         else:
-            self.pubout(channelOut, msgOut)
+            self.pubout(channel, msg)
 
     def noteout(self, user, msg):
         """ Send a notice to a user. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        self.sendLine(":%s NOTICE %s :%s" % (self.nickname, userOut, msgOut))
-
-        # strip color codes
-        log.chatlog.info('[NTE->%s]%s' % (userOut, format.strip(msgOut)))
+        self.sendline(":%s NOTICE %s :%s" % (self.nickname, user, msg))
+        log.chatlog.info('[NTE->%s]%s' % (user, format.strip(msg)))
         
     def invite(self, user, channel):
         """ Send a channel invite to a user. """
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("INVITE %s %s" % (userOut, channelOut))
-        log.chatlog.info('[INVITE->%s] %s' % (userOut, channelOut))
+        self.sendline("INVITE %s %s" % (user, channel))
+        log.chatlog.info('[INVITE->%s] %s' % (user, channel))
         
     def joinchannel(self, nick, channel):
         """ Join a channel. """
-        channelOut = "#" + format.encodeOut(channel)
-        nickOut = format.encodeOut(nick)
-        self.sendLine(":%s JOIN %s" % (nickOut, channelOut))
-        #self.join(nick, channelOut)
+        self.sendline(":%s JOIN #%s" % (nick, channel))
         self.joined(channel)
     
-    def part(self, nick, channel, reason=None):
+    def part(self, nick, channel, reason=""):
         """ Part a channel. """
-        channelOut = format.encodeOut(channel)
-        reasonOut = format.encodeOut(reason)
-        nickOut = format.encodeOut(nick)
-        self.sendLine(":%s PART %s :%s" % (nickOut, channelOut, reasonOut))
+        self.sendline(":%s PART #%s :%s" % (nick, channel, reason))
 
     def actout(self, nick, channel, msg):
         """ Send an action (/me command) to a channel. """
-        msgOut = format.encodeOut(msg)
-        channelOut = format.encodeOut(channel)
-        nickOut = format.encodeOut(nick)
-        self.sendLine(":%s ACTION %s :%s" % (nickOut, channelOut, msgOut))
-
-        # strip color codes
-        log.chatlog.info('[ACT->%s]%s' % (channelOut, format.strip(msgOut)))
+        self.sendline(":%s ACTION %s :%s" % (nick, channel, msg))
+        log.chatlog.info('[ACT->%s]%s' % (channel, format.strip(msg)))
 
     def modestring(self, target, modestring):
         """ Set a mode string on a user or channel. """
-        self.sendLine("MODE %s %s" % (target, modestring))
-
+        self.sendline("MODE %s %s" % (target, modestring))
         log.chatlog.info('[MODE] %s %s' % (target, modestring))
         
     def cprivmsg(self, channel, user, msg):
         """ Send a CPRIVMSG. This allows channel ops to bypass server flood
-        limits when messaging users in their channel. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("CPRIVMSG %s %s :%s" % (userOut, channelOut, msgOut,))
+        limits when messaging users in their channel. Not supported on all
+        networks. """
+        self.sendline("[CPRIVMSG] %s %s :%s" % (user, channel, format.strip(msg)))
 
-    def cnotice(self, channel, user, message):
+    def cnotice(self, channel, user, msg):
         """ Send a CNOTICE. This allows channel ops to bypass server flood
-        limits when sending a notice to users in their channel. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("CNOTICE %s %s :%s" % (userOut, channelOut, msgOut,))
+        limits when sending a notice to users in their channel. Not supported
+        on all networks. """
+        self.sendline("[CNOTICE] %s %s :%s" % (user, channel, format.strip(msg)))
 
 
     ############################################################################
@@ -347,11 +328,11 @@ class GBot(irc.IRC):
         self.lineRate = None
         
         # Send server introduction
-        self.sendLine("PASS :%s" % self.serverpass)
-        self.sendLine("SERVER %s 1 :%s" % (self.servername, self.serverdesc))
+        self.sendline("PASS :%s" % self.serverpass)
+        self.sendline("SERVER %s 1 :%s" % (self.servername, self.serverdesc))
         
         # Establish a user
-        # self.sendLine("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
+        # self.sendline("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
 
         self.timertask.start(1.0) # 1-second timer granularity
 
@@ -391,7 +372,7 @@ class GBot(irc.IRC):
     def regNickServ(self):
         """ (private) Identify with NickServ from the configuration info. """
         if hasattr(self, 'opernick') and hasattr(self, 'operpass'):
-            self.sendLine('OPER %s %s' % (self.opernick, self.operpass))
+            self.sendline('OPER %s %s' % (self.opernick, self.operpass))
         
         # Identify to nickserv
         if hasattr(self, 'idnick') and hasattr(self, 'idpass'):
@@ -399,21 +380,13 @@ class GBot(irc.IRC):
 
     def createUser(self, nick):
         log.logger.debug("Creating user %s" % nick)
-        print self.virtualhost
         line = "NICK %s 1 %i %s %s %s 0 %s %s :%s" % (nick, int(time.time()), self.nickname, self.virtualhost, self.servername, self.usermodes, self.hostname, self.realname)
-        self.sendLine(line)
+        self.sendline(line)
         self.modestring(nick, self.usermodes)
-        
 
     def joined(self, channel):
         """ Called when the bot joins a channel. """
         log.logger.info('[I have joined %s]' % (channel,))
-
-        # Set modes
-#        if hasattr(self, 'plusmodes'):
-#            self.mode(channel, True, self.plusmodes)
-#        if hasattr(self, 'minusmodes'):
-#            self.mode(channel, False, self.minusmodes)
         
         # Call Event Handler
         channelIn = format.decodeIn(channel)
