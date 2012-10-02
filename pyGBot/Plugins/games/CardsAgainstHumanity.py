@@ -18,19 +18,22 @@
 
 import string, random
 from pyGBot.BasePlugin import BasePlugin
-from CardsAgainstHumanityCards import WHITECARDS, BLACKCARDS
-from CardsAgainstHumanityCustom import CUSTWHITECARDS, CUSTBLACKCARDS
 
 class CardsAgainstHumanity(BasePlugin):
     def __init__(self, bot, options):
         BasePlugin.__init__(self, bot, options)
         self.output = True
-        self.resetdata()
+        self.baseblackdeck = []
+        self.basewhitedeck = []
         self.variants = {
             "packingheat": ["Draw an extra card before Pick-2 rounds", True],
             "playercards": ["Each player's name will be added as a white card.", True],
         }
-        
+
+        # Initialize game
+        self.loadcards()
+        self.resetdata()
+
     def timer_tick(self):
         if self.gamestate == "InProgress":
             self.timer = self.timer + 1
@@ -69,14 +72,37 @@ class CardsAgainstHumanity(BasePlugin):
                 map_[new] = map_[old]
                 del map_[old]
 
+    def loadcards(self):
+        # Load base cards
+        with open('./pyGBot/Plugins/games/CardsAgainstHumanityCards.txt', 'r') as f:
+            for line in f:
+                if not line.startswith("#") and not line == "\n":
+                    if line[1] == ":":
+                        # This is a black card.
+                        self.baseblackdeck.append([line[3:].rstrip("\n"), int(line[0])])
+                    else:
+                        # This is a white card.
+                        self.basewhitedeck.append(line.rstrip("\n"))
+
+        # Load custom cards
+        with open('./pyGBot/Plugins/games/CardsAgainstHumanityCustom.txt', 'r') as f:
+            for line in f:
+                if not line.startswith("#") and not line == "\n":
+                    if line[1] == ":":
+                        # This is a black card.
+                        self.baseblackdeck.append([line[2:].rstrip("\n"), line[0]])
+                    else:
+                        # This is a white card.
+                        self.basewhitedeck.append(line.rstrip("\n"))
+
     def resetdata(self):
         self.gamestate = "None"
         self.players = []
         self.live_players = []
         self.round_players = []
-        self.blackdeck = BLACKCARDS + CUSTBLACKCARDS
+        self.blackdeck = self.baseblackdeck
         random.shuffle(self.blackdeck)
-        self.whitedeck = WHITECARDS + CUSTWHITECARDS
+        self.whitedeck = self.basewhitedeck
         random.shuffle(self.whitedeck)
         self.judgeindex = 0
         self.hands={}
