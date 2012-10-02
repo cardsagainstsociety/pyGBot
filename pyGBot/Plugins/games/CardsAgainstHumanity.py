@@ -23,8 +23,6 @@ class CardsAgainstHumanity(BasePlugin):
     def __init__(self, bot, options):
         BasePlugin.__init__(self, bot, options)
         self.output = True
-        self.baseblackdeck = []
-        self.basewhitedeck = []
         self.variants = {
             "packingheat": ["Draw an extra card before Pick-2 rounds", True],
             "playercards": ["Each player's name will be added as a white card.", True],
@@ -73,6 +71,9 @@ class CardsAgainstHumanity(BasePlugin):
                 del map_[old]
 
     def loadcards(self):
+        self.baseblackdeck = []
+        self.basewhitedeck = []
+
         # Load base cards
         with open('./pyGBot/Plugins/games/CardsAgainstHumanityCards.txt', 'r') as f:
             for line in f:
@@ -547,6 +548,15 @@ class CardsAgainstHumanity(BasePlugin):
                     self.reply(channel, user, "Syntax: 'variants toggle <variant>'")
             else:
                 self.reply(channel, user, "Cannot modify variants during a game.")
+
+    def cmd_reloadcards(self, args, channel, user):
+        auth = self.bot.plugins["system.Auth"]
+        userlevel = auth.get_userlevel(user)
+        if userlevel == 200:
+            self.loadcards()
+            self.reply(channel, user, "Successfully reloaded base decks."):
+        else:
+            self.reply(channel, user, "You do not have permission to do that.")
 
     def do_command(self, channel, user, cmd):
         if cmd=='': return
