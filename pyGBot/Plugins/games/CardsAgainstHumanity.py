@@ -25,7 +25,7 @@ def enum(**enums):
 
 class CardsAgainstHumanity(BasePlugin):
     def __init__(self, bot, options):
-		# Plugin initialization
+        # Plugin initialization
         BasePlugin.__init__(self, bot, options)
         self.output = True
         self.auth = self.bot.plugins["system.Auth"]
@@ -44,7 +44,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.resetdata()
 
     def timer_tick(self):
-		# Handle in-game prompts
+        # Handle in-game prompts
         if self.gamestate == self.GameState.inprogress:
             self.timer = self.timer + 1
             if self.timer == 90:
@@ -52,7 +52,7 @@ class CardsAgainstHumanity(BasePlugin):
                 self.cmd_prompt([], self.channel, self.bot.nickname)
 
     def msg_channel(self, channel, user, message):
-		# Determine if a message is a command, and handle it if so.
+        # Determine if a message is a command, and handle it if so.
         a = string.split(message, ":", 1)
         if len(a) > 1 and a[0].lower() == self.bot.nickname.lower():
             self.do_command(channel, user, string.strip(a[1]))
@@ -60,23 +60,23 @@ class CardsAgainstHumanity(BasePlugin):
             self.do_command(channel, user, string.strip(message[1:]))
             
     def msg_private(self, user, message):
-		# Attempt to run private messages as commands
+        # Attempt to run private messages as commands
         self.do_command(user, user, message)
 
     def reply(self, channel, user, text):
-		# Send message to user in the same method they came in
-		# (publicy or privately)
+        # Send message to user in the same method they came in
+        # (publicy or privately)
         if channel != user:
             self.bot.pubout(channel, "%s: %s" % (user, text))
         else:
             self.bot.noteout(user, text)
 
     def privreply(self, user, text):
-		# Send message to user privately
+        # Send message to user privately
         self.bot.noteout(user, text)
         
     def user_nickchange(self, old, new):
-		# Update nick references when users change nicks
+        # Update nick references when users change nicks
         for list_ in (self.players, self.live_players, self.round_players):
             if old in list_:
                 list_[list_.index(old)] = new
@@ -89,7 +89,7 @@ class CardsAgainstHumanity(BasePlugin):
                 del map_[old]
 
     def loadcards(self):
-		# Empty decks
+        # Empty decks
         self.baseblackdeck = []
         self.basewhitedeck = []
         
@@ -116,7 +116,7 @@ class CardsAgainstHumanity(BasePlugin):
                         self.basewhitedeck.append(line.rstrip("\n"))
 
     def resetdata(self):
-		# Initialize all game variables to new game values
+        # Initialize all game variables to new game values
         self.players = []
         self.live_players = []
         self.round_players = []
@@ -138,7 +138,7 @@ class CardsAgainstHumanity(BasePlugin):
         random.shuffle(self.whitedeck)
 
     def startgame(self):
-		# Put the game into InProgress mode
+        # Put the game into InProgress mode
         self.gamestate = self.GameState.inprogress
         self.bot.pubout(self.channel, "A new game is starting! Please wait, dealing cards...")
         
@@ -155,7 +155,7 @@ class CardsAgainstHumanity(BasePlugin):
                 self.whitedeck.append(user)
                 random.shuffle(self.whitedeck)
                 
-		# Deal initial hands to players
+        # Deal initial hands to players
         for i in range(1, 11):
             for user in self.live_players:
                 self.hands[user].append(self.whitedeck.pop(0))
@@ -171,15 +171,12 @@ class CardsAgainstHumanity(BasePlugin):
             self.cardstowin = 4
         else:
             self.cardstowin = 12 - len(self.live_players)
-            
-        # Determine judge
-        self.judgeindex = len(self.live_players) - 1
         
         # Start first round
         self.newround()
 
     def endgame(self):
-		# Notify users
+        # Notify users
         self.bot.pubout(self.channel, "The game is over.")
         
         # Show black card counts if a game was in progress
@@ -195,14 +192,14 @@ class CardsAgainstHumanity(BasePlugin):
         self.resetdata()
         
     def newround(self):
-		# Initialize round values
+        # Initialize round values
         self.judging = False
         self.timer = 0
         # Output current game status
         # TODO: Extract score output to its own function
         self.cmd_scores([], self.channel, self.bot.nickname)
-		
-		# Determine card czar and output
+        
+        # Determine card czar and output
         self.playedcards = []
         if self.judgeindex == len(self.live_players) - 1:
             self.judgeindex = 0
@@ -223,29 +220,25 @@ class CardsAgainstHumanity(BasePlugin):
         self.deal()
             
     def checkroundover(self):
-		# Check if every player has their cards played
-		# TODO: Optimize this. Maybe set comparison.
-        allplayed = True
-        for player in self.live_players:
-            if player != self.live_players[self.judgeindex]:
-                playerplayed = False
-                for card in self.playedcards:
-                    if player == card[0]:
-                        playerplayed = True
-                if playerplayed == False:
-                    allplayed = False
-                    
-        # Begin judging if true
-        if allplayed:
+        # Generate a list of players that have played their cards
+        played = []
+        for card in self.playedcards:
+            played.append(card[0])
+        
+        # Find who is in live_players but hasn't played a card
+        diff = list(set(self.live_players).difference(set(played)))
+
+        # Begin judging if all live players except judge have played
+        if len(diff) == 1 and diff[0] == self.live_players[self.judgeindex]:
             self.bot.pubout(self.channel, "All cards have been played.")
             if not self.judging:
                 self.judging = True
                 self.beginjudging()
             
     def beginjudging(self):
-		# Begin the judging process
+        # Begin the judging process
         if self.judging == True:
-			# Restart prompt timer
+            # Restart prompt timer
             self.timer = 0
             
             # Output cards and ask judge to make selection
@@ -260,7 +253,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.bot.pubout(self.channel, "\x02\x0312%s\x0F: Please make your decision now using the '!pick <number>' command." % self.live_players[self.judgeindex])
         
     def cardwin(self, winningcard):
-		# Output the winner, and store the card in their list slot
+        # Output the winner, and store the card in their list slot
         winner = self.playedcards[winningcard][0]
         self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets to keep the black card." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
         self.woncards[winner].append(self.blackcard)
@@ -270,10 +263,10 @@ class CardsAgainstHumanity(BasePlugin):
             self.newround()
         
     def checkgamewin(self):
-		# Does any player have enough cards to win?
+        # Does any player have enough cards to win?
         for user in self.players:
             if len(self.woncards[user]) >= self.cardstowin:
-				# We have a winner!
+                # We have a winner!
                 self.bot.pubout(self.channel, "%s now has %i Awesome Points. %s wins!" % (user, len(self.woncards[user]), user))
                 # End the game
                 self.endgame()
@@ -281,7 +274,7 @@ class CardsAgainstHumanity(BasePlugin):
         
         # Are we out of black cards?
         if len(self.blackdeck) == 0:
-			# Uh oh!
+            # Uh oh!
             self.bot.pubout(self.channel, "There are no more black cards. The game is over!")
             self.endgame()
             return True
@@ -291,7 +284,7 @@ class CardsAgainstHumanity(BasePlugin):
             return False
 
     def deal(self):
-		# Determine how many extra cards players get (if any)
+        # Determine how many extra cards players get (if any)
         extra = 0
         if self.blackcard[1] == 3:
             extra = 2
@@ -315,8 +308,8 @@ class CardsAgainstHumanity(BasePlugin):
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
         
     def cmd_play(self, args, channel, user):
-		# Command to play a card
-		# TODO: Rewrite this whole thing, it's a mess!
+        # Command to play a card
+        # TODO: Rewrite this whole thing, it's a mess!
         if self.gamestate == self.GameState.inprogress:
             cardplayed = False
             for cards in self.playedcards:
@@ -344,7 +337,7 @@ class CardsAgainstHumanity(BasePlugin):
                             self.checkroundover()
                     else:
                         self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
-                except:
+                except ValueError:
                     self.reply(channel, user, "Please use the card's number.")
             elif user not in self.live_players:
                 self.reply(channel, user, "You are not in this game.")
@@ -360,8 +353,8 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_pick(self, args, channel, user):
-		# Command to pick a card
-		# TODO: Maybe restructure this one too.
+        # Command to pick a card
+        # TODO: Maybe restructure this one too.
         if self.gamestate == self.GameState.inprogress:
             if self.judging == True and user == self.live_players[self.judgeindex]:
                 try:
@@ -382,7 +375,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
             
     def cmd_start(self, args, channel, user):
-		# Start the game!
+        # Start the game!
         if self.gamestate == self.GameState.none:
             self.gamestate = self.GameState.starting
             self.bot.pubout(channel, "A new game has been started!")
@@ -394,12 +387,12 @@ class CardsAgainstHumanity(BasePlugin):
             elif user not in self.live_players:
                 self.reply(channel, user, "There is a game starting already. Please join instead.")
             else:
-                self.reply(channel, user, "Not enough players to start a game. Minimum of 4 required. Currently: %i" % len(self.live_players))
+                self.reply(channel, user, "Not enough players to start a game. Minimum of 3 required. Currently: %i" % len(self.live_players))
         elif self.gamestate == self.GameState.inprogress:
             self.reply(channel, user, "There is a game in progress. Please wait for it to end.")
 
     def cmd_stats(self, args, channel, user):
-		# Display stats
+        # Display stats
         if self.gamestate == self.GameState.none:
             self.reply(channel, user, "No game in progress.")
         elif self.gamestate == self.GameState.starting:
@@ -410,12 +403,12 @@ class CardsAgainstHumanity(BasePlugin):
             self.cmd_scores(args, channel, user)
                 
     def cmd_status(self, args, channel, user):
-		# Alias to 'stats'
+        # Alias to 'stats'
         self.cmd_stats(args, channel, user)
 
     def cmd_scores(self, args, channel, user):
-		# Display scores
-		# TODO: Move functionality into a function, it's called too much from other functions
+        # Display scores
+        # TODO: Move functionality into a function, it's called too much from other functions
         if self.gamestate == self.GameState.none or self.gamestate == self.GameState.starting:
             self.reply(channel, user, "No game in progress.")
         elif self.gamestate == self.GameState.inprogress:
@@ -430,8 +423,8 @@ class CardsAgainstHumanity(BasePlugin):
                 self.bot.pubout(self.channel, "No scores yet. Cards to win: %i." % self.cardstowin)
 
     def cmd_join(self, args, channel, user):
-		# Join the game
-		# TODO: Maybe restructure this mess too.
+        # Join the game
+        # TODO: Maybe restructure this mess too.
         if self.gamestate == self.GameState.none:
             self.reply(channel, user, "No game in progress. Please start one.")
         elif self.gamestate == self.GameState.starting:
@@ -468,8 +461,8 @@ class CardsAgainstHumanity(BasePlugin):
                 self.reply(channel, user, "You are already in the game.")
 
     def cmd_hand(self, args, channel, user):
-		# Output hand
-		# TODO: Should move this functionality into another function too
+        # Output hand
+        # TODO: Should move this functionality into another function too
         if self.gamestate == self.GameState.inprogress:
             if user in self.live_players:
                 hand = []
@@ -482,8 +475,8 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_prompt(self, args, channel, user):
-		# Prompt players to draw cards
-		# Should probably move this logic so the bot doesn't call commands
+        # Prompt players to draw cards
+        # Should probably move this logic so the bot doesn't call commands
         if self.gamestate == self.GameState.inprogress:
             if self.judging == False:
                 finishedplayers = [self.judgeindex]
@@ -501,7 +494,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_quit(self, args, channel, user):
-		# TODO: Rewrite this whole mess!
+        # TODO: Rewrite this whole mess!
         if self.gamestate == self.GameState.inprogress:
             if user in self.live_players:
                 judge = self.live_players[self.judgeindex]
@@ -538,7 +531,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
             
     def cmd_del(self, args, channel, user):
-		# TODO: Also rewrite this one!
+        # TODO: Also rewrite this one!
         userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
             if self.gamestate == self.GameState.inprogress or self.gamestate == self.GameState.starting:
@@ -588,7 +581,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "You need to be at least a botmod to use that command.")
             
     def cmd_end(self, args, channel, user):
-		# End the game
+        # End the game
         userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
             if self.gamestate is not self.GameState.none:
@@ -603,19 +596,19 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_help(self, args, channel, user):
-		# Output all commands
+        # Output all commands
         cmds = [i[4:] for i in dir(self) if i.startswith('cmd_')]
         self.reply(channel, user, "Valid commands: '%s'" % "', '".join(cmds))
 
     def cmd_rules(self, args, channel, user):
-		# Output a simple rules list
+        # Output a simple rules list
         self.reply(channel, user, "Cards Against Humanity is a free party game for horrible people.")
         self.reply(channel, user, "Unlike most of the party games you've played before, Cards Against Humanity is as despicable and awkward as you and your friends.")
         self.reply(channel, user, "The game is simple. Each round, one player asks a question from a Black Card, and everyone else answers with their funniest White Card.")
         
     def cmd_variant(self, args, channel, user):
-		# Manage variants
-		# TODO: Take a look at this, see if I can simplify it
+        # Manage variants
+        # TODO: Take a look at this, see if I can simplify it
         for i in range (0, len(args)):
             args[i] = args[i].lower()
         if len(args) == 0:
@@ -643,7 +636,7 @@ class CardsAgainstHumanity(BasePlugin):
                 self.reply(channel, user, "Cannot modify variants during a game.")
 
     def cmd_reloadcards(self, args, channel, user):
-		# Reload card lists
+        # Reload card lists
         userlevel = self.auth.get_userlevel(user)
         # If admin, reload cards. Else, do nothing.
         if userlevel == 200:
@@ -653,7 +646,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "You do not have permission to do that.")
 
     def do_command(self, channel, user, cmd):
-		# Handle commands
+        # Handle commands
         if cmd=='': return
         cmds = cmd.strip().split(" ")
         cmds[0]=cmds[0].lower()
