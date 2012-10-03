@@ -24,6 +24,7 @@ class CardsAgainstHumanity(BasePlugin):
 		# Plugin initialization
         BasePlugin.__init__(self, bot, options)
         self.output = True
+        self.auth = self.bot.plugins["system.Auth"]
         
         # Define variants
         self.variants = {
@@ -532,8 +533,7 @@ class CardsAgainstHumanity(BasePlugin):
             
     def cmd_del(self, args, channel, user):
 		# TODO: Also rewrite this one!
-        auth = self.bot.plugins['system.Auth']
-        userlevel = auth.get_userlevel(user)
+        userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
             if self.gamestate == "InProgress" or self.gamestate == "Starting":
                 try:
@@ -583,8 +583,7 @@ class CardsAgainstHumanity(BasePlugin):
             
     def cmd_end(self, args, channel, user):
 		# End the game
-        auth = self.bot.plugins['system.Auth']
-        userlevel = auth.get_userlevel(user)
+        userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
             if self.gamestate is not "None":
                 self.endgame()
@@ -639,12 +638,11 @@ class CardsAgainstHumanity(BasePlugin):
 
     def cmd_reloadcards(self, args, channel, user):
 		# Reload card lists
-        auth = self.bot.plugins["system.Auth"]
-        userlevel = auth.get_userlevel(user)
+        userlevel = self.auth.get_userlevel(user)
         # If admin, reload cards. Else, do nothing.
         if userlevel == 200:
             self.loadcards()
-            self.reply(channel, user, "Successfully reloaded base decks."):
+            self.reply(channel, user, "Successfully reloaded base decks.")
         else:
             self.reply(channel, user, "You do not have permission to do that.")
 
