@@ -19,12 +19,19 @@
 import string, random
 from pyGBot.BasePlugin import BasePlugin
 
+# Enum definition
+def enum(**enums):
+    return type('Enum', (), enums)
+
 class CardsAgainstHumanity(BasePlugin):
     def __init__(self, bot, options):
 		# Plugin initialization
         BasePlugin.__init__(self, bot, options)
         self.output = True
         self.auth = self.bot.plugins["system.Auth"]
+        
+        # Define gamestates
+        self.GameState = enum(none=0, starting=1, inprogress=2)
         
         # Define variants
         self.variants = {
@@ -38,7 +45,7 @@ class CardsAgainstHumanity(BasePlugin):
 
     def timer_tick(self):
 		# Handle in-game prompts
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             self.timer = self.timer + 1
             if self.timer == 90:
                 self.timer = 0
@@ -122,8 +129,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.channel = None
         self.blackcard = None
         self.judging = False
-        # TODO: Implement gamestate as an enum
-        self.gamestate = "None"
+        self.gamestate = self.GameState.none
         
         # Load deck instances and shuffle
         self.blackdeck = self.baseblackdeck
@@ -133,7 +139,7 @@ class CardsAgainstHumanity(BasePlugin):
 
     def startgame(self):
 		# Put the game into InProgress mode
-        self.gamestate = "InProgress"
+        self.gamestate = self.GameState.inprogress
         self.bot.pubout(self.channel, "A new game is starting! Please wait, dealing cards...")
         
         # Copy players in starting queue to active queue, and shuffle play order
@@ -177,7 +183,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.bot.pubout(self.channel, "The game is over.")
         
         # Show black card counts if a game was in progress
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             blackbuild = []
             for user in self.players:
                 if len(self.woncards[user]) != 0:
@@ -311,7 +317,7 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_play(self, args, channel, user):
 		# Command to play a card
 		# TODO: Rewrite this whole thing, it's a mess!
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             cardplayed = False
             for cards in self.playedcards:
                 if cards[0] == user:
@@ -356,7 +362,7 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_pick(self, args, channel, user):
 		# Command to pick a card
 		# TODO: Maybe restructure this one too.
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             if self.judging == True and user == self.live_players[self.judgeindex]:
                 try:
                     if int(args[0]) > 0 and int(args[0]) <= len(self.playedcards):
@@ -377,28 +383,28 @@ class CardsAgainstHumanity(BasePlugin):
             
     def cmd_start(self, args, channel, user):
 		# Start the game!
-        if self.gamestate == "None":
-            self.gamestate = "Starting"
+        if self.gamestate == self.GameState.none:
+            self.gamestate = self.GameState.starting
             self.bot.pubout(channel, "A new game has been started!")
             self.live_players.append(user)
             self.channel = channel
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             if user in self.live_players and len(self.live_players) >= 3:
                 self.startgame()
             elif user not in self.live_players:
                 self.reply(channel, user, "There is a game starting already. Please join instead.")
             else:
                 self.reply(channel, user, "Not enough players to start a game. Minimum of 4 required. Currently: %i" % len(self.live_players))
-        elif self.gamestate == "InProgress":
+        elif self.gamestate == self.GameState.inprogress:
             self.reply(channel, user, "There is a game in progress. Please wait for it to end.")
 
     def cmd_stats(self, args, channel, user):
 		# Display stats
-        if self.gamestate == "None":
+        if self.gamestate == self.GameState.none:
             self.reply(channel, user, "No game in progress.")
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             self.reply(channel, user, "A new game is starting. Currently %i players: %s" % (len(self.live_players), ", ".join(self.live_players)))
-        elif self.gamestate == "InProgress":
+        elif self.gamestate == self.GameState.inprogress:
             self.bot.pubout(self.channel, "Player order: %s. %s is the current Card Czar. Current black card is: \x0303%s\x0F" % (", ".join(self.live_players), self.live_players[self.judgeindex], self.blackcard[0]))
             # TODO: Replace this when I extract it into a new function
             self.cmd_scores(args, channel, user)
@@ -410,9 +416,9 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_scores(self, args, channel, user):
 		# Display scores
 		# TODO: Move functionality into a function, it's called too much from other functions
-        if self.gamestate == "None" or self.gamestate == "Starting":
+        if self.gamestate == self.GameState.none or self.gamestate == self.GameState.starting:
             self.reply(channel, user, "No game in progress.")
-        elif self.gamestate == "InProgress":
+        elif self.gamestate == self.GameState.inprogress:
             blackbuild = []
             for player in self.players:
                 if len(self.woncards[player]) != 0:
@@ -426,15 +432,15 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_join(self, args, channel, user):
 		# Join the game
 		# TODO: Maybe restructure this mess too.
-        if self.gamestate == "None":
+        if self.gamestate == self.GameState.none:
             self.reply(channel, user, "No game in progress. Please start one.")
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             if user not in self.live_players:
                 self.live_players.append(user)
                 self.bot.pubout(self.channel, "%s is now in the game." % user)
             else:
                 self.reply(channel, user, "You are already in the game.")
-        elif self.gamestate == "InProgress":
+        elif self.gamestate == self.GameState.inprogress:
             if user not in self.live_players:
                 self.bot.pubout(self.channel, "%s is now in the game." % user)
                 if user not in self.players:
@@ -464,7 +470,7 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_hand(self, args, channel, user):
 		# Output hand
 		# TODO: Should move this functionality into another function too
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             if user in self.live_players:
                 hand = []
                 for i in range (1, len(self.hands[user]) + 1):
@@ -478,7 +484,7 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_prompt(self, args, channel, user):
 		# Prompt players to draw cards
 		# Should probably move this logic so the bot doesn't call commands
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             if self.judging == False:
                 finishedplayers = [self.judgeindex]
                 for card in self.playedcards:
@@ -496,7 +502,7 @@ class CardsAgainstHumanity(BasePlugin):
 
     def cmd_quit(self, args, channel, user):
 		# TODO: Rewrite this whole mess!
-        if self.gamestate == "InProgress":
+        if self.gamestate == self.GameState.inprogress:
             if user in self.live_players:
                 judge = self.live_players[self.judgeindex]
                 self.bot.pubout(self.channel, "%s has quit the game." % user)
@@ -519,7 +525,7 @@ class CardsAgainstHumanity(BasePlugin):
                 self.checkroundover()
             else:
                 self.reply(channel, user, "You are not in this game.")
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             if user in self.live_players:
                 self.bot.pubout(self.channel, "%s has quit the game." % user)
                 self.live_players.remove(user)
@@ -535,7 +541,7 @@ class CardsAgainstHumanity(BasePlugin):
 		# TODO: Also rewrite this one!
         userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
-            if self.gamestate == "InProgress" or self.gamestate == "Starting":
+            if self.gamestate == self.GameState.inprogress or self.gamestate == self.GameState.starting:
                 try:
                     player = args[0]
                     if player in self.live_players:
@@ -565,7 +571,7 @@ class CardsAgainstHumanity(BasePlugin):
                     self.reply(channel, user, "Please specify the player to delete.")
             else:
                 self.reply(channel, user, "There is no game in progress.")
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             try:
                 player = args[0]
                 if player in self.live_players:
@@ -585,15 +591,15 @@ class CardsAgainstHumanity(BasePlugin):
 		# End the game
         userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
-            if self.gamestate is not "None":
+            if self.gamestate is not self.GameState.none:
                 self.endgame()
             else:
                 self.reply(channel, user, "There is no game in progress.")
-        elif self.gamestate == "Starting":
+        elif self.gamestate == self.GameState.starting:
             self.endgame()
-        elif self.gamestate == "InProgress":
+        elif self.gamestate == self.GameState.inprogress:
             self.reply(channel, user, "You need to be at least a botmod to use that command during a game.")
-        elif self.gamestate == "None":
+        elif self.gamestate == self.GameState.none:
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_help(self, args, channel, user):
@@ -622,7 +628,7 @@ class CardsAgainstHumanity(BasePlugin):
             if args[0] in self.variants.keys():
                 self.reply(channel, user, "%s: %s" % (args[0].title(), self.variants[args[0]][0]))
         if len(args) == 2:
-            if self.gamestate != "InProgress":
+            if self.gamestate != self.GameState.inprogress:
                 if args[0] == "toggle": 
                     if args[1] in self.variants.keys():
                         if self.variants[args[1]][1]:
