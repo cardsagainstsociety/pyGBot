@@ -196,8 +196,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.judging = False
         self.timer = 0
         # Output current game status
-        # TODO: Extract score output to its own function
-        self.cmd_scores([], self.channel, self.bot.nickname)
+        self.showscores()
         
         # Determine card czar and output
         self.playedcards = []
@@ -226,7 +225,7 @@ class CardsAgainstHumanity(BasePlugin):
             played.append(card[0])
         
         # Find who is in live_players but hasn't played a card
-        diff = list(set(self.live_players).difference(set(played)))
+        diff = list(set(self.live_players) - set(played))
 
         # Begin judging if all live players except judge have played
         if len(diff) == 1 and diff[0] == self.live_players[self.judgeindex]:
@@ -306,6 +305,20 @@ class CardsAgainstHumanity(BasePlugin):
                 for i in range (1, 11 + extra):
                     hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
+                
+    def showscores(self):
+        if self.gamestate == self.GameState.inprogress:
+            blackbuild = []
+            for player in self.players:
+                if len(self.woncards[player]) != 0:
+                    blackbuild.append("%i - %s" % (len(self.woncards[player]), player))
+            blackbuild.sort(reverse=True)
+            if blackbuild != []:
+                self.bot.pubout(self.channel, "Awesome Points per players: %s. Points to win: %i." % (", ".join(blackbuild), self.cardstowin))
+            else:
+                self.bot.pubout(self.channel, "No scores yet. Cards to win: %i." % self.cardstowin)
+        else:
+            self.reply(channel, user, "No game in progress.")
         
     def cmd_play(self, args, channel, user):
         # Command to play a card
@@ -399,8 +412,7 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "A new game is starting. Currently %i players: %s" % (len(self.live_players), ", ".join(self.live_players)))
         elif self.gamestate == self.GameState.inprogress:
             self.bot.pubout(self.channel, "Player order: %s. %s is the current Card Czar. Current black card is: \x0303%s\x0F" % (", ".join(self.live_players), self.live_players[self.judgeindex], self.blackcard[0]))
-            # TODO: Replace this when I extract it into a new function
-            self.cmd_scores(args, channel, user)
+            self.showscores()
                 
     def cmd_status(self, args, channel, user):
         # Alias to 'stats'
@@ -409,18 +421,7 @@ class CardsAgainstHumanity(BasePlugin):
     def cmd_scores(self, args, channel, user):
         # Display scores
         # TODO: Move functionality into a function, it's called too much from other functions
-        if self.gamestate == self.GameState.none or self.gamestate == self.GameState.starting:
-            self.reply(channel, user, "No game in progress.")
-        elif self.gamestate == self.GameState.inprogress:
-            blackbuild = []
-            for player in self.players:
-                if len(self.woncards[player]) != 0:
-                    blackbuild.append("%i - %s" % (len(self.woncards[player]), player))
-            blackbuild.sort(reverse=True)
-            if blackbuild != []:
-                self.bot.pubout(self.channel, "Awesome Points per players: %s. Points to win: %i." % (", ".join(blackbuild), self.cardstowin))
-            else:
-                self.bot.pubout(self.channel, "No scores yet. Cards to win: %i." % self.cardstowin)
+        self.showscores()
 
     def cmd_join(self, args, channel, user):
         # Join the game
