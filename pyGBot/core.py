@@ -480,7 +480,7 @@ class GBot(irc.IRC):
         log.chatlog.info("%s has quit [%s]" % (user, quitMessage))
         
         # Call Event Handler
-        self.events.user_quit(user, quitMsg)
+        self.events.user_quit(user, quitMessage)
 
     def userRenamed(self, oldname, newname):
         """Called when the bot sees a user change their nickname from oldname to
