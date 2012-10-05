@@ -1,5 +1,5 @@
 ##
-##    Apples To Apples - a plugin for pyGBot
+##    ContraHumanity - a plugin for pyGBot
 ##    Copyright (C) 2008 Morgan Lokhorst-Blight
 ##
 ##    This program is free software: you can whiteistribute it and/or modify
@@ -15,6 +15,11 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
+##	  The game implemented by this plugin is based on Cards Against Humanity,
+##    licenced under Creative Commons BY-NC-SA 2.0. The cards used in
+##    ContraHumanityCards.txt are directly from Cards Against Humanity.
+##    Please see http://cardsagainsthumanity.com for more information
+##    about the original game.
 
 import string, random
 from pyGBot.BasePlugin import BasePlugin
@@ -23,7 +28,7 @@ from pyGBot.BasePlugin import BasePlugin
 def enum(**enums):
     return type('Enum', (), enums)
 
-class CardsAgainstHumanity(BasePlugin):
+class ContraHumanity(BasePlugin):
     def __init__(self, bot, options):
         # Plugin initialization
         BasePlugin.__init__(self, bot, options)
@@ -94,7 +99,7 @@ class CardsAgainstHumanity(BasePlugin):
         self.basewhitedeck = []
         
         # Load CaH cards
-        with open('./pyGBot/Plugins/games/CardsAgainstHumanityCards.txt', 'r') as f:
+        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
             for line in f:
                 if not line.startswith("#") and not line == "\n":
                     if line[1] == ":":
@@ -105,7 +110,7 @@ class CardsAgainstHumanity(BasePlugin):
                         self.basewhitedeck.append(line.rstrip("\n"))
                         
         # Load custom cards
-        with open('./pyGBot/Plugins/games/CardsAgainstHumanityCustom.txt', 'r') as f:
+        with open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
             for line in f:
                 if not line.startswith("#") and not line == "\n":
                     if line[1] == ":":
@@ -618,7 +623,7 @@ class CardsAgainstHumanity(BasePlugin):
 
     def cmd_rules(self, args, channel, user):
         # Output a simple rules list
-        self.reply(channel, user, "Cards Against Humanity is a free party game for horrible people.")
+        self.reply(channel, user, "Contrahumanity is an implementation of Cards Against Humanity, a free party game for horrible people.")
         self.reply(channel, user, "Unlike most of the party games you've played before, Cards Against Humanity is as despicable and awkward as you and your friends.")
         self.reply(channel, user, "The game is simple. Each round, one player asks a question from a Black Card, and everyone else answers with their funniest White Card.")
         

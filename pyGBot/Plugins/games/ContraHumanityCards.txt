@@ -1,3 +1,14 @@
+# This file contains cards used by
+# the Contrahumanity plugin, a game
+# based on Cards Against Humanity.
+#
+# All cards in this file are based on
+# the Cards Against Humanity set at
+# http://cardsagainsthumanity.com/
+# 
+# Cards are distributed under the
+# Creative Commons BY-NC-SA 2.0 license.
+
 # Black cards
 1: Who stole the cookies from the cookie jar?
 1: I wish I hadn't lost the instruction manual for ____.
