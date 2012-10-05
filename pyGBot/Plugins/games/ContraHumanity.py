@@ -398,23 +398,26 @@ class ContraHumanity(BasePlugin):
             if user in self.live_players and user not in self.playedcards and user != self.live_players[self.judgeindex] and self.judging == False and cardplayed == False:
                 try:
                     if len(args) == self.blackcard[1]:
-                        playcards = []
-                        valid = True
-                        for cardnum in args:
-                            if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
-                                playcards.append(self.hands[user][int(cardnum)-1])
-                            else:
-                                valid = False
-                                self.reply(channel, user, "Please pick valid card numbers.")
-                        if valid:
-                            self.playedcards.append([user, playcards])
-                            for removecards in playcards:
-                                self.hands[user].remove(removecards)
-                            if self.blackcard[1] == 1:
-                                self.bot.pubout(self.channel, "%s: You have played your card." % user)
-                            else:
-                                self.bot.pubout(self.channel, "%s: You have played your cards." % user)
-                            self.checkroundover()
+						if len(set(args)) == self.blackcard[1]:
+							playcards = []
+							valid = True
+							for cardnum in args:
+								if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
+									playcards.append(self.hands[user][int(cardnum)-1])
+								else:
+									valid = False
+									self.reply(channel, user, "Please pick valid card numbers.")
+							if valid:
+								self.playedcards.append([user, playcards])
+								for removecards in playcards:
+									self.hands[user].remove(removecards)
+								if self.blackcard[1] == 1:
+									self.bot.pubout(self.channel, "%s: You have played your card." % user)
+								else:
+									self.bot.pubout(self.channel, "%s: You have played your cards." % user)
+								self.checkroundover()
+						else:
+							self.reply(channel, user, "You can't play the same card more than once!")
                     else:
                         self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
                 except ValueError:
