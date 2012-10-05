@@ -161,6 +161,7 @@ class CardsAgainstHumanity(BasePlugin):
                 self.hands[user].append(self.whitedeck.pop(0))
                 
         # Display hands to each player
+        # TODO: This needs a function
         for user in self.live_players:
             hand = []
             for i in range (1, 11):
@@ -236,6 +237,8 @@ class CardsAgainstHumanity(BasePlugin):
             
     def beginjudging(self):
         # Begin the judging process
+        # TODO: Possible bug when a judge quits after new player(s) have
+        # joined during judging, allowing those player(s) to play that round
         if self.judging == True:
             # Restart prompt timer
             self.timer = 0
@@ -319,6 +322,65 @@ class CardsAgainstHumanity(BasePlugin):
                 self.bot.pubout(self.channel, "No scores yet. Cards to win: %i." % self.cardstowin)
         else:
             self.reply(channel, user, "No game in progress.")
+            
+    def removeuser(self, user):
+        # If we're here, we're gonna remove them, so let's save repeating this line.
+        self.bot.pubout(self.channel, "%s is no longer in the game." % user)
+        
+        # Game in progress handles differently than one in setup
+        if self.gamestate == self.GameState.inprogress:
+            # End the game if there are too few users to handle a quit
+            if len(self.live_players) < 4:
+                self.bot.pubout(self.channel, "There are now too few players to continue the game.")
+                self.endgame()
+            else:
+                # Store the current judge before modifying player lists
+                judge = self.live_players[self.judgeindex]
+                # Remove the user
+                self.live_players.remove(user)
+                
+                # Overlap the judge index if necessary
+                if self.judgeindex == len(self.live_players):
+                    self.judgeindex = 0
+                
+                # Change the judge if necessary
+                if user == judge:
+                    # Stop judging
+                    self.judging = False
+                    
+                    # Figure out the new judge
+                    self.bot.pubout(self.channel, "The Card Czar is now %s." % self.live_players[self.judgeindex])
+                    judge = self.live_players[self.judgeindex]
+                    
+                    # Remove the new judge's played cards
+                    for i in range(0, len(self.playedcards)):
+                        # IndexError comes up if we delete anything but the last card;
+                        # using try/catch for future expansion (with gambling, may require
+                        # deletion of multiple cards)
+                        try:
+                            if self.playedcards[i][0] == judge:
+                                self.playedcards.remove(self.playedcards[i])
+                        except IndexError:
+                            pass
+                            
+                    # Restart judging
+                    self.checkroundover()
+                else:
+                    # Reassign the current judge to their new index
+                    self.judgeindex = self.live_players.index(judge)
+                    
+                    # Don't interrupt judging in progress
+                    if not self.judging:
+                        self.checkroundover()
+
+        elif self.gamestate == self.GameState.starting:
+            # Remove the user
+            self.live_players.remove(user)
+            
+            # End the game if it's empty
+            if len(self.live_players) == 0:
+                self.bot.pubout(self.channel, "Game is now empty.")
+                self.endgame()
         
     def cmd_play(self, args, channel, user):
         # Command to play a card
@@ -420,7 +482,6 @@ class CardsAgainstHumanity(BasePlugin):
 
     def cmd_scores(self, args, channel, user):
         # Display scores
-        # TODO: Move functionality into a function, it's called too much from other functions
         self.showscores()
 
     def cmd_join(self, args, channel, user):
@@ -435,6 +496,7 @@ class CardsAgainstHumanity(BasePlugin):
             else:
                 self.reply(channel, user, "You are already in the game.")
         elif self.gamestate == self.GameState.inprogress:
+            # TODO: Fix bug where players always get 10 cards, even in packingheat + 2 or 3 play
             if user not in self.live_players:
                 self.bot.pubout(self.channel, "%s is now in the game." % user)
                 if user not in self.players:
@@ -454,6 +516,7 @@ class CardsAgainstHumanity(BasePlugin):
                 else:
                     while len(self.hands[user]) < 9 + self.blackcard[1]:
                         self.hands[user].append(self.whitedeck.pop(0))
+                # TODO: This needs a function
                 hand = []
                 for i in range (1, 10 + self.blackcard[1]):
                     hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
@@ -495,70 +558,26 @@ class CardsAgainstHumanity(BasePlugin):
             self.reply(channel, user, "There is no game in progress.")
 
     def cmd_quit(self, args, channel, user):
-        # TODO: Rewrite this whole mess!
-        if self.gamestate == self.GameState.inprogress:
-            if user in self.live_players:
-                judge = self.live_players[self.judgeindex]
-                self.bot.pubout(self.channel, "%s has quit the game." % user)
-                self.live_players.remove(user)
-                if len(self.live_players) < 3:
-                    self.bot.pubout(self.channel, "There are now too few players to continue the game.")
-                    self.endgame()
-                else:
-                    if self.judgeindex == len(self.live_players):
-                        self.judgeindex = 0
-                    if user == judge:
-                        self.judging = False
-                        self.bot.pubout(self.channel, "The Card Czar is now %s." % self.live_players[self.judgeindex])
-                        judge = self.live_players[self.judgeindex]
-                        for i in range(0, len(self.playedcards)):
-                            if self.playedcards[i-1][0] == judge:
-                                self.playedcards.remove(self.playedcards[i-1])
-                    else:
-                        self.judgeindex = self.live_players.index(judge)
-                self.checkroundover()
-            else:
-                self.reply(channel, user, "You are not in this game.")
-        elif self.gamestate == self.GameState.starting:
-            if user in self.live_players:
-                self.bot.pubout(self.channel, "%s has quit the game." % user)
-                self.live_players.remove(user)
-                if len(self.live_players) == 0:
-                    self.bot.pubout(self.channel, "Game is now empty.")
-                    self.endgame()
-            else:
-                self.reply(channel, user, "You are not in this game.")
-        else:
+        # Lets a player quit the game
+        if self.gamestate == self.GameState.none:
+            # Game is not running.
             self.reply(channel, user, "There is no game in progress.")
+        else:
+             # Game is running; delete them if they're in the game
+            if user in self.live_players:
+                self.removeuser(user)
+            else:
+                self.reply(channel, user, "You are not in this game.")
             
     def cmd_del(self, args, channel, user):
-        # TODO: Also rewrite this one!
+        # TODO: Can we make this more readable?
         userlevel = self.auth.get_userlevel(user)
         if userlevel > 50:
             if self.gamestate == self.GameState.inprogress or self.gamestate == self.GameState.starting:
                 try:
                     player = args[0]
                     if player in self.live_players:
-                        judge = self.live_players[self.judgeindex]
-                        self.bot.pubout(self.channel, "%s has quit the game." % player)
-                        self.live_players.remove(player)
-                        if len(self.live_players) < 3:
-                            self.bot.pubout(self.channel, "There are now too few players to continue the game.")
-                            self.endgame()
-                        else:
-                            if self.judgeindex == len(self.live_players):
-                                self.judgeindex = 0
-                            if player == judge:
-                                self.judging = False
-                                self.bot.pubout(self.channel, "The Card Czar is now %s." % self.live_players[self.judgeindex])
-                                judge = self.live_players[self.judgeindex]
-                                for i in range(0, len(self.playedcards)):
-                                    if self.playedcards[i][0] == judge:
-                                        self.playedcards.remove(self.playedcards[i])
-                                self.beginjudging()
-                            else:
-                                self.judgeindex = self.live_players.index(judge)  
-                        self.checkroundover()
+                        removeuser(user)
                     else:
                         self.reply(channel, user, "That player is not in this game.")
                 except IndexError:
@@ -569,11 +588,7 @@ class CardsAgainstHumanity(BasePlugin):
             try:
                 player = args[0]
                 if player in self.live_players:
-                    self.bot.pubout(self.channel, "%s has been deleted from the game." % player)
-                    self.live_players.remove(player)
-                    if len(self.live_players) == 0:
-                        self.bot.pubout(self.channel, "Game is now empty.")
-                        self.endgame()
+                    removeuser(user)
                 else:
                     self.reply(channel, user, "That player is not in this game.")
             except IndexError:
