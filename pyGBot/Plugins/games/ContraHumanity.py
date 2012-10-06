@@ -585,7 +585,7 @@ class ContraHumanity(BasePlugin):
                 try:
                     player = args[0]
                     if player in self.live_players:
-                        removeuser(user)
+                        self.removeuser(user)
                     else:
                         self.reply(channel, user, "That player is not in this game.")
                 except IndexError:
@@ -596,7 +596,7 @@ class ContraHumanity(BasePlugin):
             try:
                 player = args[0]
                 if player in self.live_players:
-                    removeuser(user)
+                    self.removeuser(user)
                 else:
                     self.reply(channel, user, "That player is not in this game.")
             except IndexError:
