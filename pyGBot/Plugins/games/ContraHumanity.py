@@ -15,7 +15,7 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
-##	  The game implemented by this plugin is based on Cards Against Humanity,
+##    The game implemented by this plugin is based on Cards Against Humanity,
 ##    licenced under Creative Commons BY-NC-SA 2.0. The cards used in
 ##    ContraHumanityCards.txt are directly from Cards Against Humanity.
 ##    Please see http://cardsagainsthumanity.com for more information
@@ -23,6 +23,7 @@
 
 import string, random
 from pyGBot.BasePlugin import BasePlugin
+from time import time
 
 # Enum definition
 def enum(**enums):
@@ -49,12 +50,19 @@ class ContraHumanity(BasePlugin):
         self.resetdata()
 
     def timer_tick(self):
-        # Handle in-game prompts
+        # Handle time-based events
         if self.gamestate == self.GameState.inprogress:
+            # Prompt delay
             self.timer = self.timer + 1
             if self.timer == 90:
                 self.timer = 0
+                # TODO: Make this a function, don't call a cmd
                 self.cmd_prompt([], self.channel, self.bot.nickname)
+                
+            # Judge start delay
+            if self.judgestarttime and self.judgestarttime < time():
+                self.beginjudging()
+                self.judgestarttime = None
 
     def msg_channel(self, channel, user, message):
         # Determine if a message is a command, and handle it if so.
@@ -63,7 +71,7 @@ class ContraHumanity(BasePlugin):
             self.do_command(channel, user, string.strip(a[1]))
         elif message[0]=='!' and (len(message) > 1) and message[1]!='!':
             self.do_command(channel, user, string.strip(message[1:]))
-            
+
     def msg_private(self, user, message):
         # Attempt to run private messages as commands
         self.do_command(user, user, message)
@@ -133,6 +141,7 @@ class ContraHumanity(BasePlugin):
         self.cardstowin = 0
         self.channel = None
         self.blackcard = None
+        self.judgestarttime = None
         self.judging = False
         self.gamestate = self.GameState.none
         
@@ -225,6 +234,11 @@ class ContraHumanity(BasePlugin):
         self.deal()
             
     def checkroundover(self):
+        # Cancel delay until judging starts
+        if self.judgestarttime:
+            self.judgestarttime = None
+            self.bot.pubout(self.channel, "Judging delay has been reset or cancelled...")
+            
         # Generate a list of players that have played their cards
         played = []
         for card in self.playedcards:
@@ -235,16 +249,16 @@ class ContraHumanity(BasePlugin):
 
         # Begin judging if all live players except judge have played
         if len(diff) == 1 and diff[0] == self.live_players[self.judgeindex]:
-            self.bot.pubout(self.channel, "All cards have been played.")
+            self.bot.pubout(self.channel, "All cards have been played. Judging will begin after a short delay.")
             if not self.judging:
-                self.judging = True
-                self.beginjudging()
+                self.judgestarttime = time() + 10
             
-    def beginjudging(self):
+    def beginjudging(self):        
         # Begin the judging process
         # TODO: Possible bug when a judge quits after new player(s) have
         # joined during judging, allowing those player(s) to play that round
-        if self.judging == True:
+        if self.judging == False:
+            self.judging = True
             # Restart prompt timer
             self.timer = 0
             
@@ -398,26 +412,26 @@ class ContraHumanity(BasePlugin):
             if user in self.live_players and user not in self.playedcards and user != self.live_players[self.judgeindex] and self.judging == False and cardplayed == False:
                 try:
                     if len(args) == self.blackcard[1]:
-						if len(set(args)) == self.blackcard[1]:
-							playcards = []
-							valid = True
-							for cardnum in args:
-								if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
-									playcards.append(self.hands[user][int(cardnum)-1])
-								else:
-									valid = False
-									self.reply(channel, user, "Please pick valid card numbers.")
-							if valid:
-								self.playedcards.append([user, playcards])
-								for removecards in playcards:
-									self.hands[user].remove(removecards)
-								if self.blackcard[1] == 1:
-									self.bot.pubout(self.channel, "%s: You have played your card." % user)
-								else:
-									self.bot.pubout(self.channel, "%s: You have played your cards." % user)
-								self.checkroundover()
-						else:
-							self.reply(channel, user, "You can't play the same card more than once!")
+                        if len(set(args)) == self.blackcard[1]:
+                            playcards = []
+                            valid = True
+                            for cardnum in args:
+                                if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
+                                    playcards.append(self.hands[user][int(cardnum)-1])
+                                else:
+                                    valid = False
+                                    self.reply(channel, user, "Please pick valid card numbers.")
+                            if valid:
+                                self.playedcards.append([user, playcards])
+                                for removecards in playcards:
+                                    self.hands[user].remove(removecards)
+                                if self.blackcard[1] == 1:
+                                    self.bot.pubout(self.channel, "%s: You have played your card." % user)
+                                else:
+                                    self.bot.pubout(self.channel, "%s: You have played your cards." % user)
+                                self.checkroundover()
+                        else:
+                            self.reply(channel, user, "You can't play the same card more than once!")
                     else:
                         self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
                 except ValueError:
@@ -531,6 +545,7 @@ class ContraHumanity(BasePlugin):
                 self.privreply(user, "Your hand: %s" % ", ".join(hand))
             else:
                 self.reply(channel, user, "You are already in the game.")
+        self.checkroundover()
 
     def cmd_hand(self, args, channel, user):
         # Output hand
