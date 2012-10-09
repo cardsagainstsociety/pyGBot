@@ -131,7 +131,7 @@
 1: And I would have gotten away with it, too, if it hadn't been for ____!
 1: What brought the orgy to a grinding halt?
 1: During his midlife crisis, my dad got really into ____.
-1: ____ would be woefully incomplete without ____.
+2: ____ would be woefully incomplete without ____.
 1: My new favorite porn star is Joey "____" McGee.
 1: Before I run for president, I must destroy all evidence of my involvement with ____.
 1: This is your captain speaking. Fasten your seatbelts and prepare for ____.
@@ -498,7 +498,7 @@ Substitute teachers
 Garth Brooks
 Keeping Christ in Christmas
 That one gay Teletubby
-Passive-agression
+Passive-aggression
 A neglected Tamagotchi
 The People's Elbow
 Guys who don't call
