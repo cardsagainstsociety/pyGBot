@@ -52,12 +52,14 @@ class ContraHumanity(BasePlugin):
     def timer_tick(self):
         # Handle time-based events
         if self.gamestate == self.GameState.inprogress:
-            # Prompt delay
-            self.timer = self.timer + 1
-            if self.timer == 90:
-                self.timer = 0
-                # TODO: Make this a function, don't call a cmd
-                self.cmd_prompt([], self.channel, self.bot.nickname)
+            # Don't prompt if in judge delay
+            if not self.judgestarttime:
+                # Prompt delay
+                self.timer = self.timer + 1
+                if self.timer == 90:
+                    self.timer = 0
+                    # TODO: Make this a function, don't call a cmd
+                    self.cmd_prompt([], self.channel, self.bot.nickname)
                 
             # Judge start delay
             if self.judgestarttime and self.judgestarttime < time():
@@ -485,8 +487,8 @@ class ContraHumanity(BasePlugin):
         elif self.gamestate == self.GameState.inprogress:
             self.reply(channel, user, "There is a game in progress. Please wait for it to end.")
 
-    def cmd_stats(self, args, channel, user):
-        # Display stats
+    def cmd_status(self, args, channel, user):
+        # Display status
         if self.gamestate == self.GameState.none:
             self.reply(channel, user, "No game in progress.")
         elif self.gamestate == self.GameState.starting:
@@ -495,9 +497,9 @@ class ContraHumanity(BasePlugin):
             self.bot.pubout(self.channel, "Player order: %s. %s is the current Card Czar. Current black card is: \x0303%s\x0F" % (", ".join(self.live_players), self.live_players[self.judgeindex], self.blackcard[0]))
             self.showscores()
                 
-    def cmd_status(self, args, channel, user):
+    def cmd_stats(self, args, channel, user):
         # Alias to 'stats'
-        self.cmd_stats(args, channel, user)
+        self.cmd_status(args, channel, user)
 
     def cmd_scores(self, args, channel, user):
         # Display scores
@@ -536,9 +538,10 @@ class ContraHumanity(BasePlugin):
                         self.hands[user].append(self.whitedeck.pop(0))
                 # Show them their hand
                 self.showhand(user)
+                # Delay judging if necessary
+                self.checkroundover()
             else:
                 self.reply(channel, user, "You are already in the game.")
-        self.checkroundover()
 
     def cmd_hand(self, args, channel, user):
         # Output hand
