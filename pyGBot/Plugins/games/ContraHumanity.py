@@ -226,9 +226,6 @@ class ContraHumanity(BasePlugin):
         # Refresh player's hands
         self.deal()
         
-        # DEBUG print white card amount
-        print len(self.whitedeck)
-            
     def checkroundover(self):
         # Cancel delay until judging starts
         if self.judgestarttime:
