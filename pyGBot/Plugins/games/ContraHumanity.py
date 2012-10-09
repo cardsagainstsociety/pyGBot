@@ -107,23 +107,14 @@ class ContraHumanity(BasePlugin):
         self.basewhitedeck = []
         
         # Load CaH cards
-        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
+        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') and open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
             for line in f:
+                # Ignore comments and empty lines
                 if not line.startswith("#") and not line == "\n":
+                    # Do we have a play definition?
                     if line[1] == ":":
                         # This is a black card.
                         self.baseblackdeck.append([line[3:].rstrip("\n"), int(line[0])])
-                    else:
-                        # This is a white card.
-                        self.basewhitedeck.append(line.rstrip("\n"))
-                        
-        # Load custom cards
-        with open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
-            for line in f:
-                if not line.startswith("#") and not line == "\n":
-                    if line[1] == ":":
-                        # This is a black card.
-                        self.baseblackdeck.append([line[2:].rstrip("\n"), line[0]])
                     else:
                         # This is a white card.
                         self.basewhitedeck.append(line.rstrip("\n"))
@@ -175,12 +166,8 @@ class ContraHumanity(BasePlugin):
                 self.hands[user].append(self.whitedeck.pop(0))
                 
         # Display hands to each player
-        # TODO: This needs a function
         for user in self.live_players:
-            hand = []
-            for i in range (1, 11):
-                hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
-            self.privreply(user, "Your hand: %s" % ", ".join(hand))
+            self.showhand(user)
         # Determine cards to win
         if len(self.live_players) >= 8:
             self.cardstowin = 4
@@ -305,6 +292,8 @@ class ContraHumanity(BasePlugin):
             return False
 
     def deal(self):
+        # TODO: change this into a one-user function, it's becoming redundant elsewhere
+        
         # Determine how many extra cards players get (if any)
         extra = 0
         if self.blackcard[1] == 3:
@@ -320,13 +309,15 @@ class ContraHumanity(BasePlugin):
                     self.privreply(user, "You draw: \x0304%s\x0F." % (self.hands[user][len(self.hands[user])-1]))
                     
         # Full hand output to each player
-        # TODO: Extract this into a function, it's copied too much
         for user in self.live_players:
-            if user != self.live_players[self.judgeindex]:
-                hand = []
-                for i in range (1, 11 + extra):
-                    hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
-                self.privreply(user, "Your hand: %s" % ", ".join(hand))
+            self.showhand(user)
+            
+    def showhand(self, user):
+        if user != self.live_players[self.judgeindex]:
+            hand = []
+            for i in range (1, 11 + extra):
+                hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
+            self.privreply(user, "Your hand: %s" % ", ".join(hand))
                 
     def showscores(self):
         if self.gamestate == self.GameState.inprogress:
@@ -534,30 +525,20 @@ class ContraHumanity(BasePlugin):
                     self.hands[user] = []
                     for i in range(1, 11):
                         self.hands[user].append(self.whitedeck.pop(0))
-                    #self.hands[user].sort()
                 else:
                     while len(self.hands[user]) < 9 + self.blackcard[1]:
                         self.hands[user].append(self.whitedeck.pop(0))
-                # TODO: This needs a function
-                hand = []
-                for i in range (1, 10 + self.blackcard[1]):
-                    hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
-                self.privreply(user, "Your hand: %s" % ", ".join(hand))
+                # Show them their hand
+                self.showhand(user)
             else:
                 self.reply(channel, user, "You are already in the game.")
         self.checkroundover()
 
     def cmd_hand(self, args, channel, user):
         # Output hand
-        # TODO: Should move this functionality into another function too
         if self.gamestate == self.GameState.inprogress:
             if user in self.live_players:
-                hand = []
-                for i in range (1, len(self.hands[user]) + 1):
-                    hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
-                self.privreply(user, "Your hand: %s" % ", ".join(hand))
-            else:
-                self.reply(channel, user, "You are not in this game.")
+                self.showhand(user)
         else:
             self.reply(channel, user, "There is no game in progress.")
 
