@@ -107,17 +107,23 @@ class ContraHumanity(BasePlugin):
         self.basewhitedeck = []
         
         # Load CaH cards
-        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') and open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
-            for line in f:
-                # Ignore comments and empty lines
-                if not line.startswith("#") and not line == "\n":
-                    # Do we have a play definition?
-                    if line[1] == ":":
-                        # This is a black card.
-                        self.baseblackdeck.append([line[3:].rstrip("\n"), int(line[0])])
-                    else:
-                        # This is a white card.
-                        self.basewhitedeck.append(line.rstrip("\n"))
+        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
+            self.parsecardfile(f)
+                        
+        with open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
+            self.parsecardfile(f)
+            
+    def parsecardfile(self, f):
+        for line in f:
+            # Ignore comments and empty lines
+            if not line.startswith("#") and not line == "\n":
+                # Do we have a play definition?
+                if line[1] == ":":
+                    # This is a black card.
+                    self.baseblackdeck.append([line[3:].rstrip("\n"), int(line[0])])
+                else:
+                    # This is a white card.
+                    self.basewhitedeck.append(line.rstrip("\n"))
 
     def resetdata(self):
         # Initialize all game variables to new game values
@@ -137,9 +143,9 @@ class ContraHumanity(BasePlugin):
         self.gamestate = self.GameState.none
         
         # Load deck instances and shuffle
-        self.blackdeck = self.baseblackdeck
+        self.blackdeck = list(self.baseblackdeck)
         random.shuffle(self.blackdeck)
-        self.whitedeck = self.basewhitedeck
+        self.whitedeck = list(self.basewhitedeck)
         random.shuffle(self.whitedeck)
 
     def startgame(self):
@@ -219,6 +225,9 @@ class ContraHumanity(BasePlugin):
         
         # Refresh player's hands
         self.deal()
+        
+        # DEBUG print white card amount
+        print len(self.whitedeck)
             
     def checkroundover(self):
         # Cancel delay until judging starts
@@ -315,8 +324,8 @@ class ContraHumanity(BasePlugin):
     def showhand(self, user):
         if user != self.live_players[self.judgeindex]:
             hand = []
-            for i in range (1, 11 + extra):
-                hand.append("%i: \x0304%s\x0F" % (i, self.hands[user][i-1]))
+            for i in range (0, len(self.hands[user])):
+                hand.append("%i: \x0304%s\x0F" % (i + 1, self.hands[user][i]))
             self.privreply(user, "Your hand: %s" % ", ".join(hand))
                 
     def showscores(self):
