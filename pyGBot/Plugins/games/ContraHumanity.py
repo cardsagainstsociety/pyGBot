@@ -401,40 +401,50 @@ class ContraHumanity(BasePlugin):
                 self.endgame()
         
     def cmd_play(self, args, channel, user):
-        # Command to play a card
-        # TODO: Rewrite this whole thing, it's a mess!
+        # Ensure game is running
         if self.gamestate == self.GameState.inprogress:
-            cardplayed = False
-            for cards in self.playedcards:
-                if cards[0] == user:
-                    cardplayed = True
-            if user in self.live_players and user not in self.playedcards and user != self.live_players[self.judgeindex] and self.judging == False and cardplayed == False:
+            # Ignore the extra args
+            args = args[:self.blackcard[1]]
+            # Get player's played card status
+            cardplayed = self.checkplayedcard(user)
+            
+            # Ensure player can play
+            if user in self.live_players and user != self.live_players[self.judgeindex] and \
+                self.judging == False and not cardplayed and len(args) >= self.blackcard[1] and \
+                len(args) == len(set(args)):
+
                 try:
-                    if len(args) == self.blackcard[1]:
-                        if len(set(args)) == self.blackcard[1]:
-                            playcards = []
-                            valid = True
-                            for cardnum in args:
-                                if int(cardnum) > 0 and int(cardnum) <= (9 + self.blackcard[1]):
-                                    playcards.append(self.hands[user][int(cardnum)-1])
-                                else:
-                                    valid = False
-                                    self.reply(channel, user, "Please pick valid card numbers.")
-                            if valid:
-                                self.playedcards.append([user, playcards])
-                                for removecards in playcards:
-                                    self.hands[user].remove(removecards)
-                                if self.blackcard[1] == 1:
-                                    self.bot.pubout(self.channel, "%s: You have played your card." % user)
-                                else:
-                                    self.bot.pubout(self.channel, "%s: You have played your cards." % user)
-                                self.checkroundover()
-                        else:
-                            self.reply(channel, user, "You can't play the same card more than once!")
-                    else:
-                        self.reply(channel, user, "Wrong number of cards! Play %i." % self.blackcard[1])
+                    # Replace args with int versions
+                    for i in range (0, self.blackcard[1]):
+                        args[i] = int(args[i]) - 1
                 except ValueError:
-                    self.reply(channel, user, "Please use the card's number.")
+                    # End function, no output
+                    return
+                
+                # Ensure all cards are within range
+                for arg in args:
+                    if arg not in range(0, len(self.hands[user])):
+                        self.reply(channel, user, "You can't play a card you don't have!")
+                        return
+                
+                # Actually insert the cards
+                playcards = []
+                for card in args:
+                    playcards.append(self.hands[user][card])
+                self.playedcards.append([user, playcards])
+                
+                # Remove the cards from the player's hand
+                for card in playcards:
+                    self.hands[user].remove(card)
+                    
+                # Output to user and check if the round is over
+                if self.blackcard[1] == 1:
+                    self.bot.pubout(self.channel, "%s: You have played your card." % user)
+                else:
+                    self.bot.pubout(self.channel, "%s: You have played your cards." % user)
+                self.checkroundover()
+                
+            # Send output based on error conditions
             elif user not in self.live_players:
                 self.reply(channel, user, "You are not in this game.")
             elif user in self.playedcards:
@@ -443,10 +453,21 @@ class ContraHumanity(BasePlugin):
                 self.reply(channel, user, "You are Card Czar this round.")
             elif self.judging == True:
                 self.reply(channel, user, "Judging has already begun, wait for the next round.")
+            elif len(args) < self.blackcard[1]:
+                self.reply(channel, user, "Not enough cards! Play %i." % self.blackcard[1])
+            elif len(args) != len(set(args)):
+                self.reply(channel, user, "You can't play the same card more than once!")
             elif cardplayed:
                 self.reply(channel, user, "You have already played your card(s) this round.")
         else:
             self.reply(channel, user, "There is no game in progress.")
+                
+    def checkplayedcard(self, user):
+        # Returns True if user has played a card, False otherwise
+        for cards in self.playedcards:
+            if cards[0] == user:
+                return True
+        return False
 
     def cmd_pick(self, args, channel, user):
         # Command to pick a card
