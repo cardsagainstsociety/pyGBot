@@ -414,21 +414,24 @@ class ContraHumanity(BasePlugin):
         if self.gamestate == self.GameState.inprogress:
             # Ignore the extra args
             args = args[:self.blackcard[1]]
+            
+            try:
+                # Replace args with int versions
+                for i in range (0, self.blackcard[1]):
+                    args[i] = int(args[i]) - 1
+            except ValueError:
+                # End function, no output
+                return
+            except IndexError:
+                self.reply(channel, user, "Not enough cards! Play %i." % self.blackcard[1])
+                return
+            
             # Get player's played card status
             cardplayed = self.checkplayedcard(user)
             
             # Ensure player can play
             if user in self.live_players and user != self.live_players[self.judgeindex] and \
-                self.judging == False and not cardplayed and len(args) >= self.blackcard[1] and \
-                len(args) == len(set(args)):
-
-                try:
-                    # Replace args with int versions
-                    for i in range (0, self.blackcard[1]):
-                        args[i] = int(args[i]) - 1
-                except ValueError:
-                    # End function, no output
-                    return
+                self.judging == False and not cardplayed and len(args) == len(set(args)):
                 
                 # Ensure all cards are within range
                 for arg in args:
@@ -452,7 +455,7 @@ class ContraHumanity(BasePlugin):
                     self.bot.pubout(self.channel, "%s: You have played your card." % user)
                 else:
                     self.bot.pubout(self.channel, "%s: You have played your cards." % user)
-                    self.showhand(user)
+                self.showhand(user)
                 self.checkroundover()
                 
             # Send output based on error conditions
@@ -464,8 +467,6 @@ class ContraHumanity(BasePlugin):
                 self.reply(channel, user, "You are Card Czar this round.")
             elif self.judging == True:
                 self.reply(channel, user, "Judging has already begun, wait for the next round.")
-            elif len(args) < self.blackcard[1]:
-                self.reply(channel, user, "Not enough cards! Play %i." % self.blackcard[1])
             elif len(args) != len(set(args)):
                 self.reply(channel, user, "You can't play the same card more than once.")
             elif cardplayed:
@@ -478,21 +479,24 @@ class ContraHumanity(BasePlugin):
         if self.gamestate == self.GameState.inprogress:
             # Ignore the extra args
             args = args[:self.blackcard[1]]
+            
+            try:
+                # Replace args with int versions
+                for i in range (0, self.blackcard[1]):
+                    args[i] = int(args[i]) - 1
+            except ValueError:
+                # End function, no output
+                return
+            except IndexError:
+                self.reply(channel, user, "Not enough cards! Play %i." % self.blackcard[1])
+                return
+            
             # Get player's played card status
             cardplayed = self.checkplayedcard(user)
             
             # Ensure player can gamble
             if user in self.live_players and user != self.live_players[self.judgeindex] and \
-                self.judging == False and cardplayed and len(args) >= self.blackcard[1] and \
-                len(args) == len(set(args)) and self.woncards[user] > 0:
-
-                try:
-                    # Replace args with int versions
-                    for i in range (0, self.blackcard[1]):
-                        args[i] = int(args[i]) - 1
-                except ValueError:
-                    # End function, no output
-                    return
+                self.judging == False and cardplayed and len(args) == len(set(args)) and self.woncards[user] > 0:
                 
                 # Ensure all cards are within range
                 for arg in args:
@@ -528,8 +532,6 @@ class ContraHumanity(BasePlugin):
                 self.reply(channel, user, "You are Card Czar this round.")
             elif self.judging == True:
                 self.reply(channel, user, "Judging has already begun, wait for the next round.")
-            elif len(args) < self.blackcard[1]:
-                self.reply(channel, user, "Not enough cards! Play %i." % self.blackcard[1])
             elif len(args) != len(set(args)):
                 self.reply(channel, user, "You can't play the same card more than once.")
             elif not cardplayed:
