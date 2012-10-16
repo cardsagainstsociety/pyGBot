@@ -447,11 +447,12 @@ class ContraHumanity(BasePlugin):
                 for card in playcards:
                     self.hands[user].remove(card)
                     
-                # Output to user and check if the round is over
+                # Output to user, redisplay hand, and check if the round is over
                 if self.blackcard[1] == 1:
                     self.bot.pubout(self.channel, "%s: You have played your card." % user)
                 else:
                     self.bot.pubout(self.channel, "%s: You have played your cards." % user)
+                    self.showhand(user)
                 self.checkroundover()
                 
             # Send output based on error conditions
@@ -513,8 +514,9 @@ class ContraHumanity(BasePlugin):
                 self.woncards[user] = self.woncards[user] - 1
                 self.pot = self.pot + 1
                     
-                # Output to user and check if the round is over
+                # Output to user, redisplay hand, and check if the round is over
                 self.bot.pubout(self.channel, "%s: You have gambled an Awesome Point for an additional play. There are now %i points in the pot!" % (user, self.pot))
+                self.showhand(user)
                 self.checkroundover()
                 
             # Send output based on error conditions
