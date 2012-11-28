@@ -117,6 +117,8 @@ class ContraHumanity(BasePlugin):
             
     def parsecardfile(self, f):
         for line in f:
+            # Special case: escape percent signs
+            line.replace("%", "%%")
             # Ignore comments and empty lines
             if not line.startswith("#") and not line == "\n":
                 # Do we have a play definition?
