@@ -294,7 +294,7 @@ class Calc(BaseCommand):
             '%': operator.mod,
             '**': operator.pow,
             '^': operator.pow,
-            'd': self.roll,
+            'd': self.roll, # Diceroll operator
         }
         
         self.UNARY_OPERATORS = {
@@ -307,54 +307,67 @@ class Calc(BaseCommand):
             'F': -1 # Fudge dice
         }
         
+        # Define math functions to attempt to load
+        mathFunctionList = [
+            # Math functions
+            'ceil',
+            'copysign',
+            'fabs',
+            'factorial',
+            'floor',
+            'fmod',
+            'frexp',
+            'fsum',
+            'isfinite', # requires Python 3.2
+            'isinf',
+            'isnan',
+            'ldexp',
+            'modf',
+            'trunc',
+            'exp',
+            'expm1',
+            'log',
+            'log1p',
+            'log2', # requires Python 3.2
+            'log10',
+            'pow',
+            'sqrt',
+            'acos',
+            'asin',
+            'atan',
+            'atan2',
+            'cos',
+            'hypot',
+            'sin',
+            'tan',
+            'degrees',
+            'radians',
+            'acosh',
+            'asinh',
+            'atanh',
+            'cosh',
+            'sinh',
+            'tanh',
+            'erf',
+            'erfc',
+            'gamma',
+            'lgamma',
+        ]
+        
         self.FUNCTIONS = {
             # Selected Python functions
             'abs': abs,
             'round': round,
-            # Math functions
-            'ceil': math.ceil,
-            'copysign': math.copysign,
-            'fabs': math.fabs,
-            'factorial': math.factorial,
-            'floor': math.floor,
-            'fmod': math.fmod,
-            'frexp': math.frexp,
-            'fsum': math.fsum,
-            #'isfinite': math.isfinite, # requires Python 3.2
-            'isinf': math.isinf,
-            'isnan': math.isnan,
-            'ldexp': math.ldexp,
-            'modf': math.modf,
-            'trunc': math.trunc,
-            'exp': math.exp,
-            'expm1': math.expm1,
-            'log': math.log,
-            'log1p': math.log1p,
-            #'log2': math.log2, # requires Python 3.2
-            'log10': math.log10,
-            'pow': math.pow,
-            'sqrt': math.sqrt,
-            'acos': math.acos,
-            'asin': math.asin,
-            'atan': math.atan,
-            'atan2': math.atan2,
-            'cos': math.cos,
-            'hypot': math.hypot,
-            'sin': math.sin,
-            'tan': math.sin,
-            'degrees': math.degrees,
-            'radians': math.radians,
-            'acosh': math.acosh,
-            'asinh': math.asinh,
-            'atanh': math.atanh,
-            'cosh': math.cosh,
-            'sinh': math.sinh,
-            'tanh': math.tanh,
-            'erf': math.erf,
-            'erfc': math.erfc,
-            'gamma': math.gamma,
-            'lgamma': math.lgamma,
+            # Math functions added in seperate loop
         }
+        
+        # Load math functions
+        for func in mathFunctionList:
+            # Don't load unsupported functions
+            try:
+                self.FUNCTIONS[func] = getattr(math, func)
+            except:
+                pass
         
         l = Lexer("".join(args))
         p = Parser(list(l))
