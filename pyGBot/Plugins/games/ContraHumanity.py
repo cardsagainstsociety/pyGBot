@@ -185,7 +185,7 @@ class ContraHumanity(BasePlugin):
         
         # Initialize player keyed data
         for user in self.live_players:
-            self.idle_players(user) = 0
+            self.idle_players[user] = 0
             self.woncards[user] = 0
             self.hands[user] = []
             # Add the user as a white card if playercards variant is on
