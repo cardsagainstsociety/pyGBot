@@ -43,6 +43,7 @@ class ContraHumanity(BasePlugin):
         self.variants = {
             "packingheat": ["Draw an extra card before Pick-2 rounds", True],
             "playercards": ["Each player's name will be added as a white card.", True],
+            "rando": ["Adds an AI player that randomly picks cards.", False],
         }
 
         # Initialize game
@@ -68,14 +69,13 @@ class ContraHumanity(BasePlugin):
 
             # Update idle times and kick idle players
             for player in self.idle_players.keys():
-                print "Checking idle for %s: %i" % (player, self.idle_players[player])
                 if player in self.live_players:
                     self.idle_players[player] = self.idle_players[player] + 1
                     if self.idle_players[player] > 300:
                         self.bot.pubout(self.channel, player + " has been idle too long.")
                         self.removeuser(player)
                 else:
-                    self.idle_players.remove(player)
+                    del self.idle_players[player]
 
     def msg_channel(self, channel, user, message):
         # Update idle time
@@ -192,6 +192,10 @@ class ContraHumanity(BasePlugin):
             if self.variants["playercards"][1]:
                 self.whitedeck.append(user)
                 random.shuffle(self.whitedeck)
+
+        # Initialize Rando
+        if self.variants["rando"][1]:
+            self.woncards["Rando Cardrissian"] = 0
                 
         # Deal initial hands to players
         for i in range(1, 11):
@@ -283,6 +287,13 @@ class ContraHumanity(BasePlugin):
             # Restart prompt timer
             self.timer = 0
             
+            # Rando Cardissian! (add a random card)
+            if self.variants["rando"][1]:
+                playcards = []
+                for i in range (0, self.blackcard[1]):
+                    playcards.append(self.whitedeck.pop(0))
+                self.playedcards.append(["Rando Cardrissian", playcards])
+
             # Output cards and ask judge to make selection
             self.bot.pubout(self.channel, "Black card is: \"\x02\x0303%s\x0F\"" % self.blackcard[0])
             random.shuffle(self.playedcards)
@@ -297,7 +308,10 @@ class ContraHumanity(BasePlugin):
     def cardwin(self, winningcard):
         # Output the winner, and store the card in their list slot
         winner = self.playedcards[winningcard][0]
-        self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
+        if winner == "Rando Cardrissian":
+            self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
+        else:
+            self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
         self.woncards[winner] = self.woncards[winner] + 1
         
         # Add the pot
@@ -315,6 +329,9 @@ class ContraHumanity(BasePlugin):
             if self.woncards[user] >= self.cardstowin:
                 # We have a winner!
                 self.bot.pubout(self.channel, "%s now has %i Awesome Points. %s wins!" % (user, self.woncards[user], user))
+                # Is it Rando?
+                if user == "Rando Cardrissian":
+                    self.bot.pubout(self.channel, "You all go home in a state of everlasting shame." % (user, self.woncards[user], user))
                 # End the game
                 self.endgame()
                 return True
@@ -364,6 +381,8 @@ class ContraHumanity(BasePlugin):
             for player in self.players:
                 if self.woncards[player] != 0:
                     blackbuild.append("%i - %s" % (self.woncards[player], player))
+            if self.variants["rando"][1] and self.woncards["Rando Cardrissian"] > 0:
+                blackbuild.append("%i - Rando Cardrissian" % self.woncards["Rando Cardrissian"])
             blackbuild.sort(reverse=True)
             if blackbuild != []:
                 self.bot.pubout(self.channel, "Awesome Points per players: %s. Points to win: %i." % (", ".join(blackbuild), self.cardstowin))
@@ -381,7 +400,11 @@ class ContraHumanity(BasePlugin):
         # Game in progress handles differently than one in setup
         if self.gamestate == self.GameState.inprogress:
             # End the game if there are too few users to handle a quit
-            if len(self.live_players) < 4:
+            if self.variants["rando"][1]: #Rando counts too!
+                minplayers = 3
+            else:
+                minplayers = 4
+            if len(self.live_players) < minplayers:
                 self.bot.pubout(self.channel, "There are now too few players to continue the game.")
                 self.endgame()
             else:
