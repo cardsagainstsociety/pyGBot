@@ -46,106 +46,119 @@ CHANNEL_PREFIXES = '&#!+'
 # Max message length, as defined by RFC 2812 Section 2.3 (includes trailing CRLF)
 MAX_COMMAND_LENGTH = 512
 
-class GBot(irc.IRCClient):
+class GBot(irc.IRC):
     ''' No longer just an IRC Texas Holdem tournament dealer. '''
+    
+    ############################################################################
+    # Server Message Handler
+    ############################################################################
+    def irc_unknown(self, prefix, command, params):
+        log.logger.debug("Handling input: %s %s %s" % (command, prefix, " ".join(params)))
+        prefix = format.decodeIn(prefix)
+        command = format.decodeIn(command)
+        for i in range(0, len(params)):
+            params[i] = format.decodeIn(params[i])            
+        
+        if command == 'PRIVMSG':
+            if params[1].startswith("\x01ACTION"):
+                self.recaction(prefix, params[0].lstrip("#"), params[1].lstrip("\x01ACTION").rstrip("\x01"))
+            else:
+                self.recprivmsg(prefix, params[0].lstrip("#"), params[1])
+        if command == 'NOTICE':
+            self.noticed(prefix, params[0].lstrip("#"), params[1])
+        if command == 'PART':
+            self.userLeft(prefix, params[0].lstrip("#"))
+        if command == 'QUIT':
+            self.userQuit(prefix, params[0].lstrip("#"))
+        if command == 'JOIN':
+            self.userJoined(prefix, params[0].lstrip("#"))
+        if command == 'NICK':
+            self.userRenamed(prefix, params[0])
+        if command == 'MODE':
+            # TODO: Create a MODE event
+            pass
+        if command == 'TOPIC':
+            self.topicUpdated(prefix, params[0], params[3])
+        if command == 'PING':
+            # Ping? Pong!
+            self.sendline("PONG :%s" % params[0])
+            
+    ############################################################################
+    # Output Handler
+    ############################################################################
+    
+    def sendline(self, msg):
+        if msg.startswith("PASS"):
+            log.logger.debug("Send line: PASS :****")
+        else:
+            log.logger.debug("Send line: %s" % msg)
+
+        msg = format.encodeOut(msg)
+        self.sendLine(msg)
 
     ############################################################################
     # Public Plugin API Methods
     ############################################################################
     def pubout(self, channel, msg):
         """ Send a message to a channel. """
-        msgOut = format.encodeOut(msg)
-        channelOut = format.encodeOut(channel)
-        self.say(channel=channelOut, message=msgOut)
-        
-        # strip color codes
-        log.chatlog.info('[PUB->%s]%s' % (channelOut, format.strip(msgOut)))
+        self.sendline(":%s PRIVMSG #%s :%s" % (self.nickname, channel, msg))
+        log.chatlog.info('[PUB->%s]%s' % (channel, format.strip(msg)))
 
     def privout(self, user, msg):
         """ Send a message to a user. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        self.msg(user=userOut, message=msgOut)
-        
-        # strip color codes
-        log.chatlog.info('[PRV->%s]%s' % (userOut, format.strip(msgOut)))
+        self.sendline(":%s PRIVMSG %s :%s" % (self.nickname, user, msg))
+        log.chatlog.info('[PRV->%s]%s' % (user, format.strip(msg)))
 
     def replyout(self, channel, user, msg):
         """ Send a reply. If channel is None, the reply is sent to the user;
         otherwise, it is sent to the channel. Use this in plugins or commands
         when an incoming message can be either from a channel or a user and the
         outgoing message should be resent to the source. """
-        
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
         if channel is None:
-            self.privout(userOut, msgOut)
+            self.privout(user, msg)
         else:
-            self.pubout(channelOut, msgOut)
+            self.pubout(channel, msg)
 
     def noteout(self, user, msg):
         """ Send a notice to a user. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        self.notice(user=userOut, message=msgOut)
-
-        # strip color codes
-        log.chatlog.info('[NTE->%s]%s' % (userOut, format.strip(msgOut)))
+        self.sendline(":%s NOTICE %s :%s" % (self.nickname, user, msg))
+        log.chatlog.info('[NTE->%s]%s' % (user, format.strip(msg)))
         
     def invite(self, user, channel):
         """ Send a channel invite to a user. """
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("INVITE %s %s" % (userOut, channelOut))
+        self.sendline("INVITE %s %s" % (user, channel))
+        log.chatlog.info('[INVITE->%s] %s' % (user, channel))
         
-        log.chatlog.info('[INVITE->%s] %s' % (userOut, channelOut))
-        
-    def join(self, channel, key=None):
+    def joinchannel(self, nick, channel):
         """ Join a channel. """
-        channelOut = format.encodeOut(channel)
-        if key:
-            keyOut = format.encodeOut(key)
-            irc.IRCClient.join(self, channelOut, keyOut)
-        else:
-            irc.IRCClient.join(self, channelOut)
+        self.sendline(":%s JOIN #%s" % (nick, channel))
+        self.joined(channel)
     
-    def part(self, channel, reason=None):
+    def part(self, nick, channel, reason=""):
         """ Part a channel. """
-        channelOut = format.encodeOut(channel)
-        reasonOut = format.encodeOut(reason)
-        irc.IRCClient.part(self, channelOut, reasonOut)
+        self.sendline(":%s PART #%s :%s" % (nick, channel, reason))
 
-    def actout(self,channel, msg):
+    def actout(self, nick, channel, msg):
         """ Send an action (/me command) to a channel. """
-        msgOut = format.encodeOut(msg)
-        channelOut = format.encodeOut(channel)
-        self.me(channel=channelOut, action=msgOut)
-
-        # strip color codes
-        log.chatlog.info('[ACT->%s]%s' % (channelOut, format.strip(msgOut)))
+        self.sendline(":%s ACTION %s :%s" % (nick, channel, msg))
+        log.chatlog.info('[ACT->%s]%s' % (channel, format.strip(msg)))
 
     def modestring(self, target, modestring):
         """ Set a mode string on a user or channel. """
-        self.sendLine("MODE %s %s" % (target, modestring))
-
+        self.sendline("MODE %s %s" % (target, modestring))
         log.chatlog.info('[MODE] %s %s' % (target, modestring))
         
     def cprivmsg(self, channel, user, msg):
         """ Send a CPRIVMSG. This allows channel ops to bypass server flood
-        limits when messaging users in their channel. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("CPRIVMSG %s %s :%s" % (userOut, channelOut, msgOut,))
+        limits when messaging users in their channel. Not supported on all
+        networks. """
+        self.sendline("[CPRIVMSG] %s %s :%s" % (user, channel, format.strip(msg)))
 
-    def cnotice(self, channel, user, message):
+    def cnotice(self, channel, user, msg):
         """ Send a CNOTICE. This allows channel ops to bypass server flood
-        limits when sending a notice to users in their channel. """
-        msgOut = format.encodeOut(msg)
-        userOut = format.encodeOut(user)
-        channelOut = format.encodeOut(channel)
-        self.sendLine("CNOTICE %s %s :%s" % (userOut, channelOut, msgOut,))
+        limits when sending a notice to users in their channel. Not supported
+        on all networks. """
+        self.sendline("[CNOTICE] %s %s :%s" % (user, channel, format.strip(msg)))
 
 
     ############################################################################
@@ -237,11 +250,11 @@ class GBot(irc.IRCClient):
         try:
             conf = ConfigObj('pyGBot.ini')
         except IOError, msg:
-            print "Cannot open config file: ", msg
+            log.logger.error("Cannot open config file: " + msg)
             sys.exit(1)
 
         if conf.has_key('IRC') == False:
-            print "Config file does not contain IRC connection information."
+            log.logger.error("Config file does not contain IRC connection information.")
             sys.exit(1)
 
         if conf['IRC'].has_key('nick'):
@@ -260,6 +273,15 @@ class GBot(irc.IRCClient):
             self.opernick = conf['IRC']['opernick']
         if conf['IRC'].has_key('operpass'):
             self.operpass = conf['IRC']['operpass']
+            
+        if conf['IRC'].has_key('serverpass'):
+            self.serverpass = conf['IRC']['serverpass']
+        if conf['IRC'].has_key('servername'):
+            self.servername = conf['IRC']['servername']
+        if conf['IRC'].has_key('serverdesc'):
+            self.serverdesc = conf['IRC']['serverdesc']
+        if conf['IRC'].has_key('virtualhost'):
+            self.virtualhost = conf['IRC']['virtualhost']
 
         if conf['IRC'].has_key('ircpass'):
             self.password = conf['IRC']['ircpass']
@@ -302,18 +324,30 @@ class GBot(irc.IRCClient):
     ############################################################################
     def connectionMade(self):
         """ Called when a connection is made. """
-        irc.IRCClient.connectionMade(self)
+        self.performLogin = False
+        self.lineRate = None
+        
+        # Send server introduction
+        self.sendline("PASS :%s" % self.serverpass)
+        self.sendline("SERVER %s 1 :%s" % (self.servername, self.serverdesc))
+        
+        # Establish a user
+        # self.sendline("NICK %s 1 %i %s %s %s 0 %s %s :%s" % (self.nickname, int(time.time()), self.nickname, self.hostname, self.servername, self.usermodes, self.hostname, self.realname))
+
+        self.timertask.start(1.0) # 1-second timer granularity
+
+        irc.IRC.connectionMade(self)
         log.logger.info("[connected at %s]" %\
                         time.asctime(time.localtime(time.time())))
 
-        self.timertask.start(1.0) # 1-second timer granularity
+        self.signedOn()
 
         # Call Event Handler
         self.events.bot_connect()
 
     def connectionLost(self, reason):
         """ Called when a connection is shut down. """
-        irc.IRCClient.connectionLost(self, reason)
+        irc.IRC.connectionLost(self, reason)
             
         log.logger.info("[disconnected at %s:%s]" %\
               (time.asctime(time.localtime(time.time())), reason))
@@ -330,74 +364,62 @@ class GBot(irc.IRCClient):
     ############################################################################
     def signedOn(self):
         """ Called when the bot has succesfully signed on to the server. """
-        self.regNickServ()
-        self.modestring(self.nickname, self.usermodes)
+        self.hostname = "localhost"
+        self.createUser(self.nickname)
         for channel in self.factory.channels:
-            self.join(channel)
+            self.joinchannel(self.nickname, channel)
 
     def regNickServ(self):
         """ (private) Identify with NickServ from the configuration info. """
         if hasattr(self, 'opernick') and hasattr(self, 'operpass'):
-            self.sendLine('OPER %s %s' % (self.opernick, self.operpass))
+            self.sendline('OPER %s %s' % (self.opernick, self.operpass))
         
         # Identify to nickserv
         if hasattr(self, 'idnick') and hasattr(self, 'idpass'):
             self.privout('%s' % (self.idnick,), 'identify %s' % (self.idpass,))
 
+    def createUser(self, nick):
+        log.logger.debug("Creating user %s" % nick)
+        line = "NICK %s 1 %i %s %s %s 0 %s %s :%s" % (nick, int(time.time()), self.nickname, self.virtualhost, self.servername, self.usermodes, self.hostname, self.realname)
+        self.sendline(line)
+        self.modestring(nick, self.usermodes)
 
     def joined(self, channel):
         """ Called when the bot joins a channel. """
-        log.logger.info('[I have joined %s]' % (channel,))
-
-        # Set modes
-        if hasattr(self, 'plusmodes'):
-            self.mode(channel, True, self.plusmodes)
-        if hasattr(self, 'minusmodes'):
-            self.mode(channel, False, self.minusmodes)
+        log.logger.info('[Joined #%s]' % (channel))
         
         # Call Event Handler
-        channelIn = format.decodeIn(channel)
-        self.channels.append(channelIn)
-        self.events.bot_join(channelIn)
+        self.channels.append(channel)
+        self.events.bot_join(channel)
 
     def left(self, channel):
         """ Called when the bot leaves a channel. """
-        channelIn = format.decodeIn(channel)
-        if channelIn in self.channels:
-            self.channels.remove(channelIn)
+        if channel in self.channels:
+            self.channels.remove(channel)
 
     def kickedFrom(self, channel, kicker, message):
         """ Called when the bot is kicked from a channel. """
-        channelIn = format.decodeIn(channel)
-        kickerIn = format.decodeIn(kicker)
-        messageIn = format.decodeIn(message)
         if channelIn in self.channels:
-            self.channels.remove(channelIn)
-        self.events.bot_kicked(channelIn, kickerIn, messageIn)
+            self.channels.remove(channel)
+        self.events.bot_kicked(channel, kicker, message)
 
     def noticed(self, user, channel, msg):
         """ Called when the bot receives a NOTICE. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
         log.chatlog.info('[NTE<-]<%s> %s' % (user, msg))
 
         # Call Event Handler
-        self.events.msg_notice(userIn, msgIn)
+        self.events.msg_notice(user, msg)
 
-    def privmsg(self, user, channel, msg):
+    def recprivmsg(self, user, channel, msg):
         """ Called when the bot receives a message (from channel or user). """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
 
         # Private message to me
         if channel.upper() == self.nickname.upper():
             # If auth msg has password, censor it for logging
-            if msgIn.startswith('auth'):
-                msgNoPwd = msgIn.split(' ')
+            if msg.startswith('auth'):
+                msgNoPwd = msg.split(' ')
                 if len(msgNoPwd) > 2:
                     msgNoPwd[2] = '*' * 8
                 msgNoPwd = ' '.join(msgNoPwd)
@@ -405,87 +427,67 @@ class GBot(irc.IRCClient):
             else:
                 log.chatlog.info('[PRV<-]<%s> %s' % (user, msg))
             # Call Event Handler
-            self.events.msg_private(userIn, msgIn)
+            self.events.msg_private(user, msg)
 
         # Public message
         else:
             log.chatlog.info('[PUB<-]<%s> %s' % (user, msg))
             # Call Event Handler
-            self.events.msg_channel(channelIn, userIn, msgIn)
+            self.events.msg_channel(channel, user, msg)
 
-    def action(self, user, channel, msg):
+    def recaction(self, user, channel, msg):
         """ Called when the bot sees someone do an action (/me). """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        msgIn = format.decodeIn(msg)
         log.chatlog.info('* %s %s' % (user, msg))
 
         # Call Event Handler
-        self.events.msg_action(channelIn, userIn, msgIn)
+        self.events.msg_action(channel, user, msg)
 
     def topicUpdated(self, user, channel, newTopic):
         """ Called when the bot sees the channel topic change. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        newTopicIn = format.decodeIn(newTopic)
         log.chatlog.info('Topic for %s set by %s: %s' % (channel, user, newTopic))
 
         # Call Event Handler
-        self.events.channel_topic(channelIn, userIn, newTopicIn)
+        self.events.channel_topic(channel, user, newTopic)
 
     def userJoined(self, user, channel):
         """Called when the bot sees a user joining a channel. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
         log.chatlog.info('%s joined %s' % (user, channel))
 
         # Call Event Handler
-        self.events.user_join(channelIn, userIn)
+        self.events.user_join(channel, user)
 
     def userLeft(self, user, channel):
         """Called when the bot sees a user leaving a channel. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
         log.chatlog.info('%s has left %s' % (user, channel))
 
         # Call Event Handler
-        self.events.user_part(channelIn, userIn)
+        self.events.user_part(channel, user)
 
     def userKicked(self, user, channel, kicker, message):
         """ Called when the bot sees a user get kicked. """
-        user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        channelIn = format.decodeIn(channel)
-        kickerIn = format.decodeIn(kicker)
-        messageIn = format.decodeIn(message)
-        
+        user = user.split('!', 1)[0]        
         log.chatlog.info('%s was kicked from %s by %s (reason: %s)' % (user, channel, kicker, message))
 
-        self.events.user_kicked(channelIn, userIn, kickerIn, messageIn)
+        self.events.user_kicked(channel, user, kicker, message)
 
     def userQuit(self, user, quitMessage):
         """ Called when the bot sees a user disconnect from the network. """
         user = user.split('!', 1)[0]
-        userIn = format.decodeIn(user)
-        quitMsgIn = format.decodeIn(quitMessage)
-        
         log.chatlog.info("%s has quit [%s]" % (user, quitMessage))
         
         # Call Event Handler
-        self.events.user_quit(userIn, quitMsgIn)
+        self.events.user_quit(user, quitMessage)
 
     def userRenamed(self, oldname, newname):
         """Called when the bot sees a user change their nickname from oldname to
         newname. """
-        oldnameIn = format.decodeIn(oldname)
-        newnameIn = format.decodeIn(newname)
         log.chatlog.info('%s is now known as %s' % (oldname, newname))
         # Call Event Handler
-        self.events.user_nickchange(oldnameIn, newnameIn)
+        self.events.user_nickchange(oldname, newname)
 
 class GBotFactory(protocol.ClientFactory):
     """A factory for tbots.

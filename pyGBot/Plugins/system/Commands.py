@@ -46,7 +46,7 @@ class Commands(BasePlugin):
         
         for friendlyname, commandname in options.iteritems():
             if not friendlyname.startswith('_'):
-                log.logger.info("Importing command " + commandname + " with friendly name " + friendlyname)
+                log.logger.debug("Importing command " + commandname + " with friendly name " + friendlyname)
                 command = __import__("pyGBot.Plugins.system.CommandSpec." + commandname, fromlist = [commandname])
                 self.commands[friendlyname] = getattr(command, commandname)
             
