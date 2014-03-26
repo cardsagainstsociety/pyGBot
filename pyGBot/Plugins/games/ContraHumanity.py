@@ -66,15 +66,35 @@ class ContraHumanity(BasePlugin):
                 self.beginjudging()
                 self.judgestarttime = None
 
+            # Update idle times and kick idle players
+            for player in self.idle_players.keys():
+                print "Checking idle for %s: %i" % (player, self.idle_players[player])
+                if player in self.live_players:
+                    self.idle_players[player] = self.idle_players[player] + 1
+                    if self.idle_players[player] > 300:
+                        self.bot.pubout(self.channel, player + " has been idle too long.")
+                        self.removeuser(player)
+                else:
+                    self.idle_players.remove(player)
+
     def msg_channel(self, channel, user, message):
+        # Update idle time
+        if user in self.live_players:
+            self.idle_players[user] = 0
+
         # Determine if a message is a command, and handle it if so.
         a = string.split(message, ":", 1)
+
         if len(a) > 1 and a[0].lower() == self.bot.nickname.lower():
             self.do_command(channel, user, string.strip(a[1]))
         elif message[0]=='!' and (len(message) > 1) and message[1]!='!':
             self.do_command(channel, user, string.strip(message[1:]))
 
     def msg_private(self, user, message):
+        # Update idle time
+        if user in self.live_players:
+            self.idle_players[user] = 0
+
         # Attempt to run private messages as commands
         self.do_command(user, user, message)
 
@@ -134,6 +154,7 @@ class ContraHumanity(BasePlugin):
         self.players = []
         self.live_players = []
         self.round_players = []
+        self.idle_players = {}
         self.hands = {}
         self.woncards = {}
         self.playedcards = {}
@@ -164,6 +185,7 @@ class ContraHumanity(BasePlugin):
         
         # Initialize player keyed data
         for user in self.live_players:
+            self.idle_players(user) = 0
             self.woncards[user] = 0
             self.hands[user] = []
             # Add the user as a white card if playercards variant is on
@@ -629,6 +651,8 @@ class ContraHumanity(BasePlugin):
                         random.shuffle(self.whitedeck)                        
                 if user not in self.woncards:
                     self.woncards[user] = 0
+                if user not in self.idle_players:
+                    self.idle_players[user] = 0
                 self.live_players.insert(self.judgeindex, user)
                 self.judgeindex = self.judgeindex + 1
                 if user not in self.hands:
