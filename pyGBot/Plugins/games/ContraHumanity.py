@@ -43,7 +43,7 @@ class ContraHumanity(BasePlugin):
         self.variants = {
             "packingheat": ["Draw an extra card before Pick-2 rounds", True],
             "playercards": ["Each player's name will be added as a white card.", True],
-            "rando": ["Adds an AI player that randomly picks cards.", False],
+            "rando": ["Adds an AI player that randomly picks cards.", True],
         }
 
         # Initialize game
@@ -274,7 +274,7 @@ class ContraHumanity(BasePlugin):
 
         # Begin judging if all live players except judge have played
         if len(diff) == 1 and diff[0] == self.live_players[self.judgeindex]:
-            self.bot.pubout(self.channel, "All cards have been played. Judging will begin after a short delay.")
+            self.bot.pubout(self.channel, "All cards have been played. Judgment is imminent. Gamble or hold your peace.")
             if not self.judging:
                 self.judgestarttime = time() + 10
             
@@ -309,9 +309,9 @@ class ContraHumanity(BasePlugin):
         # Output the winner, and store the card in their list slot
         winner = self.playedcards[winningcard][0]
         if winner == "Rando Cardrissian":
-            self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
+            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join(self.last_picker, self.playedcards[winningcard][1:][0]), winner))
         else:
-            self.bot.pubout(self.channel, "The Card Czar picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join(self.playedcards[winningcard][1:][0]), winner))
+            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join(self.last_picker, self.playedcards[winningcard][1:][0]), winner))
         self.woncards[winner] = self.woncards[winner] + 1
         
         # Add the pot
@@ -362,7 +362,7 @@ class ContraHumanity(BasePlugin):
             if user != self.live_players[self.judgeindex]:
                 while len(self.hands[user]) < 10 + extra:
                     self.hands[user].append(self.whitedeck.pop(0))
-                    self.privreply(user, "You draw: \x0304%s\x0F." % (self.hands[user][len(self.hands[user])-1]))
+#                    self.privreply(user, "You draw: \x0304%s\x0F." % (self.hands[user][len(self.hands[user])-1]))
                     
         # Full hand output to each player
         for user in self.live_players:
@@ -602,7 +602,8 @@ class ContraHumanity(BasePlugin):
             if self.judging == True and user == self.live_players[self.judgeindex]:
                 try:
                     if int(args[0]) > 0 and int(args[0]) <= len(self.playedcards):
-                        self.reply(channel, user, "You have chosen.")
+                        self.last_picker = user
+#                        self.reply(channel, user, "You have chosen.")
                         self.cardwin(int(args[0]) - 1)
                     else:
                         self.reply(channel, user, "Please pick a valid card number.")
