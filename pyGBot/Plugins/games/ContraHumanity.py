@@ -309,9 +309,9 @@ class ContraHumanity(BasePlugin):
         # Output the winner, and store the card in their list slot
         winner = self.playedcards[winningcard][0]
         if winner == "Rando Cardrissian":
-            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join((self.last_picker, self.playedcards[winningcard][1:][0], winner))))
+            self.bot.pubout(self.channel, "{} picked \"\x0304{}\x0F\"! \x02\x0312{}\x0F played that, and gets an Awesome Point. Shame on you.".format(self.last_picker, self.playedcards[winningcard][1:][0][0], winner))
         else:
-            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join((self.last_picker, self.playedcards[winningcard][1:][0]), winner)))
+            self.bot.pubout(self.channel, "{} picked \"\x0304{}\x0F\"! \x02\x0312{}\x0F played that, and gets an Awesome Point.".format(self.last_picker, self.playedcards[winningcard][1:][0][0], winner))
         self.woncards[winner] = self.woncards[winner] + 1
         
         # Add the pot
