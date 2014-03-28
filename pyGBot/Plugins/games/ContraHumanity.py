@@ -249,11 +249,11 @@ class ContraHumanity(BasePlugin):
         # Output black card, changing output for "Play" value
         self.blackcard = self.blackdeck.pop(0)
         if self.blackcard[1] == 1:
-            self.bot.pubout(self.channel, "The new black card is: \"\x02\x0303%s\x0F\" Please play ONE card from your hand using '!play <number>'." % (self.blackcard[0]))
+            self.bot.pubout(self.channel, "\"\x02\x0303%s\x0F\" Please play ONE card from your hand using '!play <number>'." % (self.blackcard[0]))
         elif self.blackcard[1] == 2:
-            self.bot.pubout(self.channel, "The new black card is: \"\x02\x0303%s\x0F\" Please play TWO cards from your hand, in desired order, using '!play <number> <number>'." % (self.blackcard[0]))
+            self.bot.pubout(self.channel, "\"\x02\x0303%s\x0F\" Please play TWO cards from your hand, in desired order, using '!play <number> <number>'." % (self.blackcard[0]))
         elif self.blackcard[1] == 3:
-            self.bot.pubout(self.channel, "The new black card is: \"\x02\x0303%s\x0F\" Please play THREE cards from your hand, in desired order, using '!play <number> <number> <number>'." % (self.blackcard[0]))
+            self.bot.pubout(self.channel, "\"\x02\x0303%s\x0F\" Please play THREE cards from your hand, in desired order, using '!play <number> <number> <number>'." % (self.blackcard[0]))
         
         # Refresh player's hands
         self.deal()
@@ -385,7 +385,7 @@ class ContraHumanity(BasePlugin):
                 blackbuild.append("%i - Rando Cardrissian" % self.woncards["Rando Cardrissian"])
             blackbuild.sort(reverse=True)
             if blackbuild != []:
-                self.bot.pubout(self.channel, "Awesome Points per players: %s. Points to win: %i." % (", ".join(blackbuild), self.cardstowin))
+                self.bot.pubout(self.channel, "Awesome Points per player: %s. Points to win: %i." % (", ".join(blackbuild), self.cardstowin))
             else:
                 self.bot.pubout(self.channel, "No scores yet. Cards to win: %i." % self.cardstowin)
             if self.pot > 0:
@@ -661,7 +661,7 @@ class ContraHumanity(BasePlugin):
         elif self.gamestate == self.GameState.starting:
             if user not in self.live_players:
                 self.live_players.append(user)
-                self.bot.pubout(self.channel, "%s is now in the game." % user)
+                self.bot.pubout(self.channel, "%s: you're in! If you need to leave, use !quit" % user)
             else:
                 self.reply(channel, user, "You are already in the game.")
         elif self.gamestate == self.GameState.inprogress:

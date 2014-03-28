@@ -115,7 +115,7 @@
 1: This season on Man vs. Wild, Bear Grylls must survive in the depths of the Amazon with only ____ and his wits.
 1: When I pooped, what came out of my butt?
 1: In the distant future, historians will agree that ____ marked the beginning of America's decline.
-2: In a pinch, ____ can be a suitable substitute for ____.
+2: In a pinch, ____ can substitute for ____.
 1: What has been making life difficult at the nudist colony?
 2: Michael Bay's new three-hour action epic pits ____ against ____.
 1: Maybe she's born with it. Maybe it's ____.
@@ -155,6 +155,10 @@
 2: Before ____, all we had was ____.
 1: Tonight on 20/20: What you don't know about ____ could kill you.
 2: You haven't truly lived until you've experienced ____ and ____ at the same time.
+1: What should I name my rock band?
+
+
+
 
 # White cards
 Michelle Obama's arms
@@ -288,7 +292,7 @@ Pretty Pretty Princess Dress-Up Board Game
 The new Radiohead album
 An army of skeletons
 A man in yoga pants with a ponytail and feather earrings
-Mild autism
+An autistic spectrum disorder
 Nunchuck moves
 Whipping a disobedient slave
 An ether-soaked rag
@@ -366,7 +370,7 @@ A magic hippie love cloud
 Fuck Mountain
 Survivor's guilt
 Me
-Getting hilariously gang-banged by the Blue Man Group
+Getting gang-banged by the Blue Man Group
 Jeff Goldblum
 Making a friend
 German dungeon porn
@@ -454,7 +458,6 @@ Smegma
 The South
 Pretending to care
 Arnold Schwarzenegger
-Glenn Beck convulsively vomiting as a brood of crab spiders hatches in his brain and erupts from his tear ducts
 A sausage festival
 Foreskin
 Being a dick to children
@@ -650,7 +653,6 @@ Crumpets with the Queen
 Exchanging pleasantries
 Republicans
 Kim Jong-il
-Glenn Beck being harried by a swarm of buzzards
 A salty surprise
 The Jews
 Incest
@@ -763,7 +765,6 @@ Getting so angry that you pop a boner
 Tasteful sideboob
 Two midgets shitting into a bucket
 Racially-biased SAT questions
-Glenn Beck catching his scrotum on a curtain hook
 The forbidden fruit
 Anal beads
 Surprise sex!
@@ -804,7 +805,7 @@ Ghosts
 The Dance of the Sugar Plum Fairy
 Finger painting
 Robert Downey, Jr
-Muhammed (Praise Be Unto Him)
+Muhammad (Praise Be Unto Him)
 Famine
 AXE Body Spray
 The Force
@@ -851,3 +852,28 @@ Just the tip
 Mad hacky-sack skills
 Beefin' over turf
 A squadron of moles wearing aviator goggles
+A substantial collection of useful scrap material
+COCAAAAAAAAINE
+Johnny Depp
+Dwayne "The Rock" Johnson
+JPEG compression artifacts
+The Sandvich
+Powdered wigs
+Cool people
+Abbot and Costello
+The Eurovision Song Contest
+Those unspecified people over there
+Giant enemy crab!
+A glowing weak point
+An unlabeled lever
+Magma
+Software piracy
+Five bucks
+Bros
+Lucy Lawless
+Popular culture
+Potatoes
+Bardolatry
+Internet Relay Chat
+Dexterity
+Tradition
