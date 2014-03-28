@@ -274,7 +274,7 @@ class ContraHumanity(BasePlugin):
 
         # Begin judging if all live players except judge have played
         if len(diff) == 1 and diff[0] == self.live_players[self.judgeindex]:
-            self.bot.pubout(self.channel, "All cards have been played. Judgment is imminent. Gamble or hold your peace.")
+            self.bot.pubout(self.channel, "All cards have been played. Judgment is imminent. Gamble now, or forever hold your peace.")
             if not self.judging:
                 self.judgestarttime = time() + 10
             
@@ -309,7 +309,7 @@ class ContraHumanity(BasePlugin):
         # Output the winner, and store the card in their list slot
         winner = self.playedcards[winningcard][0]
         if winner == "Rando Cardrissian":
-            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join(self.last_picker, self.playedcards[winningcard][1:][0]), winner))
+            self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point. Shame on you." % (" / ".join((self.last_picker, self.playedcards[winningcard][1:][0], winner))))
         else:
             self.bot.pubout(self.channel, "%s picked \"\x0304%s\x0F\"! \x02\x0312%s\x0F played that, and gets an Awesome Point." % (" / ".join(self.last_picker, self.playedcards[winningcard][1:][0]), winner))
         self.woncards[winner] = self.woncards[winner] + 1
