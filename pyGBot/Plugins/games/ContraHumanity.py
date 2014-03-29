@@ -23,12 +23,78 @@
 
 import string
 import random
+import re
+import os
+from urllib import urlopen
 from time import time
 from pyGBot.BasePlugin import BasePlugin
 
 
 def enum(**enums):
     return type('Enum', (), enums)
+
+
+def get_wiki_featured_article_titles(n=7):
+    feat_feed_uri = (
+        "http://en.wikipedia.org/w/api.php?"
+        "action=featuredfeed&feed=featured&feedformat=atom")
+
+    feat_title_re = re.compile(
+        ".+title=&quot;(.+?)&quot;"
+        "&gt;(&lt;b&gt;)?"
+        "Full(&amp;#160;)? ?article.+")
+
+    entry_start_re = re.compile(
+        "\s*<entry.+")
+
+    entry_end_re = re.compile(
+        "\s*</entry>")
+
+    summary_start_re = re.compile(
+        "\s*<summary.+")
+
+    summary_end_re = re.compile(
+        "\s*</summary>")
+
+    scanning = True
+    in_entry = False
+    in_summary = False
+    feed = urlopen(feat_feed_uri)
+    titles = []
+    for line in feed.readlines():
+        if not scanning:
+            if re.match(entry_end_re, line):
+                in_entry = False
+                scanning = True
+            continue
+        if not in_entry:
+            if re.match(entry_start_re, line):
+                in_entry = True
+            continue
+        if not in_summary:
+            if re.match(summary_start_re, line):
+                in_summary = True
+            continue
+        title_match = re.match(feat_title_re, line)
+        if title_match:
+            title = title_match.groups()[0]
+            if title not in titles:
+                titles.append(title)
+                scanning = False
+        if re.match(summary_end_re, line):
+            in_summary = False
+        if re.match(entry_end_re, line):
+            in_entry = False
+        if len(titles) == n:
+            break
+    feed.close()
+    log = open('feat.log', 'w')
+    print("Wikifeature cards:")
+    for title in titles:
+        print(title)
+        log.write(title + '\n')
+    log.close()
+    return titles
 
 
 class ContraHumanity(BasePlugin):
@@ -49,6 +115,9 @@ class ContraHumanity(BasePlugin):
             ["Each player's name will be added as a white card.", True],
             "rando":
             ["Adds an AI player that randomly picks cards.", True],
+            "wikifeature":
+            ["The titles of the past week's "
+             "featured articles on Wikipedia are white cards.", True]
         }
 
         # Initialize game
@@ -138,8 +207,19 @@ class ContraHumanity(BasePlugin):
         with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
             self.parsecardfile(f)
 
-        with open('./pyGBot/Plugins/games/ContraHumanityCustom.txt', 'r') as f:
+        olddir = os.path.abspath(os.curdir)
+        try:
+            os.chdir('./pyGBot/Plugins/games/ContraHumanityCustom')
+        except OSError:
+            return
+        for fn in os.listdir(os.curdir):
+            try:
+                f = open(fn, 'r')
+            except (IOError, OSError):
+                continue
             self.parsecardfile(f)
+            f.close()
+        os.chdir(olddir)
 
     def parsecardfile(self, f):
         for line in f:
@@ -179,6 +259,8 @@ class ContraHumanity(BasePlugin):
         self.blackdeck = list(self.baseblackdeck)
         random.shuffle(self.blackdeck)
         self.whitedeck = list(self.basewhitedeck)
+        if self.variants["wikifeature"][1]:
+            self.whitedeck.extend(get_wiki_featured_article_titles())
         random.shuffle(self.whitedeck)
 
     def startgame(self):
@@ -310,7 +392,7 @@ class ContraHumanity(BasePlugin):
                 "All cards have been played. Judgment is imminent. "
                 "!gamble now, or forever hold your peace.")
             if not self.judging:
-                self.judgestarttime = time() + 10
+                self.judgestarttime = time() + 20
 
     def beginjudging(self):
         # Begin the judging process
@@ -343,14 +425,11 @@ class ContraHumanity(BasePlugin):
                             " / ".join(self.playedcards[i][1:][0])))
             else:
                 black_card_fmtstr = self.blackcard[0].replace(
-                    "____", "{}")
+                    "____", "\x0304{}\x0F")
                 for i in xrange(0, len(self.playedcards)):
-                    print("{}.format(*{})".format(
-                        black_card_fmtstr,
-                        self.playedcards[i][1:][0]))
                     self.bot.pubout(
                         self.channel,
-                        "{}. \x0304{}\x0F".format(
+                        "{}. {}".format(
                             i+1,
                             black_card_fmtstr.format(
                                 *self.playedcards[i][1:][0])))
@@ -541,17 +620,16 @@ class ContraHumanity(BasePlugin):
                             self.live_players[self.judgeindex]))
                     judge = self.live_players[self.judgeindex]
 
-                    # Remove the new judge's played cards
-                    for i in range(0, len(self.playedcards)):
-                        # IndexError comes up if we delete anything
-                        # but the last card; using try/catch for
-                        # future expansion (with gambling, may require
-                        # deletion of multiple cards)
-                        try:
-                            if self.playedcards[i][0] == judge:
-                                self.playedcards.remove(self.playedcards[i])
-                        except IndexError:
-                            pass
+                    # The new judge played these cards
+                    judge_cards = [card for card in self.playedcards
+                                   if card[0] == judge]
+                    # Remove them
+                    for card in judge_cards:
+                        self.playedcards.remove(card)
+                    # If there is more than one, it means the judge
+                    # gambled. Give their points back.
+                    if len(judge_cards) > 1:
+                        self.woncards[judge] += len(judge_cards) - 1
 
                     # Restart judging
                     self.checkroundover()
