@@ -1193,7 +1193,7 @@ class ContraHumanity(BasePlugin):
                 self.reply(
                     channel,
                     user,
-                    "Syntax: 'variants toggle <variant>'")
+                    "Syntax: 'variant toggle <variant>'")
 
     def cmd_reloadcards(self, args, channel, user):
         # Reload card lists
