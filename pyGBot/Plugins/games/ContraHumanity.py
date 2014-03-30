@@ -88,12 +88,6 @@ def get_wiki_featured_article_titles(n=7):
         if len(titles) == n:
             break
     feed.close()
-    log = open('feat.log', 'w')
-    print("Wikifeature cards:")
-    for title in titles:
-        print(title)
-        log.write(title + '\n')
-    log.close()
     return titles
 
 
@@ -200,8 +194,8 @@ class ContraHumanity(BasePlugin):
 
     def loadcards(self):
         # Empty decks
-        self.baseblackdeck = []
-        self.basewhitedeck = []
+        self.baseblackdeck = set()
+        self.basewhitedeck = set()
 
         # Load CaH cards
         with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
@@ -221,6 +215,17 @@ class ContraHumanity(BasePlugin):
             f.close()
         os.chdir(olddir)
 
+        # Cards in the cardlists not to add to the deck.
+        self.blacklist = set()
+        try:
+            blaf = open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt',
+                        'r')
+            self.blacklist_cards(*blaf.readlines())
+            blaf.close()
+        except (OSError, IOError) as ex:
+            print("Error while loading blacklist")
+            print(ex)
+
     def parsecardfile(self, f):
         for line in f:
             # Special case: escape percent signs
@@ -230,11 +235,11 @@ class ContraHumanity(BasePlugin):
                 # Do we have a play definition?
                 if line[1] == ":":
                     # This is a black card.
-                    self.baseblackdeck.append(
-                        [line[3:].rstrip("\n"), int(line[0])])
+                    self.baseblackdeck.add(
+                        (line[3:].rstrip("\n"), int(line[0])))
                 else:
                     # This is a white card.
-                    self.basewhitedeck.append(line.rstrip("\n"))
+                    self.basewhitedeck.add(line.rstrip("\n"))
 
     def resetdata(self):
         # Initialize all game variables to new game values
@@ -256,12 +261,22 @@ class ContraHumanity(BasePlugin):
         self.gamestate = self.GameState.none
 
         # Load deck instances and shuffle
-        self.blackdeck = list(self.baseblackdeck)
+        self.blackdeck = list(self.baseblackdeck - self.blacklist)
         random.shuffle(self.blackdeck)
-        self.whitedeck = list(self.basewhitedeck)
+        self.whitedeck = list(self.basewhitedeck - self.blacklist)
         if self.variants["wikifeature"][1]:
             self.whitedeck.extend(get_wiki_featured_article_titles())
         random.shuffle(self.whitedeck)
+        cardlog = open('card.log', 'w')
+        cardlog.write("Black cards:\n")
+        for card in self.blackdeck:
+            cardlog.write(card[0])
+            cardlog.write("\n")
+        cardlog.write("White cards:\n")
+        for card in self.whitedeck:
+            cardlog.write(card)
+            cardlog.write("\n")
+        cardlog.close()
 
     def startgame(self):
         # Put the game into InProgress mode
@@ -1189,6 +1204,96 @@ class ContraHumanity(BasePlugin):
             self.reply(channel, user, "Successfully reloaded base decks.")
         else:
             self.reply(channel, user, "You do not have permission to do that.")
+
+    def cmd_clearblacklist(self, args, channel, user):
+        userlevel = self.auth.get_userlevel(user)
+        if userlevel < 100:
+            self.reply(
+                channel,
+                user,
+                "You must be at least a botmod to alter the blacklist.")
+            return
+        self.blacklist = set()
+        self.reply(
+            channel,
+            user,
+            "Blacklist is now empty.")
+
+    def blacklist_cards(self, *args):
+        added = []
+        removed = []
+        unmatched = []
+        for arg in args:
+            if arg in self.blacklist:
+                print("Removing")
+                print(arg)
+                self.blacklist.remove(arg)
+                removed.append(arg)
+            else:
+                print("Adding")
+                print(arg)
+                self.blacklist.add(arg)
+                added.append(arg)
+        return (added, removed, unmatched)
+
+    def cmd_blacklist(self, _args, channel, user):
+        userlevel = self.auth.get_userlevel(user)
+        if len(_args) == 0:
+            self.reply(
+                channel,
+                user,
+                "Current blacklist:")
+            for ex in self.blacklist:
+                self.reply(
+                    channel,
+                    user,
+                    ex)
+            return
+        if userlevel < 100:
+            self.reply(
+                channel,
+                user,
+                "You must be at least a botmod to alter the blacklist."
+                "(your level: {} needed level: 100)".format(userlevel))
+            return
+        if self.gamestate == self.GameState.inprogress:
+            self.reply(
+                channel,
+                user,
+                "You can't alter the blacklist during a game.")
+            return
+        # Expressions are surrounded with curly braces to make it easy
+        # to include spaces, punctuation, etc. Group them accordingly
+        args = []
+        cur_arg = []
+        in_arg = False
+        for arg in _args:
+            if arg[0] == "{" and arg[-1] == "}":
+                args.append(arg[1:-1])
+            elif arg[0] == "{":
+                in_arg = True
+                cur_arg.append(arg[1:])
+            elif arg[-1] == "}":
+                in_arg = False
+                cur_arg.append(arg[:-1])
+                args.append(" ".join(cur_arg))
+            elif in_arg:
+                cur_arg.append(arg)
+        (added, removed, unmatched) = self.blacklist_cards(*args)
+        if added:
+            self.reply(
+                channel,
+                user,
+                "Freshly blacklisted cards: {}".format(*added))
+        if removed:
+            self.reply(
+                channel,
+                user,
+                "Removed cards from blacklist: {}".format(*removed))
+        # Write new blacklist to disk
+        with open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt', 'w') as blf:
+            for blc in self.blacklist:
+                blf.write(blc + "\n")
 
     def do_command(self, channel, user, cmd):
         # Handle commands
