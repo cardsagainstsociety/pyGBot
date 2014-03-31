@@ -82,19 +82,6 @@
 2: When I was tripping on acid, ____ turned into ____.
 2: That's right, I killed ____. How, you ask? ____.
 3: ____ + ____ = ____.
-1: test
-1: Starting Canadian Black Cards
-1: End Canadian Black Cards
-1: end bonus misprint bonus card
-1: begin First Expansion
-1: end first expansion
-1: ____? There's an app for that.
-1: What's the next Happy Meal&reg; toy?
-2: Lifetime&reg; presents ____, the story of ____.
-1: While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ____.
-1: This is the way the world ends \ This is the way the world ends \ Not with a bang but with ____.
-1: War!<br><br>What is it good for?
-2: Rumor has it that Vladimir Putin's favorite delicacy is ____ stuffed with ____.
 
 
 
