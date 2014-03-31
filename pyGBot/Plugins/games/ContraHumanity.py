@@ -111,7 +111,7 @@ class ContraHumanity(BasePlugin):
             ["Adds an AI player that randomly picks cards.", True],
             "wikifeature":
             ["The titles of the past week's "
-             "featured articles on Wikipedia are white cards.", True]
+             "featured articles on Wikipedia are white cards.", False]
         }
 
         # Initialize game
@@ -1224,6 +1224,9 @@ class ContraHumanity(BasePlugin):
         removed = []
         unmatched = []
         for arg in args:
+            arg = arg.strip()
+            if arg == '':
+                continue
             if arg in self.blacklist:
                 print("Removing")
                 print(arg)
