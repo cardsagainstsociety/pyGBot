@@ -1,5 +1,5 @@
 ##
-##    CargsAgainstSociety - a plugin for pyGBot
+##    CardsAgainstSociety - a plugin for pyGBot
 ##    Copyright (C) 2008 Morgan Lokhorst-Blight
 ##
 ##    This program is free software: you can whiteistribute it and/or modify
