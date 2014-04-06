@@ -107,7 +107,7 @@ class CardsAgainstSociety(BasePlugin):
             "packingheat":
             ["Draw an extra card before Pick-2 rounds", True],
             "playercards":
-            ["Each player's name will be added as a white card.", True],
+            ["Each player's name will be added as a white card.", False],
             "rando":
             ["Adds an AI player that randomly picks cards.", True],
             "wikifeature":
