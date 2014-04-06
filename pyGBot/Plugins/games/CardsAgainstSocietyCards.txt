@@ -2,7 +2,6 @@
 1: Who stole the cookies from the cookie jar?
 1: What's the next superhero?
 1: Why can't I sleep at night?
-1: What's that smell?
 1: What's that sound?
 1: What ended my last relationship?
 1: What is Batman's guilty pleasure?
@@ -15,19 +14,14 @@
 1: What don't you want to find in your Chinese food?
 1: What will I bring back in time to convince people that I am a powerful wizard?
 1: How am I maintaining my relationship status?
-1: What gives me uncontrollable gas?
 1: What do old people smell like? 
 1: What's my secret power?
 1: What's there a ton of in heaven?
 1: What would grandma find disturbing, yet oddly charming?
 1: What did the U.S. airdrop to the children of Afghanistan?
 1: What helps Obama unwind?
-1: What did Vin Diesel eat for dinner?
-1: Why am I sticky?
 1: What gets better with age?
-1: What's the crustiest?
 1: What's Teach for America using to inspire inner city students to succeed?
-1: Make a haiku.
 1: Why do I hurt all over?
 1: What am I giving up for Lent?
 1: What's my anti-drug?
@@ -82,6 +76,19 @@
 2: When I was tripping on acid, ____ turned into ____.
 2: That's right, I killed ____. How, you ask? ____.
 3: ____ + ____ = ____.
+3: Make a haiku.
+
+
+
+##      Removed Black Cards
+##      1: What's the crustiest?
+##      1: What's that smell?
+##      1: What gives me uncontrollable gas?
+##      1: What did Vin Diesel eat for dinner?
+##      1: Why am I sticky?
+##      
+##      
+##      
 
 
 
@@ -89,20 +96,11 @@
 Michelle Obama's arms
 White people
 An erection that lasts longer than four hours
-Panda sex
-Stifling a giggle at the mention of Hutus and Tutsis
 A middle-aged man on roller skates
-Coat hanger abortions
-Scrubbing under the folds
-Wearing underwear inside-out to avoid doing laundry
-end First Expansion
 Dropping a chandelier on your enemies and riding the rope up
 Public ridicule
-A snapping turtle biting the tip of your penis
 Vehicular manslaughter
 The token minority
-testtest
-End Canadian White Cards
 German dungeon porn
 Praying the gay away
 Dying
@@ -110,18 +108,13 @@ Same-sex ice dancing
 Dying of dysentery
 Roofies
 The Big Bang
-Amputees
-Men
-Concealing a boner
+The Man
 Agriculture
 Making a pouty face
 YOU MUST CONSTRUCT ADDITIONAL PYLONS
 Hormone injections
-Tom Cruise
 Object permanence
-Consultants
 Being marginalized
-The profoundly handicapped
 Party poopers
 Nickelback
 Doing the right thing
@@ -135,9 +128,7 @@ An icepick lobotomy
 Being rich
 The clitoris
 Sexy pillow fights
-Michael Jackson
 Sexting
-Horse meat
 Hunting accidents
 A cartoon camel enjoying the smooth, refreshing taste of a cigarette
 Abstinence
@@ -147,7 +138,6 @@ Making sex at her
 Stunt doubles
 Flavored condoms
 Heath Ledger
-Muzzy
 Sunshine and rainbows
 Flash flooding
 Goblins
@@ -165,15 +155,11 @@ Cheating in the Special Olympics
 Sharing needles
 Ethnic cleansing
 Eating all of the cookies before the AIDS bake-sale
-My humps
 The violation of our most basic human rights
 Fingering
-The placenta
 Flightless birds
 Stranger danger
 Chivalry
-Sean Penn
-A sad handjob
 Jew-fros
 Self-loathing
 A falcon with a cap on its head
@@ -183,29 +169,20 @@ Former President George W Bush
 Geese
 Mutually-assured destruction
 Bling
-Smegma
+##      Smegma
 The South
 Pretending to care
 Arnold Schwarzenegger
-Glenn Beck convulsively vomiting as a brood of crab spiders hatches in his brain and erupts from his tear ducts
 A sausage festival
-Foreskin
 Being a dick to children
 Chainsaws for hands
 A Gypsy curse
 The Pope
 A balanced breakfast
-Elderly Japanese men
-Pictures of boobs
 Science
-A bleached asshole
-Autocannibalism
 William Shatner
-A micropenis
 Waterboarding
-Bingeing and purging
 A clandestine butt scratch
-Man meat
 Laying an egg
 An honest cop with nothing left to lose
 The terrorists
@@ -214,16 +191,12 @@ end misprint bonus card
 Cookie Monster devouring the Eucharist wafers
 Letting yourself go
 A LAN party
-A grande sugar-free iced soy caramel macchiato
-Will Smith
+A grande sugar-free decaf iced soy caramel macchiato
 Marky Mark and the Funky Bunch
-Dave Matthews Band
 Substitute teachers
-Garth Brooks
 Keeping Christ in Christmas
 That one gay Teletubby
 Passive-agression
-The People's Elbow
 Guys who don't call
 AIDS
 The Rapture
@@ -233,17 +206,14 @@ A drive-by shooting
 Ronald Reagan
 Jewish fraternities
 All-you-can-eat shrimp for $4.99
-Scalping
 Edible underpants
 Figgy pudding
 Intelligent design
 Nocturnal emissions
-Uppercuts
 The American Dream
 Testicular torsion
 The folly of man
 The KKK
-The taint; the grundle; the fleshy fun-bridge
 Saxophone solos
 That thing that electrocutes your abs
 Oversized lollipops
@@ -262,14 +232,13 @@ RoboCop
 Spontaneous human combustion
 Natural selection
 A good sniff
-Nipple blades
 Leaving an awkward voicemail
 Assless chaps
 Sweet, sweet vengeance
 Keg stands
 Darth Vader
 Necrophilia
-Toni Morrison's vagina
+##      Toni Morrison's vagina
 Preteens
 A cooler full of organs
 Keanu Reeves
@@ -279,15 +248,11 @@ Catapults
 Emotions
 Balls
 Homeless people
-Old-people smell
-Farting and walking away
 The inevitable heat death of the universe
 The Rev Dr Martin Luther King, Jr
 Sperm whales
 A murder most foul
 Daddy issues
-Britney Spears at 55
-Natalie Portman
 The Holy Bible
 Pulling out
 Pixelated bukkake
@@ -297,14 +262,12 @@ Global warming
 World peace
 A can of whoop-ass
 A zesty breakfast burrito
-Picking up girls at the abortion clinic
 Land mines
 College
 A time travel paradox
 Seppuku
 Waking up half-naked in a Denny's parking lot
-Christopher Walken
-Gloryholes
+Christopher Walkes
 A tiny horse
 Child abuse
 Menstruation
@@ -314,7 +277,6 @@ Penis envy
 Drinking alone
 Hulk Hogan
 Whipping it out
-Dental dams
 Gandhi
 God
 Friction
@@ -326,17 +288,14 @@ Lockjaw
 Take-backsies
 Opposable thumbs
 The homosexual agenda
-Fiery poops
 Cards Against Humanity
 Sean Connery
 The milk man
 The Chinese gymnastics team
-Eating the last known bison
 Soiling oneself
 Giving 110%
 Friendly fire
 Count Chocula
-Feeding Rosie O'Donnell
 Seduction
 Being a motherfucking sorcerer
 Eastern European Turbo-Folk music
@@ -347,7 +306,6 @@ This answer is postmodern
 African children
 Have some more kugel
 Crippling debt
-Shorties and blunts
 (I am doing Kegels right now)
 Bestiality
 Drum circles
@@ -367,16 +325,12 @@ Crumpets with the Queen
 Exchanging pleasantries
 Republicans
 Kim Jong-il
-Glenn Beck being harried by a swarm of buzzards
-A salty surprise
 The Jews
 Incest
 Nazis
 Repression
 Attitude
-Passable transvestites
 Puberty
-Swooping
 A look-see
 Lactation
 Pabst Blue Ribbon
@@ -393,19 +347,13 @@ Frolicking
 Not giving a shit about the Third World
 My relationship status
 Barack Obama
-Mouth herpes
-Wiping her butt
 Pedophiles
-Doin' it in the butt
 Being fabulous
 An M Night Shyamalan plot twist
 A bag of magic beans
 Dead parents
 My sex life
 Riding off into the sunset
-Dick fingers
-The Virginia Tech Massacre
-Queefing
 Tangled Slinkys
 Civilian casualties
 Leprosy
@@ -442,13 +390,10 @@ Altar boys
 Scientology
 Justin Bieber
 Alcoholism
-My genitals
 Winking at old people
-Golden showers
 Racism
 Auschwitz
 Raping and pillaging
-Kids with ass cancer
 Hurricane Katrina
 Lumberjack fantasies
 American Gladiators
@@ -463,25 +408,16 @@ Police brutality
 Forgetting the Alamo
 Booby-trapping the house to foil burglars
 Estrogen
-A robust mongoloid
 Her Royal Highness, Queen Elizabeth II
-Pooping back and forth Forever
-Cockfights
-Bitches
 Stephen Hawking talking dirty
 Those times when you get sand in your vagina
 Faith healing
 Impotence
 Bananas in Pajamas
-Getting so angry that you pop a boner
 Tasteful sideboob
-Two midgets shitting into a bucket
 Racially-biased SAT questions
-Glenn Beck catching his scrotum on a curtain hook
 The forbidden fruit
 Anal beads
-Surprise sex!
-Dead babies
 Masturbation
 The Hustle
 Obesity
@@ -506,7 +442,6 @@ Peeing a little bit
 The miracle of childbirth
 Another goddamn vampire movie
 Active listening
-A gassy antelope
 BATMAN!!!
 Black people
 Serfdom
@@ -520,7 +455,7 @@ Famine
 AXE Body Spray
 The Force
 Cybernetic enhancements
-Mr Clean, right behind you
+Mr Clean
 Third base
 Dwarf tossing
 A fetus
@@ -533,7 +468,6 @@ Wifely duties
 Hot people
 Kanye West
 The Amish
-When you fart and a little bit comes out
 Viagra
 Twinkies
 Five-Dollar Footlongs
@@ -547,6 +481,82 @@ Adderall
 Sobbing into a Hungry-Man Frozen Dinner
 Ring Pops
 GoGurt
-A Super Soaker full of cat pee
 Lunchables
 The Make-A-Wish Foundation
+
+
+
+##      Removed White Cards
+
+
+##      When you fart and a little bit comes out
+##      A Super Soaker full of cat pee
+##      Surprise sex!
+##      Dead babies
+##      A gassy antelope
+##      Glenn Beck catching his scrotum on a curtain hook
+##      Getting so angry that you pop a boner
+##      Two midgets shitting into a bucket
+##      Pooping back and forth Forever
+##      Cockfights
+##      Bitches
+##      A robust mongoloid
+##      Garth Brooks
+##      Dave Matthews Band
+##      The People's Elbow
+##      Will Smith
+##      The taint; the grundle; the fleshy fun-bridge
+##      Uppercuts
+##      Scalping
+##      Dick fingers
+##      The Virginia Tech Massacre
+##      Queefing
+##      Mouth herpes
+##      Doin' it in the butt
+##      Swooping
+##      Wiping her butt
+##      Golden showers
+##      Kids with ass cancer
+##      My genitals
+##      Passable transvestites
+##      Gloryholes
+##      Nipple blades
+##      Britney Spears at 55
+##      Natalie Portman
+##      Feeding Rosie O'Donnell
+##      Shorties and blunts
+##      Old-people smell
+##      Farting and walking away
+##      Eating the last known bison
+##      Fiery poops
+##      Dental dams
+##      Glenn Beck being harried by a swarm of buzzards
+##      A salty surprise
+##      Picking up girls at the abortion clinic
+##      Sean Penn
+##      A sad handjob
+##      Foreskin
+##      The placenta
+##      My humps
+##      Muzzy
+##      Glenn Beck convulsively vomiting as a brood of crab spiders hatches in his brain and erupts from his tear ducts
+##      Man meat
+##      Elderly Japanese men
+##      A micropenis
+##      Bingeing and purging
+##      Pictures of boobs
+##      A bleached asshole
+##      Autocannibalism
+##      Horse meat
+##      Consultants
+##      Tom Cruise
+##      The profoundly handicapped
+##      Michael Jackson
+##      Panda sex
+##      Stifling a giggle at the mention of Hutus and Tutsis
+##      Coat hanger abortions
+##      Concealing a boner
+##      Amputees
+##      Scrubbing under the folds
+##      A snapping turtle biting the tip of your penis
+##      Wearing underwear inside-out to avoid doing laundry
