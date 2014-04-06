@@ -1,5 +1,5 @@
 ##
-##    ContraHumanity - a plugin for pyGBot
+##    CargsAgainstSociety - a plugin for pyGBot
 ##    Copyright (C) 2008 Morgan Lokhorst-Blight
 ##
 ##    This program is free software: you can whiteistribute it and/or modify
@@ -16,8 +16,9 @@
 ##    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
 ##    The game implemented by this plugin is based on Cards Against Humanity,
-##    licenced under Creative Commons BY-NC-SA 2.0. The cards used in
-##    ContraHumanityCards.txt are directly from Cards Against Humanity.
+##    licenced under Creative Commons BY-NC-SA 2.0. Some of the cards used in
+##    CardsAgainstSociety.txt are directly from Cards Against Humanity, but some
+##    are edited versions, from expansion packs, or new creations. 
 ##    Please see http://cardsagainsthumanity.com for more information
 ##    about the original game.
 
@@ -91,7 +92,7 @@ def get_wiki_featured_article_titles(n=7):
     return titles
 
 
-class ContraHumanity(BasePlugin):
+class CardsAgainstSociety(BasePlugin):
     def __init__(self, bot, options):
         # Plugin initialization
         BasePlugin.__init__(self, bot, options)
@@ -198,12 +199,12 @@ class ContraHumanity(BasePlugin):
         self.basewhitedeck = set()
 
         # Load CaH cards
-        with open('./pyGBot/Plugins/games/ContraHumanityCards.txt', 'r') as f:
+        with open('./pyGBot/Plugins/games/CardsAgainstSocietyCards.txt', 'r') as f:
             self.parsecardfile(f)
 
         olddir = os.path.abspath(os.curdir)
         try:
-            os.chdir('./pyGBot/Plugins/games/ContraHumanityCustom')
+            os.chdir('./pyGBot/Plugins/games/CardsAgainstHumanityCustom')
         except OSError:
             return
         for fn in os.listdir(os.curdir):
@@ -218,7 +219,7 @@ class ContraHumanity(BasePlugin):
         # Cards in the cardlists not to add to the deck.
         self.blacklist = set()
         try:
-            blaf = open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt',
+            blaf = open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt',
                         'r')
             self.blacklist_cards(*blaf.readlines())
             blaf.close()
@@ -1127,13 +1128,13 @@ class ContraHumanity(BasePlugin):
         self.reply(
             channel,
             user,
-            "Contrahumanity is an implementation of Cards Against Humanity, "
-            "a free party game for horrible people.")
+            "Cards Against Society is an implementation of Cards Against Humanity, "
+            "a free party game for humorless feminists.")
         self.reply(
             channel,
             user,
             "Unlike most of the party games you've played before, "
-            "Cards Against Humanity is as despicable and awkward "
+            "Cards Against Society is as flamingly liberal and weird"
             "as you and your friends.")
         self.reply(
             channel,
@@ -1294,7 +1295,7 @@ class ContraHumanity(BasePlugin):
                 user,
                 "Removed cards from blacklist: {}".format(*removed))
         # Write new blacklist to disk
-        with open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt', 'w') as blf:
+        with open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt', 'w') as blf:
             for blc in self.blacklist:
                 blf.write(blc + "\n")
 
