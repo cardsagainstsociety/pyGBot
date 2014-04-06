@@ -1,3 +1,5 @@
+##    If you submit a pull request graying out cards, please also move those cards to the appropriate section.
+
 # Black cards
 1: Who stole the cookies from the cookie jar?
 1: What's the next superhero?
@@ -106,7 +108,6 @@ Praying the gay away
 Dying
 Same-sex ice dancing
 Dying of dysentery
-##        Roofies
 The Big Bang
 The Man
 Agriculture
@@ -369,7 +370,6 @@ Classist undertones
 A mating display
 The Kool-Aid Man
 Not reciprocating oral sex
-##         Date rape
 Italians
 My soul
 A stray pube
@@ -392,7 +392,6 @@ Justin Bieber
 Alcoholism
 Winking at old people
 Racism
-##          Auschwitz
 Raping and pillaging
 Hurricane Katrina
 Lumberjack fantasies
@@ -563,3 +562,5 @@ The Make-A-Wish Foundation
 ##      date rape
 ##      The Jews
 ##      Auschwitz
+##      Roofies
+##      Date rape
