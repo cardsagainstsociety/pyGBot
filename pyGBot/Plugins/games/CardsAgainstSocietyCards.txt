@@ -106,7 +106,7 @@ Praying the gay away
 Dying
 Same-sex ice dancing
 Dying of dysentery
-Roofies
+##        Roofies
 The Big Bang
 The Man
 Agriculture
@@ -196,7 +196,7 @@ Marky Mark and the Funky Bunch
 Substitute teachers
 Keeping Christ in Christmas
 That one gay Teletubby
-Passive-agression
+Passive-aggression
 Guys who don't call
 AIDS
 The Rapture
@@ -325,7 +325,7 @@ Crumpets with the Queen
 Exchanging pleasantries
 Republicans
 Kim Jong-il
-The Jews
+##        The Jews
 Incest
 Nazis
 Repression
@@ -369,7 +369,7 @@ Classist undertones
 A mating display
 The Kool-Aid Man
 Not reciprocating oral sex
-Date rape
+##         Date rape
 Italians
 My soul
 A stray pube
@@ -392,7 +392,7 @@ Justin Bieber
 Alcoholism
 Winking at old people
 Racism
-Auschwitz
+##          Auschwitz
 Raping and pillaging
 Hurricane Katrina
 Lumberjack fantasies
@@ -560,3 +560,6 @@ The Make-A-Wish Foundation
 ##      Scrubbing under the folds
 ##      A snapping turtle biting the tip of your penis
 ##      Wearing underwear inside-out to avoid doing laundry
+##      date rape
+##      The Jews
+##      Auschwitz
