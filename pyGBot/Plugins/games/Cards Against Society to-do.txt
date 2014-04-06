@@ -1,4 +1,3 @@
-
 Implement vars
 
 Let players choose how many points to play to
@@ -20,10 +19,13 @@ additional decks/plugins:
      bingo cards deck
      derail101, logical fallacies, etc deck?
      atheism/religion deck
-
+     science/psuedoscience deck
+     ask history/future/science deck
+     tarrot/magic deck
 
 create list of definitions bridging the american/european gap:
      historically black colleges
      lunchables
      
      
+implement change so cards are not renumbered until new cards are drawn??
