@@ -107,7 +107,7 @@ class CardsAgainstSociety(BasePlugin):
             "packingheat":
             ["Draw an extra card before Pick-2 rounds", True],
             "playercards":
-            ["Each player's name will be added as a white card.", False],
+            ["Each player's name will be added as a white card.", True],
             "rando":
             ["Adds an AI player that randomly picks cards.", True],
             "wikifeature":
@@ -262,21 +262,30 @@ class CardsAgainstSociety(BasePlugin):
         self.gamestate = self.GameState.none
 
         # Load deck instances and shuffle
-        self.blackdeck = list(self.baseblackdeck - self.blacklist)
+        cardlog = open('card.log', 'w')
+        cardlog.write('Blacklist:\n')
+        self.blackdeck = []
+        for card in self.baseblackdeck:
+            if card[0] not in self.blacklist:
+                self.blackdeck.append(card)
+            else:
+                cardlog.write(card[0] + '\n')
         random.shuffle(self.blackdeck)
-        self.whitedeck = list(self.basewhitedeck - self.blacklist)
+        self.whitedeck = []
+        for card in self.basewhitedeck:
+            if card not in self.blacklist:
+                self.whitedeck.append(card)
+            else:
+                cardlog.write(card + '\n')
         if self.variants["wikifeature"][1]:
             self.whitedeck.extend(get_wiki_featured_article_titles())
         random.shuffle(self.whitedeck)
-        cardlog = open('card.log', 'w')
-        cardlog.write("Black cards:\n")
+        cardlog.write("\n\nBlack cards:\n")
         for card in self.blackdeck:
-            cardlog.write(card[0])
-            cardlog.write("\n")
-        cardlog.write("White cards:\n")
+            cardlog.write(card[0] + '\n')
+        cardlog.write("\n\nWhite cards:\n")
         for card in self.whitedeck:
-            cardlog.write(card)
-            cardlog.write("\n")
+            cardlog.write(card + '\n')
         cardlog.close()
 
     def startgame(self):
@@ -1225,17 +1234,13 @@ class CardsAgainstSociety(BasePlugin):
         removed = []
         unmatched = []
         for arg in args:
-            arg = arg.strip()
+            arg = arg.rstrip('\n')
             if arg == '':
                 continue
             if arg in self.blacklist:
-                print("Removing")
-                print(arg)
                 self.blacklist.remove(arg)
                 removed.append(arg)
             else:
-                print("Adding")
-                print(arg)
                 self.blacklist.add(arg)
                 added.append(arg)
         return (added, removed, unmatched)
@@ -1295,7 +1300,7 @@ class CardsAgainstSociety(BasePlugin):
                 user,
                 "Removed cards from blacklist: {}".format(*removed))
         # Write new blacklist to disk
-        with open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt', 'w') as blf:
+        with open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt', 'w') as blf:
             for blc in self.blacklist:
                 blf.write(blc + "\n")
 
