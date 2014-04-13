@@ -198,6 +198,17 @@ class CardsAgainstSociety(BasePlugin):
         self.baseblackdeck = set()
         self.basewhitedeck = set()
 
+        # Cards in the cardlists not to add to the deck.
+        self.blacklist = set()
+        try:
+            blaf = open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt',
+                        'r')
+            self.blacklist_cards(*blaf.readlines())
+            blaf.close()
+        except (OSError, IOError) as ex:
+            print("Error while loading blacklist")
+            print(ex)
+
         # Load CaH cards
         with open('./pyGBot/Plugins/games/CardsAgainstSocietyCards.txt', 'r') as f:
             self.parsecardfile(f)
@@ -216,16 +227,6 @@ class CardsAgainstSociety(BasePlugin):
             f.close()
         os.chdir(olddir)
 
-        # Cards in the cardlists not to add to the deck.
-        self.blacklist = set()
-        try:
-            blaf = open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt',
-                        'r')
-            self.blacklist_cards(*blaf.readlines())
-            blaf.close()
-        except (OSError, IOError) as ex:
-            print("Error while loading blacklist")
-            print(ex)
 
     def parsecardfile(self, f):
         for line in f:
@@ -1137,8 +1138,9 @@ class CardsAgainstSociety(BasePlugin):
         self.reply(
             channel,
             user,
-            "Cards Against Society is an implementation of Cards Against Humanity, "
-            "a free party game for humorless feminists.")
+            "Cards Against Society is "
+            "a free party game for humorless feminists, "
+            "ripped off from Cards Against Humanity.")
         self.reply(
             channel,
             user,

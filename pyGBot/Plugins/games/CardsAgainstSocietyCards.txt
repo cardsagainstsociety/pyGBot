@@ -1,6 +1,7 @@
 ##    If you submit a pull request graying out cards, please also move those cards to the appropriate section.
 
 # Black cards
+1: What computer use isn't against the Computer Misuse Act?
 1: Who stole the cookies from the cookie jar?
 1: What's the next superhero?
 1: Why can't I sleep at night?
@@ -95,6 +96,7 @@
 
 
 # White cards
+Heartbleed
 Michelle Obama's arms
 White people
 An erection that lasts longer than four hours
@@ -268,7 +270,7 @@ College
 A time travel paradox
 Seppuku
 Waking up half-naked in a Denny's parking lot
-Christopher Walkes
+Christopher Walken
 A tiny horse
 Child abuse
 Menstruation
