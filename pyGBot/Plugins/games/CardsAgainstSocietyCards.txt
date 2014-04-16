@@ -15,6 +15,7 @@
 1: What will always get you laid?
 1: What did I bring back from Mexico?
 1: What don't you want to find in your Chinese food?
+3: Few people know that {pantheon} is also the {deity} of {locnameUS}. Write a prayer to {them}:
 1: What will I bring back in time to convince people that I am a powerful wizard?
 1: How am I maintaining my relationship status?
 1: What do old people smell like? 
@@ -23,6 +24,7 @@
 1: What would grandma find disturbing, yet oddly charming?
 1: What did the U.S. airdrop to the children of Afghanistan?
 1: What helps Obama unwind?
+1: What helps {pantheon} unwind?
 1: What gets better with age?
 1: What's Teach for America using to inspire inner city students to succeed?
 1: Why do I hurt all over?
@@ -173,6 +175,14 @@ Geese
 Mutually-assured destruction
 Bling
 ##      Smegma
+The weather
+Flying like a {birds}
+Installing {OS}
+Being stranded on a {landforms}
+The secret of {weirdtownUS}
+Going hungry in {foodtownUS}
+Getting propositioned in {sextownUS}
+Getting high and watching {syfyoriginalmovies}
 The South
 Pretending to care
 Arnold Schwarzenegger
@@ -190,7 +200,6 @@ Laying an egg
 An honest cop with nothing left to lose
 The terrorists
 Friends who eat all the snacks
-end misprint bonus card
 Cookie Monster devouring the Eucharist wafers
 Letting yourself go
 A LAN party
@@ -339,7 +348,7 @@ Lactation
 Pabst Blue Ribbon
 The gays
 A foul mouth
-A hot mess
+A {temp} mess
 My collection of high-tech sex toys
 Bees?
 Getting drunk on mouthwash
@@ -466,7 +475,7 @@ Sexual tension
 Dry heaving
 Centaurs
 Wifely duties
-Hot people
+{temp} people
 Kanye West
 The Amish
 Viagra
@@ -476,7 +485,7 @@ The Tempur-Pedic Swedish Sleep System
 Fancy Feast
 Hot Pockets
 A neglected Tamagotchi
-Domino's Oreo Dessert Pizza
+Domino's Oreo Dessert Pizza
 The Ubermensch
 Adderall
 Sobbing into a Hungry-Man Frozen Dinner
@@ -484,6 +493,8 @@ Ring Pops
 GoGurt
 Lunchables
 The Make-A-Wish Foundation
+{locnameUS}
+
 
 
 

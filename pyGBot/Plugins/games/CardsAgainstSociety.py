@@ -29,6 +29,7 @@ import os
 from urllib import urlopen
 from time import time
 from pyGBot.BasePlugin import BasePlugin
+from collections import Mapping
 
 
 def enum(**enums):
@@ -90,6 +91,35 @@ def get_wiki_featured_article_titles(n=7):
             break
     feed.close()
     return titles
+
+
+class Subs(Mapping):
+    def __init__(self, subfile):
+        from random import Random
+        self.randomizer = Random()
+        with open(subfile, 'r') as f:
+            from json import load
+            subs = load(f)
+            self.subs = subs["vars"]
+            self.gendered_vars = subs["gendered_keys"]
+        self.gender = 'n'
+
+    def __iter__(self):
+        return iter(self.subs)
+
+    def __len__(self):
+        return len(self.subs)
+
+    def __getitem__(self, k):
+        if k in self.gendered_vars:
+            return self.randomizer.choice(
+                self.subs[k][self.gender])
+        else:
+            return self.randomizer.choice(self.subs[k])
+
+    def formatter(self, s):
+        self.gender = self.randomizer.choice(['n', 'f', 'm'])
+        return s.format(**self)
 
 
 class CardsAgainstSociety(BasePlugin):
@@ -209,6 +239,9 @@ class CardsAgainstSociety(BasePlugin):
             print("Error while loading blacklist")
             print(ex)
 
+        # Variable substitutions.
+        self.subs = Subs('./pyGBot/Plugins/games/CardsAgainstSocietyVars.json')
+
         # Load CaH cards
         with open('./pyGBot/Plugins/games/CardsAgainstSocietyCards.txt', 'r') as f:
             self.parsecardfile(f)
@@ -268,14 +301,15 @@ class CardsAgainstSociety(BasePlugin):
         self.blackdeck = []
         for card in self.baseblackdeck:
             if card[0] not in self.blacklist:
-                self.blackdeck.append(card)
+                self.blackdeck.append(
+                    (self.subs.formatter(card[0]),) + card[1:])
             else:
                 cardlog.write(card[0] + '\n')
         random.shuffle(self.blackdeck)
         self.whitedeck = []
         for card in self.basewhitedeck:
             if card not in self.blacklist:
-                self.whitedeck.append(card)
+                self.whitedeck.append(self.subs.formatter(card))
             else:
                 cardlog.write(card + '\n')
         if self.variants["wikifeature"][1]:
@@ -556,8 +590,19 @@ class CardsAgainstSociety(BasePlugin):
         # Draw up to the hand limit for each player
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
-                while len(self.hands[user]) < 10 + extra:
-                    self.hands[user].append(self.whitedeck.pop(0))
+                # only count real cards in the length of the hand, not
+                # Nones
+                handlen = lambda: len([card for card in self.hands[user]
+                                       if card is not None])
+                while handlen() < 10 + extra:
+                    # replace Nones (left by played cards) with new cards
+                    # if possible
+                    try:
+                        i = self.hands[user].index(None)
+                        self.hands[user][i] = self.whitedeck.pop(0)
+                    # otherwise, append
+                    except ValueError:
+                        self.hands[user].append(self.whitedeck.pop(0))
                     # self.privreply(user, "You draw: \x0304{}\x0F.".format(
                     #     self.hands[user][len(self.hands[user])-1]))
 
@@ -569,9 +614,10 @@ class CardsAgainstSociety(BasePlugin):
         if user != self.live_players[self.judgeindex]:
             hand = []
             for i in range(0, len(self.hands[user])):
-                hand.append("{}: \x0304{}\x0F".format(
-                    i+1,
-                    self.hands[user][i]))
+                if self.hands[user][i]:
+                    hand.append("{}: \x0304{}\x0F".format(
+                        i+1,
+                        self.hands[user][i]))
             self.privreply(user, "Your hand: {}".format(
                 ", ".join(hand)))
 
@@ -711,11 +757,17 @@ class CardsAgainstSociety(BasePlugin):
                 # Ensure all cards are within range
                 for arg in args:
                     if arg not in range(0, len(self.hands[user])):
-
                         self.reply(
                             channel,
                             user,
                             "You can't play a card you don't have.")
+                        return
+                    elif self.hands[user][arg] is None:
+                        self.reply(
+                            channel,
+                            user,
+                            "You already played card #{}".format(
+                                arg))
                         return
 
                 # Actually insert the cards
@@ -726,7 +778,8 @@ class CardsAgainstSociety(BasePlugin):
 
                 # Remove the cards from the player's hand
                 for card in playcards:
-                    self.hands[user].remove(card)
+                    i = self.hands[user].index(card)
+                    self.hands[user][i] = None
 
                 # Output to user, redisplay hand, and check if the
                 # round is over
@@ -738,7 +791,7 @@ class CardsAgainstSociety(BasePlugin):
                     self.bot.pubout(
                         self.channel,
                         "{}: You have played your cards.".format(user))
-                self.showhand(user)
+#                self.showhand(user)
                 self.checkroundover()
 
             # Send output based on error conditions
@@ -804,11 +857,17 @@ class CardsAgainstSociety(BasePlugin):
 
                 # Ensure all cards are within range
                 for arg in args:
-                    if arg not in range(0, len(self.hands[user])):
+                    if arg not in xrange(0, len(self.hands[user])):
                         self.reply(
                             channel,
                             user,
-                            "You can't play a card you don't have!")
+                            "You can't play a card you don't have.")
+                        return
+                    elif self.hands[user][arg] is None:
+                        self.reply(
+                            channel,
+                            user,
+                            "You already played card #{}.".format(arg))
                         return
 
                 # Actually insert the cards
@@ -819,7 +878,8 @@ class CardsAgainstSociety(BasePlugin):
 
                 # Remove the cards from the player's hand
                 for card in playcards:
-                    self.hands[user].remove(card)
+                    i = self.hands[user].index(card)
+                    self.hands[user][i] = None
 
                 # Put a black card into the pot
                 self.woncards[user] = self.woncards[user] - 1
