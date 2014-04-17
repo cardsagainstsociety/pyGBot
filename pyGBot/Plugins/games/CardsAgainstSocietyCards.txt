@@ -1,4 +1,12 @@
-##    If you submit a pull request graying out cards, please also move those cards to the appropriate section.
+##    This card list is taken from the original Cards Against Humanity decks.
+##    A few cards have been edited, but the majority of the cards on this list
+##    are from the original decks. The original decks can be found here:
+##    http://www.cardsagainsthumanity.com/bcards.txt (black cards) and
+##    http://www.cardsagainsthumanity.com/wcards.txt (white cards).
+##    While we do not use all of the original cards, they have not been removed
+##    this file, but simply commented out.
+
+##    If you submit a pull request commenting out cards, please also move those cards to the appropriate section.
 
 # Black cards
 
@@ -80,7 +88,9 @@
 ##      1: What gives me uncontrollable gas?
 ##      1: What did Vin Diesel eat for dinner?
 ##      1: Why am I sticky?
-
+##      1: In its new tourism campaign, Detroit proudly proclaims that it has finally eliminated __________.
+##      1: What's a girl's best friend?
+##      1: During Picasso's often-overlooked Brown Period, he produced hundreds of paintings of ____.
 
 # White cards
 
@@ -148,7 +158,6 @@ Stranger danger
 Chivalry
 Jew-fros
 Self-loathing
-
 Historically black colleges
 Aaron Burr
 Former President George W Bush
@@ -545,4 +554,5 @@ The Make-A-Wish Foundation
 ##      Toni Morrison's vagina
 ##      Smegma
 ##		  Peeing a little bit
-
+##      Making sex at her
+##      A falcon with a cap on its head
