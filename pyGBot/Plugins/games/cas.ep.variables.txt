@@ -2,7 +2,7 @@
 
 1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________.
 1: What helps the {diety} {pantheon} unwind?
-1: 1: What's a {kid}'s best friend?
+1: What's a {kid}'s best friend?
 1: When I am the Mayor of {locnameUS}, I will create the Committee of ____.
 3: Few people know that {pantheon} is also the {diety} of {tvtropeshair}. Write a prayer for your follicles to {them}:
 
