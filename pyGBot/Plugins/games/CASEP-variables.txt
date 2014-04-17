@@ -10,7 +10,7 @@
 
 Making sex at {them}
 A {bird} with a cap on its head
-Oddly {temp} man-nipples
+Oddly {tempadj} man-nipples
 {locnameUS}
 Flying like a {bird}
 Installing {OS}
