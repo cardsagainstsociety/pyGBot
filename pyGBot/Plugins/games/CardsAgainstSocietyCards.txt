@@ -138,7 +138,7 @@ Hunting accidents
 A cartoon camel enjoying the smooth, refreshing taste of a cigarette
 Abstinence
 Mountain Dew Code Red
-Tweeting
+"Tweeting"
 Making sex at her
 Stunt doubles
 Flavored condoms
@@ -283,7 +283,6 @@ Christopher Walken
 A tiny horse
 Child abuse
 Menstruation
-A sassy black woman
 Re-gifting
 Penis envy
 Drinking alone
@@ -391,7 +390,6 @@ Shaquille O'Neal's acting career
 Half-assed foreplay
 Explosions
 White privilege
-Road head
 Poorly-timed Holocaust jokes
 8 oz of sweet Mexican black-tar heroin
 Judge Judy
@@ -577,3 +575,5 @@ The Make-A-Wish Foundation
 ##      Date rape
 ##      The Jews
 ##      The deformed
+##      A sassy black woman
+##      Road head
