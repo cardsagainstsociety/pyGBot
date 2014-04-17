@@ -1,18 +1,15 @@
 ##    If you submit a pull request graying out cards, please also move those cards to the appropriate section.
 
 # Black cards
-1: What computer use isn't against the Computer Misuse Act?
-1: Who stole the cookies from the cookie jar?
-1: What's the next superhero?
+
 1: Why can't I sleep at night?
 1: What's that sound?
 1: What ended my last relationship?
 1: What is Batman's guilty pleasure?
-1: What's a girl's best friend?
 1: What does Dick Cheney prefer?
 1: What's the most emo?
 1: What are my parents hiding from me?
-1: What will always get youthe def laid?
+1: What will always get you laid?
 1: What did I bring back from Mexico?
 1: What don't you want to find in your Chinese food?
 1: What will I bring back in time to convince people that I am a powerful wizard?
@@ -23,7 +20,6 @@
 1: What would grandma find disturbing, yet oddly charming?
 1: What did the U.S. airdrop to the children of Afghanistan?
 1: What helps Obama unwind?
-1: What helps {pantheon} unwind?
 1: What gets better with age?
 1: What's Teach for America using to inspire inner city students to succeed?
 1: Why do I hurt all over?
@@ -36,13 +32,10 @@
 1: MTV's new reality show features eight washed-up celebrities living with ____.
 1: I drink to forget ____.
 1: I'm sorry, Professor, but I couldn't complete my homework because of ____.
-1: During Picasso's often-overlooked Brown Period, he produced hundreds of paintings of ____.
 1: Alternative medicine is now embracing the curative powers of ____.
 1: Anthropologists have recently discovered a primitive tribe that worships ____.
 1: It's a pity that kids these days are all getting involved with ____.
 1: ____. That's how I want to die.
-1: In the new Disney Channel Original Movie, Hannah Montana struggles with ____ for the first time.
-1: I wish I hadn't lost the instruction manual for ____.
 1: Instead of coal, Santa now gives the bad children ____.
 1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency.
 1: A romantic, candlelit dinner would be incomplete without ____.
@@ -58,12 +51,10 @@
 1: When I am a billionare, I shall erect a 50-foot statue to commemorate ____.
 1: ____. It's a trap!
 1: Coming to Broadway this season, ____: The Musical.
-1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
 1: Due to a PR fiasco, Walmart no longer offers ____.
 1: But before I kill you, Mr. Bond, I must show you ____.
 1: When Pharaoh remained unmoved, Moses called down a plague of ____.
 1: The class field trip was completely ruined by ____.
-1: In Michael Jackson's final moments, he thought about ____.
 1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____.
 1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____.
 1: I do not know with which weapons World War III will be fought, but World War IV will be fought with ____.
@@ -82,10 +73,6 @@
 3: ____ + ____ = ____.
 3: Make a haiku.
 
-##      Start of variable use cards
-1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________.
-3: Few people know that {pantheon} is also the {deity} of {weirdtownUS}. Write a prayer to {them}:
-
 
 ##      Removed Black Cards
 ##      1: What's the crustiest?
@@ -93,14 +80,10 @@
 ##      1: What gives me uncontrollable gas?
 ##      1: What did Vin Diesel eat for dinner?
 ##      1: Why am I sticky?
-##      
-##      
-##      
-
 
 
 # White cards
-Heartbleed
+
 Michelle Obama's arms
 White people
 An erection that lasts longer than four hours
@@ -128,12 +111,10 @@ Doing the right thing
 The invisible hand
 Heteronormativity
 Cuddling
-Raptor attacks
 Fear itself
 Sniffing glue
 An icepick lobotomy
 Being rich
-The clitoris
 Sexy pillow fights
 Sexting
 Hunting accidents
@@ -141,10 +122,8 @@ A cartoon camel enjoying the smooth, refreshing taste of a cigarette
 Abstinence
 Mountain Dew Code Red
 "Tweeting"
-Making sex at her
 Stunt doubles
 Flavored condoms
-Heath Ledger
 Sunshine and rainbows
 Flash flooding
 Goblins
@@ -169,7 +148,7 @@ Stranger danger
 Chivalry
 Jew-fros
 Self-loathing
-A falcon with a cap on its head
+
 Historically black colleges
 Aaron Burr
 Former President George W Bush
@@ -338,7 +317,6 @@ Lactation
 Pabst Blue Ribbon
 The gays
 A foul mouth
-A {temp} mess
 My collection of high-tech sex toys
 Bees?
 Getting drunk on mouthwash
@@ -437,7 +415,6 @@ Lance Armstrong's missing testicle
 Children on leashes
 Multiple stab wounds
 Oompa-Loompas
-Peeing a little bit
 The miracle of childbirth
 Another goddamn vampire movie
 Active listening
@@ -482,20 +459,8 @@ GoGurt
 Lunchables
 The Make-A-Wish Foundation
 
-##    Start of variable use cards
-{locnameUS}
-Flying like a {birds}
-Installing {OS}
-Being stranded on a {landforms}
-The secret of {weirdtownUS}
-Going hungry in {foodtownUS}
-Getting lost in {sextownUS}
-Getting high and watching {syfyoriginalmovies}
-
-
 
 ##      Removed White Cards
-
 
 ##      When you fart and a little bit comes out
 ##      A Super Soaker full of cat pee
@@ -579,5 +544,5 @@ Getting high and watching {syfyoriginalmovies}
 ##      Road head
 ##      Toni Morrison's vagina
 ##      Smegma
-
+##		  Peeing a little bit
 
