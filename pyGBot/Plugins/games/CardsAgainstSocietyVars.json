@@ -17,8 +17,10 @@
  "themself": {"n": ["themself"], "f": ["herself"], "m": ["himself"]},
  "kid": {"n": ["kid"], "f": ["girl"], "m": ["boy"]},
  "adult": {"n": ["adult"], "f": ["woman"], "m": ["man"]},
- "deity": {"n": ["Deities"], "f": ["Goddess"], "m": ["God"]},
+ "deity": {"n": ["Deity"], "f": ["Goddess"], "m": ["God"]},
  "monarch": {"n": ["Monarch"], "f": ["Queen"], "m": ["King"]},
  "heir": {"n": ["Heir"], "f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
 "gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "adult", "deity", "monarch", "heir"]}
+
+## Note, deity and Heir are poor substitutes, and if neuter is not necessary, they should be removed
