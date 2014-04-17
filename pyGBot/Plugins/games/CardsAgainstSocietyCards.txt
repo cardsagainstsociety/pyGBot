@@ -12,7 +12,7 @@
 1: What does Dick Cheney prefer?
 1: What's the most emo?
 1: What are my parents hiding from me?
-1: What will always get you laid?
+1: What will always get youthe def laid?
 1: What did I bring back from Mexico?
 1: What don't you want to find in your Chinese food?
 3: Few people know that {pantheon} is also the {deity} of {locnameUS}. Write a prayer to {them}:
@@ -312,7 +312,6 @@ Seduction
 Being a motherfucking sorcerer
 Eastern European Turbo-Folk music
 Douchebags on their iPhones
-The deformed
 Donald Trump
 This answer is postmodern
 African children
@@ -577,3 +576,4 @@ The Make-A-Wish Foundation
 ##      Roofies
 ##      Date rape
 ##      The Jews
+##      The deformed
