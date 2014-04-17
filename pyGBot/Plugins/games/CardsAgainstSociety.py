@@ -1,26 +1,28 @@
 ##
-##    CardsAgainstSociety - a plugin for pyGBot
-##    Copyright (C) 2008 Morgan Lokhorst-Blight
+##      CardsAgainstSociety - a plugin for pyGBot
+##      Copyright (C) 2008 Morgan Lokhorst-Blight
 ##
-##    This program is free software: you can whiteistribute it and/or modify
-##    it under the terms of the GNU General Public License as published by
-##    the Free Software Foundation, either version 3 of the License, or
-##    (at your option) any later version.
+##      This program is free software: you can distribute it and/or modify
+##      it under the terms of the GNU General Public License as published by
+##      the Free Software Foundation, either version 3 of the License, or
+##      (at your option) any later version.
 ##
-##    This program is distributed in the hope that it will be useful,
-##    but WITHOUT ANY WARRANTY; without even the implied warranty of
-##    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-##    GNU General Public License for more details.
+##      This program is distributed in the hope that it will be useful,
+##      but WITHOUT ANY WARRANTY; without even the implied warranty of
+##      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##      GNU General Public License for more details.
 ##
-##    You should have received a copy of the GNU General Public License
-##    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+##      You should have received a copy of the GNU General Public License
+##      along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##
-##    The game implemented by this plugin is based on Cards Against Humanity,
-##    licenced under Creative Commons BY-NC-SA 2.0. Some of the cards used in
-##    CardsAgainstSociety.txt are directly from Cards Against Humanity, but some
-##    are edited versions, from expansion packs, or new creations. 
-##    Please see http://cardsagainsthumanity.com for more information
-##    about the original game.
+##      The game implemented by this plugin is based on Cards Against Humanity,
+##      licenced under Creative Commons BY-NC-SA 2.0. Some of the cards used by this plugin
+##      are directly from Cards Against Humanity. Some are from Pretend You're XYZZY
+##      (https://github.com/ajanata/PretendYoureXyzzy), another CAH clone. Some cards
+##      have been edited, and some are new creations. 
+
+##      Please see http://cardsagainsthumanity.com for more information
+##      about the original game.
 
 import string
 import random
