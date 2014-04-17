@@ -69,6 +69,8 @@
 1: Life was difficult for cavemen before ____.
 1: ____: Good to the last drop.
 1: ____: kid-tested, mother-approved.
+1: In the new Disney Channel Original Movie, Hannah Montana struggles with ____ for the first time.
+1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
 2: And the Academy Award for ____ goes to ____.
 2: For my next trick, I will pull ____ out of ____.
 2: ____ is a slippery slope that leads to ____.
@@ -88,6 +90,7 @@
 ##      1: What gives me uncontrollable gas?
 ##      1: What did Vin Diesel eat for dinner?
 ##      1: Why am I sticky?
+##      1: In Michael Jackson's final moments, he thought about ____.
 ##      1: In its new tourism campaign, Detroit proudly proclaims that it has finally eliminated __________.
 ##      1: What's a girl's best friend?
 ##      1: During Picasso's often-overlooked Brown Period, he produced hundreds of paintings of ____.
@@ -531,6 +534,7 @@ The Make-A-Wish Foundation
 ##      Horse meat
 ##      Consultants
 ##      Tom Cruise
+##      Heath Ledger
 ##      The profoundly handicapped
 ##      Michael Jackson
 ##      Panda sex
