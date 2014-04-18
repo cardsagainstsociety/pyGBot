@@ -34,4 +34,4 @@
  "monarch": {"f": ["Queen"], "m": ["King"]},
  "heir": {"f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
-"gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "deity", "monarch", "heir"]}
+"gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "deity", "monarch", "heir"]}
