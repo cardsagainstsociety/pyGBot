@@ -22,6 +22,7 @@
  "kids": {"n": ["kids"], "f": ["girls"], "m": ["boys"]},
  "adult": {"f": ["woman"], "m": ["man"]},
  "adults": {"f": ["women"], "m": ["men"]},
+ "sirmadam": {"f": ["madam"], "m": ["sir"]},
  "parentshort": {"f": ["mom"], "m": ["dad"]},
  "parentlong": {"f": ["mother"], "m": ["father"]},
  "parentwhine": {"f": ["mommy"], "m": ["daddy"]},
@@ -35,4 +36,4 @@
  "monarch": {"f": ["Queen"], "m": ["King"]},
  "heir": {"f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
-"gendered_keys": ["pantheon", "tvtropeshair", "they", "they're", "them", "their", "themselves", "kid", "kids", "adult", "adults", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "deity", "monarch", "heir"]}
+"gendered_keys": ["pantheon", "tvtropeshair", "they", "they're", "them", "their", "themselves", "kid", "kids", "adult", "adults", "sirmadam", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "deity", "monarch", "heir"]}
