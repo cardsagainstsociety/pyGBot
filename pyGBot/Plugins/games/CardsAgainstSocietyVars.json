@@ -4,7 +4,7 @@
     "sextownUS": ["Loveladies, New Jersey", "Hooker, Oklahoma", "Hooker Hole, Louisiana", "Romance, Arkansas", "Horneytown, North Carolina", "French Lick, Indiana", "Sweet Lips, Tennessee", "Fanny, West Virginia", "Busti, New York", "Bird in Hand, Pennsylvania", "Big Beaver, Pennsylvania", "Butts, Georgia", "Buttzville, New Jersey", "Dicktown, New Jersey", "Erect, North Carolina", "New Erection, Virginia", "Dickshooter, Idaho", "Intercourse, Pennsylvania", "Loving, New Mexico", "Climax, Georgia", "Conception, Missouri", "Fidelity, Missouri", "Blowing Rock, North Carolina"],
     "landform": ["Lake", "River", "Delta", "Island", "Peninsula", "Gulf", "Cliff", "Butte", "Hill", "Mountain", "Plateau", "Valley", "Ice sheet", "Plain", "Steppe", "Tundra", "Lake", "Meander", "Rapid", "River", "Waterfall", "Beach", "Canyon", "Cave", "Channel", "Cliff", "Floodplain", "Levee", "Oasis", "Pond", "River delta", "Strait", "Swamp", "Arête", "Cirque", "Esker", "Fjord", "Glacier", "Tunnel valley", "Atoll", "Bay", "Cape", "Channel", "Coast", "Continental shelf", "Coral reef", "Estuary", "High island", "Island", "Isthmus", "Lagoon", "Mid-ocean ridge", "Oceanic trench", "Peninsula", "Seamount", "Caldera", "Crater lake", "Geyser", "High island", "Mid-ocean ridge", "Lava dome", "Lava field", "Lava plateau", "Submarine volcano", "Guyot", "Volcanic crater", "Volcanic plug", "Volcano", "Desert", "Dry lake", "Dune", "Sandhill", "Tundra", "Bridge", "Canal", "Dam", "Ditch", "Polder", "Quarry", "Reservoir", "Road", "Tunnel"],
  "planet": ["Mercury", "Venus", "Earth", "Moon", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "Miranda", "Gallifrey", "Cybertron", "Arrakis", "Krypton", "Vulcan", "Alderaan", "Omicron Persei 8", "Kobol", "Dagobah", "Hoth", "Titan", "Abydos", "Ishtar", "Planet X", "Riverworld", "Spaceball", "Magrathea", "Melancholia", "Tatooine", "Sol III", "Gaia", "Lusitania", "Eros", "Adipose 3", "Poosh", "Raxacoricofallapatorius", "Skaro", "Haven", "Mogo", "Centauri Prime", "Mondas", "Coruscant", "Endor", "Helion Prime", "Furya", "Crematoria"],
- "pantheon": {"m": ["Apollo", "Ares", "Dionysus", "Hades", "Hephaestus", "Hermes", "Zeus", "Poseidon", "Chronos", "Eros", "Uranus", "Thanatos", "Tartarus", "Charon"], "f": ["Aphrodite", "Artemis", "Athena", "Demeter", "Hera", "Hestia", "Gaia", "Nyx", "Thalassa", "Psyche", "Iris", "Chaos", "Persephone", "Hecate"], "n": ["The Moirai"]},
+ "pantheon": {"m": ["Apollo", "Ares", "Dionysus", "Hades", "Hephaestus", "Hermes", "Zeus", "Poseidon", "Chronos", "Eros", "Uranus", "Thanatos", "Tartarus", "Charon"], "f": ["Aphrodite", "Artemis", "Athena", "Demeter", "Hera", "Hestia", "Gaia", "Nyx", "Thalassa", "Psyche", "Iris", "Chaos", "Persephone", "Hecate"]},
  "tvtropeshair": {"f": ["Bald Women", "Barbarian Longhair", "Braids of Action", "Girlish Pigtails", "Hime Cut", " Mega Twintails", "Motherly Side Plait", "Odango Hair", "Ojou Ringlets", "Power Hair", "Prim and Proper Bun", "Rapunzel Hair", "Regal Ringlets", "Tomboy Ponytail", "Tomboy Sidetails"], "m": ["Bald of Evil", "Braids of Barbarism", "Dreadlock Warrior", "Hot Blooded Sideburns", "Long-Haired Pretty Boy", "Sailor Ponytail", "Wild Hair"], "n": ["Bald of Awesome", " Blinding Bangs", "Delinquent Hair", "Hair Antennae", "Horned Hairdo", "Idiot Hair", "Peek-a-Bangs", "Quirky Curls", " Samurai Ponytail", "Spiky Hair", "Villainous Widow's Peak:"]},
     "locnameUS": ["Detroit", "Small Town, USA", "Los Angeles", "New York City", "Chicago", "Philadelphia", "Seattle", "San Francisco", "Los Vegas", "Dallas", "Washington D.C.", "New Jersey", "Texas", "New York", "Alaska", "California", "Florida", "Kansas"],
  "OS": ["Ubuntu", "Linux Mint", "MS-DOS", "FreeBSD", "Solaris", "Windows Vista", "Windows ME", "Windows NT", "Mavericks", "Leopard", "Windows 7", "Windows 8", "Plan 9", "Emacs", "Temple OS"],
@@ -21,10 +21,17 @@
  "kids": {"n": ["kids"], "f": ["girls"], "m": ["boys"]},
  "adult": {"n": ["adult"], "f": ["woman"], "m": ["man"]},
  "adults": {"n": ["adults"], "f": ["women"], "m": ["men"]},
- "deity": {"n": ["Deity"], "f": ["Goddess"], "m": ["God"]},
- "monarch": {"n": ["Monarch"], "f": ["Queen"], "m": ["King"]},
- "heir": {"n": ["Heir"], "f": ["Princess"], "m": ["Prince"]},
+ "parentshort": {"f": ["mom"], "m": ["dad"]},
+ "parentlong": {"f": ["mother"], "m": ["father"]},
+ "parentwhine": {"f": ["mommy"], "m": ["daddy"]},
+ "grandparent": {"f": ["grandmother"], "m": ["grandfather"]},
+ "granda": {"f": ["grandma"], "m": ["grandpa"]},
+ "sibling": {"n": ["sibling"], "f": ["sister"], "m": ["brother"]},
+ "sib": {"n": ["sib"], "f": ["sis"], "m": ["bro"]},
+ "child": {"n": ["child"], "f": ["daughter"], "m": ["son"]},
+ "grandchild": {"n": ["grandchild"], "f": ["granddaughter"], "m": ["grandson"]},
+ "deity": {"f": ["Goddess"], "m": ["God"]},
+ "monarch": {"f": ["Queen"], "m": ["King"]},
+ "heir": {"f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
-"gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "deity", "monarch", "heir"]}
-
-## Note, deity and Heir are poor substitutes, and if neuter is not necessary, they should be removed
+"gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "deity", "monarch", "heir"]}
