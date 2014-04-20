@@ -12,10 +12,9 @@
 1: What does Dick Cheney prefer?
 1: What's the most emo?
 1: What are my parents hiding from me?
-1: What will always get you laid?
+1: What will always get youthe def laid?
 1: What did I bring back from Mexico?
 1: What don't you want to find in your Chinese food?
-3: Few people know that {pantheon} is also the {deity} of {locnameUS}. Write a prayer to {them}:
 1: What will I bring back in time to convince people that I am a powerful wizard?
 1: How am I maintaining my relationship status?
 1: What do old people smell like? 
@@ -83,6 +82,9 @@
 3: ____ + ____ = ____.
 3: Make a haiku.
 
+##      Start of variable use cards
+1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________.
+3: Few people know that {pantheon} is also the {deity} of {weirdtownUS}. Write a prayer to {them}:
 
 
 ##      Removed Black Cards
@@ -138,7 +140,7 @@ Hunting accidents
 A cartoon camel enjoying the smooth, refreshing taste of a cigarette
 Abstinence
 Mountain Dew Code Red
-Tweeting
+"Tweeting"
 Making sex at her
 Stunt doubles
 Flavored condoms
@@ -173,16 +175,8 @@ Aaron Burr
 Former President George W Bush
 Geese
 Mutually-assured destruction
-Bling
-##      Smegma
+All the bling
 The weather
-Flying like a {birds}
-Installing {OS}
-Being stranded on a {landforms}
-The secret of {weirdtownUS}
-Going hungry in {foodtownUS}
-Getting propositioned in {sextownUS}
-Getting high and watching {syfyoriginalmovies}
 The South
 Pretending to care
 Arnold Schwarzenegger
@@ -250,7 +244,6 @@ Sweet, sweet vengeance
 Keg stands
 Darth Vader
 Necrophilia
-##      Toni Morrison's vagina
 Preteens
 A cooler full of organs
 Keanu Reeves
@@ -283,7 +276,6 @@ Christopher Walken
 A tiny horse
 Child abuse
 Menstruation
-A sassy black woman
 Re-gifting
 Penis envy
 Drinking alone
@@ -312,7 +304,6 @@ Seduction
 Being a motherfucking sorcerer
 Eastern European Turbo-Folk music
 Douchebags on their iPhones
-The deformed
 Donald Trump
 This answer is postmodern
 African children
@@ -337,7 +328,6 @@ Crumpets with the Queen
 Exchanging pleasantries
 Republicans
 Kim Jong-il
-##        The Jews
 Incest
 Nazis
 Repression
@@ -393,7 +383,6 @@ Shaquille O'Neal's acting career
 Half-assed foreplay
 Explosions
 White privilege
-Road head
 Poorly-timed Holocaust jokes
 8 oz of sweet Mexican black-tar heroin
 Judge Judy
@@ -475,7 +464,6 @@ Sexual tension
 Dry heaving
 Centaurs
 Wifely duties
-{temp} people
 Kanye West
 The Amish
 Viagra
@@ -493,8 +481,16 @@ Ring Pops
 GoGurt
 Lunchables
 The Make-A-Wish Foundation
-{locnameUS}
 
+##    Start of variable use cards
+{locnameUS}
+Flying like a {birds}
+Installing {OS}
+Being stranded on a {landforms}
+The secret of {weirdtownUS}
+Going hungry in {foodtownUS}
+Getting lost in {sextownUS}
+Getting high and watching {syfyoriginalmovies}
 
 
 
@@ -577,3 +573,11 @@ The Make-A-Wish Foundation
 ##      Auschwitz
 ##      Roofies
 ##      Date rape
+##      The Jews
+##      The deformed
+##      A sassy black woman
+##      Road head
+##      Toni Morrison's vagina
+##      Smegma
+
+

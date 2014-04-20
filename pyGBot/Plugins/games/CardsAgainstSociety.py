@@ -1256,7 +1256,7 @@ class CardsAgainstSociety(BasePlugin):
             channel,
             user,
             "Unlike most of the party games you've played before, "
-            "Cards Against Society is as flamingly liberal and weird"
+            "Cards Against Society is as flamingly liberal and weird "
             "as you and your friends.")
         self.reply(
             channel,
