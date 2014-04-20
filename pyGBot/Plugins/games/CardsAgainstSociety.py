@@ -29,7 +29,7 @@ import os
 from urllib import urlopen
 from time import time
 from pyGBot.BasePlugin import BasePlugin
-from collections import Mapping
+from collections import Mapping, Set, defaultdict
 
 
 def enum(**enums):
@@ -103,6 +103,7 @@ class Subs(Mapping):
             self.subs = subs["vars"]
             self.gendered_vars = subs["gendered_keys"]
         self.gender = 'n'
+        self.fallback_gender = 'f'
 
     def __iter__(self):
         return iter(self.subs)
@@ -112,14 +113,42 @@ class Subs(Mapping):
 
     def __getitem__(self, k):
         if k in self.gendered_vars:
-            return self.randomizer.choice(
-                self.subs[k][self.gender])
+            try:
+                return self.randomizer.choice(
+                    self.subs[k][self.gender])
+            except KeyError:
+                return self.randomizer.choice(
+                    self.subs[k][self.fallback_gender])
         else:
             return self.randomizer.choice(self.subs[k])
 
     def formatter(self, s):
         self.gender = self.randomizer.choice(['n', 'f', 'm'])
+        self.fallback_gender = self.randomizer.choice(['m', 'f'])
         return s.format(**self)
+
+
+class MetaDeck(Set):
+    def __init__(self):
+        self.decks = defaultdict(set)
+        self.decks_enabled = set()
+
+    def __contains__(self, o):
+        for (k, v) in self.decks.iteritems():
+            if k in self.decks_enabled:
+                if o in v:
+                    return True
+        return False
+
+    def __iter__(self):
+        for (k, v) in self.decks.iteritems():
+            if k in self.decks_enabled:
+                for w in v:
+                    yield w
+
+    def __len__(self):
+        return sum(len(v) for (k, v) in self.decks.iteritems()
+                   if k in self.decks_enabled)
 
 
 class CardsAgainstSociety(BasePlugin):
@@ -225,8 +254,8 @@ class CardsAgainstSociety(BasePlugin):
 
     def loadcards(self):
         # Empty decks
-        self.baseblackdeck = set()
-        self.basewhitedeck = set()
+        self.baseblackdeck = MetaDeck()
+        self.basewhitedeck = MetaDeck()
 
         # Cards in the cardlists not to add to the deck.
         self.blacklist = set()
@@ -243,22 +272,52 @@ class CardsAgainstSociety(BasePlugin):
         self.subs = Subs('./pyGBot/Plugins/games/CardsAgainstSocietyVars.json')
 
         # Load CaH cards
-        with open('./pyGBot/Plugins/games/CardsAgainstSocietyCards.txt', 'r') as f:
-            self.parsecardfile(f)
-
         olddir = os.path.abspath(os.curdir)
-        try:
-            os.chdir('./pyGBot/Plugins/games/CardsAgainstHumanityCustom')
-        except OSError:
-            return
+        os.chdir('./pyGBot/Plugins/games/CardsAgainstSocietyCards')
         for fn in os.listdir(os.curdir):
-            try:
-                f = open(fn, 'r')
-            except (IOError, OSError):
-                continue
-            self.parsecardfile(f)
-            f.close()
+            if fn[-3:] == 'txt':
+                with open(fn, 'r') as f:
+                    self.parsecardfile(f)
         os.chdir(olddir)
+
+        # Which cards should be actually in play?
+        # Don't do this after the initial startup;
+        # it'd be dumb to have to keep disabling the base deck
+        # whenever you replace it.
+        if self.baseblackdeck.decks_enabled:
+            return
+        with open('./pyGBot/Plugins/games/CardsAgainstSocietyDeckList.txt',
+                  'r') as decklist:
+            for deck in decklist.readlines():
+                self.enable_deck(deck.strip())
+
+    def write_decklist(self):
+        with open('./pyGBot/Plugins/games/CardsAgainstSocietyDeckList.txt',
+                  'w') as decklist:
+            for deck in self.baseblackdeck.decks_enabled:
+                decklist.write(deck+'\n')
+            
+
+    def enable_deck(self, deck):
+        if (deck not in self.baseblackdeck.decks and
+            deck not in self.basewhitedeck.decks):
+            raise ValueError("I don't have the '{}' deck. "
+                             "If you're sure it exists, do !loadcards"
+                             .format(deck))
+        self.baseblackdeck.decks_enabled.add(deck)
+        self.basewhitedeck.decks_enabled.add(deck)
+        self.write_decklist()
+
+    def disable_deck(self, deck):
+        self.baseblackdeck.decks_enabled.remove(deck)
+        self.basewhitedeck.decks_enabled.remove(deck)
+        self.write_decklist()
+
+    def toggle_deck(self, deck):
+        try:
+            self.disable_deck(deck)
+        except KeyError:
+            self.enable_deck(deck)
 
 
     def parsecardfile(self, f):
@@ -270,11 +329,11 @@ class CardsAgainstSociety(BasePlugin):
                 # Do we have a play definition?
                 if line[1] == ":":
                     # This is a black card.
-                    self.baseblackdeck.add(
+                    self.baseblackdeck.decks[f.name].add(
                         (line[3:].rstrip("\n"), int(line[0])))
                 else:
                     # This is a white card.
-                    self.basewhitedeck.add(line.rstrip("\n"))
+                    self.basewhitedeck.decks[f.name].add(line.rstrip("\n"))
 
     def resetdata(self):
         # Initialize all game variables to new game values
@@ -590,19 +649,11 @@ class CardsAgainstSociety(BasePlugin):
         # Draw up to the hand limit for each player
         for user in self.live_players:
             if user != self.live_players[self.judgeindex]:
-                # only count real cards in the length of the hand, not
-                # Nones
-                handlen = lambda: len([card for card in self.hands[user]
-                                       if card is not None])
-                while handlen() < 10 + extra:
-                    # replace Nones (left by played cards) with new cards
-                    # if possible
-                    try:
-                        i = self.hands[user].index(None)
-                        self.hands[user][i] = self.whitedeck.pop(0)
-                    # otherwise, append
-                    except ValueError:
-                        self.hands[user].append(self.whitedeck.pop(0))
+                # get rid of Nones left from playing cards
+                while None in self.hands[user]:
+                    self.hands[user].remove(None)
+                while len(self.hands[user]) < 10 + extra:
+                    self.hands[user].append(self.whitedeck.pop(0))
                     # self.privreply(user, "You draw: \x0304{}\x0F.".format(
                     #     self.hands[user][len(self.hands[user])-1]))
 
@@ -767,7 +818,7 @@ class CardsAgainstSociety(BasePlugin):
                             channel,
                             user,
                             "You already played card #{}".format(
-                                arg))
+                                arg+1))
                         return
 
                 # Actually insert the cards
@@ -867,7 +918,7 @@ class CardsAgainstSociety(BasePlugin):
                         self.reply(
                             channel,
                             user,
-                            "You already played card #{}.".format(arg))
+                            "You already played card #{}.".format(arg+1))
                         return
 
                 # Actually insert the cards
@@ -894,7 +945,7 @@ class CardsAgainstSociety(BasePlugin):
                     "There are now {} points in the pot!".format(
                         user,
                         self.pot))
-                self.showhand(user)
+#                self.showhand(user)
                 self.checkroundover()
 
             # Send output based on error conditions
@@ -959,7 +1010,7 @@ class CardsAgainstSociety(BasePlugin):
                             channel,
                             user,
                             "Please pick a valid card number.")
-                except ValueError:
+                except (IndexError, ValueError):
                     self.reply(channel, user, "Please use the card's number.")
             elif user != self.live_players[self.judgeindex]:
                 self.reply(
@@ -1307,6 +1358,42 @@ class CardsAgainstSociety(BasePlugin):
                 added.append(arg)
         return (added, removed, unmatched)
 
+    def cmd_deck(self, _args, channel, user):
+        userlevel = self.auth.get_userlevel(user)
+        if len(_args) == 0:
+            self.reply(channel,
+                       user,
+                       "Current decks enabled:")
+            decks = self.baseblackdeck.decks_enabled
+            for deck in decks:
+                self.reply(channel,
+                           user,
+                           deck)
+            return
+        if userlevel < 100:
+            self.reply(channel,
+                       user,
+                       "You must be at least a botmod to change decks.")
+            return
+        else:
+            successes = []
+            for arg in _args:
+                try:
+                    self.toggle_deck(arg)
+                    successes.append(arg)
+                except ValueError:
+                    self.reply(
+                        channel,
+                        user,
+                        "I don't have the deck {}. "
+                        "If you're sure it exists, do !loadcards".format(
+                            arg))
+            if successes:
+                self.reply(channel,
+                           user,
+                           "Toggled decks: {}".format(", ".join(
+                               successes)))
+            
     def cmd_blacklist(self, _args, channel, user):
         userlevel = self.auth.get_userlevel(user)
         if len(_args) == 0:
@@ -1339,12 +1426,12 @@ class CardsAgainstSociety(BasePlugin):
         cur_arg = []
         in_arg = False
         for arg in _args:
-            if arg[0] == "{" and arg[-1] == "}":
+            if arg[0] == "[" and arg[-1] == "]":
                 args.append(arg[1:-1])
-            elif arg[0] == "{":
+            elif arg[0] == "[":
                 in_arg = True
                 cur_arg.append(arg[1:])
-            elif arg[-1] == "}":
+            elif arg[-1] == "]":
                 in_arg = False
                 cur_arg.append(arg[:-1])
                 args.append(" ".join(cur_arg))
@@ -1362,7 +1449,7 @@ class CardsAgainstSociety(BasePlugin):
                 user,
                 "Removed cards from blacklist: {}".format(*removed))
         # Write new blacklist to disk
-        with open('./pyGBot/Plugins/games/ContraHumanityBlacklist.txt', 'w') as blf:
+        with open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt', 'w') as blf:
             for blc in self.blacklist:
                 blf.write(blc + "\n")
 
