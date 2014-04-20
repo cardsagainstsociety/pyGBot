@@ -1426,12 +1426,12 @@ class CardsAgainstSociety(BasePlugin):
         cur_arg = []
         in_arg = False
         for arg in _args:
-            if arg[0] == "{" and arg[-1] == "}":
+            if arg[0] == "[" and arg[-1] == "]":
                 args.append(arg[1:-1])
-            elif arg[0] == "{":
+            elif arg[0] == "[":
                 in_arg = True
                 cur_arg.append(arg[1:])
-            elif arg[-1] == "}":
+            elif arg[-1] == "]":
                 in_arg = False
                 cur_arg.append(arg[:-1])
                 args.append(" ".join(cur_arg))
