@@ -21,7 +21,5 @@
  "adults": {"n": ["adults"], "f": ["women"], "m": ["men"]},
  "deity": {"f": ["Goddess"], "m": ["God"]},
  "monarch": {"n": ["Monarch"], "f": ["Queen"], "m": ["King"]},
- "heir": {"f": ["Princess"], "m": ["Prince"]},
-##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
+ "heir": {"f": ["Princess"], "m": ["Prince"]}},
 "gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "deity", "monarch", "heir"]}
-
