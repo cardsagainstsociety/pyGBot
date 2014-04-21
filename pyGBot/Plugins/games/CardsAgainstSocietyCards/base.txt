@@ -482,16 +482,6 @@ GoGurt
 Lunchables
 The Make-A-Wish Foundation
 
-##    Start of variable use cards
-{locnameUS}
-Flying like a {birds}
-Installing {OS}
-Being stranded on a {landforms}
-The secret of {weirdtownUS}
-Going hungry in {foodtownUS}
-Getting lost in {sextownUS}
-Getting high and watching {syfyoriginalmovies}
-
 
 
 ##      Removed White Cards
