@@ -17,6 +17,7 @@
 
 1: What's a {kid}'s best friend?
 ##		1: What is {superhero}'s guilty pleasure?
+##    1: The government of {country} recently passed a law that effectively forbids all forms of ____.
 1: During Picasso's often-overlooked {colourswatch} Period, he produced hundreds of paintings of ____.
 1: What would {granda} find disturbing, yet oddly charming?
 1: During his midlife crisis, my {parentshort} got really into ____.
@@ -24,8 +25,25 @@
 1: {They} who controls ____ controls the world.
 1: Charades was ruined for me forever when my {parentshort} had to act out ____.
 1: Turns out that ____-{adult} was neither the hero we needed nor wanted.
+1: {parentshort}, I swear! Despite its name, ____ is NOT a porno!
+1: And it is said {their} ghost still wanders these halls, forever searching for his lost ____.
+1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____."
 2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____.
 
+##    Start standard cards
+1: Who the hell do you think I am?!
+1: On the next episode of Dragon Ball Z, Goku has a fierce battle with ____.
+1: WANTED: $50,000,000,000 reward for the apprehension of____.
+1: I have never in my life laughed harder than the first time I watched ____.
+1: There are guilty pleasures. And then there's ____.
+1: I finally realized I hit rock bottom when I started digging through dumpsters for ____.
+1: What do I keep hidden in the crawlspace?
+1: The primitive villagers were both shocked and amazed when I showed them ____.
+1: ____ is the root of all evil.
+1: The road to success is paved with ____.
+1: The Himalayas are filled with many perils, such as ____.
+1: Of my entire collection, my most prized possession is ____.
+1: Who would have guessed that the alien invasion would be easily thwarted by ____.
 1: Daddy, why is Mommy crying?
 1: Why can't I sleep at night?
 1: ____? There's an app for that.
@@ -186,6 +204,9 @@
 2: ____ is the name of my ____ cover band.
 2: The new fad diet is all about making people do ____ and eat ____.
 2: The next pokemon will combine ____ and ____.
+2: Here's what you can expect for the new year. Out: ____. In: ____.
+2: So wait, ____ was actually ____? Wow, I didn't see that one coming!
+2: No matter how you look at it, ultimately ____ is responsible for ____.
 
 3: Plan a three course meal.
 3: Best drink ever: One part ____, three parts ____, and a splash of ____.
@@ -193,6 +214,7 @@
 3: Step 1: ____. Step 2: ____. Step 3: Profit.
 3: ____ + ____ = ____.
 3: I went from ____ to ____, all thanks to ____.
+3: Just announced: The brand new anime adaptation of ____, starring ____ as the voice of ____.
 
 
 
