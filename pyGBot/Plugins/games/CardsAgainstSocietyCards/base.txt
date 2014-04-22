@@ -21,6 +21,7 @@
 1: During Picasso's often-overlooked {colourswatch} Period, he produced hundreds of paintings of ____.
 1: What would {granda} find disturbing, yet oddly charming?
 1: During his midlife crisis, my {parentshort} got really into ____.
+1: What helps the {diety} {pantheon} unwind?
 1: My {parentshort} freaked out when she looked at my browser history and found ____.com/____.
 1: {They} who controls ____ controls the world.
 1: Charades was ruined for me forever when my {parentshort} had to act out ____.
@@ -29,6 +30,8 @@
 1: And it is said {their} ghost still wanders these halls, forever searching for his lost ____.
 1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____."
 2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____.
+3: Few people know that {pantheon} is also the {diety} of {tvtropeshair}. Write a prayer for your follicles to {them}:
+
 
 ##    Start standard cards
 1: Who the hell do you think I am?!
@@ -221,6 +224,9 @@ Subduing a grizzly bear and making {them} your {spouse}.
 Ripping into a {adult}'s chest and pulling out {their} still-beating heart.
 Wearing an {animal} for a hat.
 {mrms}. Fancy Pants.
+Oddly {temp} man-nipples
+Flying like a {bird}
+Installing {OS}
 A neglected Tamagotchi®.
 Fancy Feast®.
 The Tempur-Pedic® Swedish Sleep System™.
@@ -309,7 +315,6 @@ Leaving an awkward voicemail.
 White people.
 Letting yourself go.
 Penis envy.
-Teaching a robot to love.
 Sperm whales.
 A drive-by shooting.
 Panda sex.
@@ -321,7 +326,6 @@ A LAN party.
 Opposable thumbs.
 ##		Soiling oneself.
 AIDS.
-The KKK.
 Seppuku.
 Gandhi.
 Preteens.
