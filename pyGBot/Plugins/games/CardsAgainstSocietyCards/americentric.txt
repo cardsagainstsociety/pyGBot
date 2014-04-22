@@ -1,0 +1,94 @@
+American:
+
+#Black cards
+
+1: When I am the Mayor of {locnameUS}, I will create the Committee of ____.
+1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________.
+1: What does Dick Cheney prefer?
+1: BILLY MAYS HERE FOR ____.
+1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
+1: With Democrats and Republicans in a dead heat, the election was snatched by the ____ party.
+1: The best part of waking up is ____ in your cup.
+##    1: After the earthquake, Sean Penn brought ____ to the people of Haiti.
+1: When I am the President of the United States, I will create the Department of ____.
+1: What's Teach for America using to inspire inner city students to succeed?
+1: What did the U.S. airdrop to the children of Afghanistan?
+1: Major League Baseball has banned ____ for giving players an unfair advantage.
+1: Due to a PR fiasco, Walmart no longer offers ____.
+1: While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ____.
+1: In the distant future, historians will agree that ____ marked the beginning of America's decline.
+1: Members of New York's social elite are paying thousands of dollars just to experience ____.
+1: My country, 'tis of thee, sweet land of ____.
+1: After months of debate, the Occupy Wall Street General Assembly could only agree on "More ____!"
+1: Wake up, America. Christmas is under attack by secular liberals and their ____.
+1: Only two things in life are certain: death and ____.
+1: In L.A. County Jail, word is you can trade 200 cigarettes for ____.
+1: Life for American Indians was forever changed when the White Man introduced them to ____.
+1: Dear Abby, I'm having some trouble with ____ and would like your advice.
+2: When I was a kid, all we had in Lunchables were three ____ and ____.
+##obama cards
+1: What helps Obama unwind?
+1: In his second term, Obama will rid America of ____.
+1: In a news conference, Obama pulled out ____, to everyone's surprise.
+
+
+#White cards
+{locnameUS}
+Hurricane Katrina.
+John Wilkes Booth.
+Child Protective Services.
+A Native American who solves crimes by going into the spirit world.
+Finally finishing off the Indians.
+The Great Depression.
+Cleveland (it's not Detroit!).
+Vietnam flashbacks.
+Tickling Sean Hannity, even after he tells you to stop.
+Hillary Clinton's death stare.
+Capturing Newt Gingrich and forcing him to dance in a monkey suit.
+Republicans.
+Sarah Palin.
+The Boy Scouts of America.
+Bill Clinton, naked on a bearskin rug with a saxophone.
+Donald Trump.
+Getting married, having a few kids, buying some stuff, retiring to Florida, and dying.
+Upgrading homeless people to mobile hotspots.
+Yankee Stadium.
+Chicken and Waffles.
+Forgetting the Alamo.
+The Columbine Shooting.
+The Harlem Globetrotters.
+The Make-A-Wish® Foundation.
+Life after Parole.
+Dirty hippies.
+Standing up to The Man.
+Standing outside the gates of the White House completely naked with a revolver in your hand.
+Judge Judy.
+The grey nutrient broth that sustains Mitt Romney.
+##		Glenn Beck being harried by a swarm of buzzards.
+##		The Virginia Tech Massacre.
+##		Glenn Beck catching his scrotum on a curtain hook.
+The Three-Fifths compromise
+The Underground Railroad
+Historically black colleges
+Aaron Burr
+Former President George W Bush
+Keeping Christ in Christmas
+The KKK
+The American Dream
+Jewish fraternities
+Intelligent design
+The Rev Dr Martin Luther King, Jr
+The Amish
+The Trail of Tears
+John Wilkes Booth
+Racially-biased SAT questions
+Dick Cheney
+The hardworking Mexican
+The South
+An honest cop with nothing left to lose
+Smallpox blankets
+Ronald Reagan
+##obama cards
+Michelle Obama's arms
+Barack Obama
+Having a strong opinion about Obamacare.
