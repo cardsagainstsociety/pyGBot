@@ -5,6 +5,7 @@
 1: Everything's better with ____.
 1: There's ____ in my soup.
 1: Little Miss Muffet sat on a tuffet, eating her curds and ____.
+1: What's the new fad diet?
 1: Tastes like ____.
 1: What's the next Happy Meal toy?
 1: Who stole the cookies from the cookie jar?
