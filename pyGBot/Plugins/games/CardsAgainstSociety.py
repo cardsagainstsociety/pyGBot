@@ -18,7 +18,7 @@
 ##      The game implemented by this plugin is based on Cards Against Humanity,
 ##      licenced under Creative Commons BY-NC-SA 2.0. Some of the cards used by this plugin
 ##      are directly from Cards Against Humanity. Some are from Pretend You're XYZZY
-##      (https://github.com/ajanata/PretendYoureXyzzy), another CAH clone. Some cards
+##      (https://github.com/ajanata/PretendYoureXyzzy), a CAH clone. Some cards
 ##      have been edited, and some are new creations. 
 
 ##      Please see http://cardsagainsthumanity.com for more information
@@ -1258,7 +1258,7 @@ class CardsAgainstSociety(BasePlugin):
             channel,
             user,
             "Unlike most of the party games you've played before, "
-            "Cards Against Society is as flamingly liberal and weird "
+            "Cards Against Society is as flamingly liberal "
             "as you and your friends.")
         self.reply(
             channel,
