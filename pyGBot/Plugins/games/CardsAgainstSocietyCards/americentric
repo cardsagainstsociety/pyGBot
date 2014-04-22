@@ -1,0 +1,53 @@
+American:
+
+#Black cards
+
+1: What does Dick Cheney prefer?
+1: BILLY MAYS HERE FOR ____.
+1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
+1: When I am the President of the United States, I will create the Department of ____.
+1: What's Teach for America using to inspire inner city students to succeed?
+
+##var black cards
+1: When I am the Mayor of {locnameUS}, I will create the Committee of ____.
+1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________.
+
+#White cards
+
+##var white cards
+{locnameUS}
+##standard white cards
+Michelle Obama's arms
+The Three-Fifths compromise
+The Underground Railroad
+Historically black colleges
+Aaron Burr
+Former President George W Bush
+Keeping Christ in Christmas
+The KKK
+The American Dream
+Jewish fraternities
+Intelligent design
+The Rev Dr Martin Luther King, Jr
+Waking up half-naked in a Denny's parking lot
+A zesty breakfast burrito
+Sobbing into a Hungry-Man Frozen Dinner
+Ring Pops
+GoGurt
+Lunchables
+The Make-A-Wish Foundation
+Domino's Oreo Dessert Pizza
+The Amish
+The Trail of Tears
+John Wilkes Booth
+Racially-biased SAT questions
+Barack Obama
+Dick Cheney
+The hardworking Mexican
+Marky Mark and the Funky Bunch
+The South
+An honest cop with nothing left to lose
+Smallpox blankets
+Authentic Mexican cuisine
+Ronald Reagan
+
