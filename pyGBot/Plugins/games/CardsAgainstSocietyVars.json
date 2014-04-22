@@ -20,16 +20,6 @@
  "themself": {"n": ["themself"], "f": ["herself"], "m": ["himself"]},
  "kid": {"n": ["kid"], "f": ["girl"], "m": ["boy"]},
  "kids": {"n": ["kids"], "f": ["girls"], "m": ["boys"]},
-<<<<<<< HEAD
- "adult": {"n": ["adult"], "f": ["woman"], "m": ["man"]},
- "adults": {"n": ["adults"], "f": ["women"], "m": ["men"]},
- "deity": {"f": ["Goddess"], "m": ["God"]},
- "monarch": {"n": ["Monarch"], "f": ["Queen"], "m": ["King"]},
- "heir": {"f": ["Princess"], "m": ["Prince"]},
-##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
-"gendered_keys": ["pantheon", "tvtropeshair", "they", "them", "their", "themselves", "kid", "kids", "adult", "adults", "deity", "monarch", "heir"]}
-
-=======
  "adult": {"f": ["woman"], "m": ["man"]},
  "adults": {"f": ["women"], "m": ["men"]},
  "sirmadam": {"f": ["madam"], "m": ["sir"]},
@@ -47,4 +37,3 @@
  "heir": {"f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
 "gendered_keys": ["pantheon", "tvtropeshair", "they", "they're", "them", "their", "themselves", "kid", "kids", "adult", "adults", "sirmadam", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "deity", "monarch", "heir"]}
->>>>>>> 858da403ad2ee4b4dbafab41d09391ac6e000627
