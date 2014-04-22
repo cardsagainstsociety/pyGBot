@@ -54,8 +54,6 @@
 1: I'm sorry, Professor, but I couldn't complete my homework because of ____.
 1: Alternative medicine is now embracing the curative powers of ____.
 1: What's that sound?
-1: What's the next Happy Meal toy?
-1: Who stole the cookies from the cookie jar?
 1: It's a pity that kids these days are all getting involved with ____.
 1: Anthropologists have recently discovered a primitive tribe that worships ____.
 1: ____. That's how I want to die.
@@ -64,7 +62,6 @@
 1: Instead of coal, Santa now gives the bad children ____.
 1: What's the next superhero?
 1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency.
-1: A romantic, candlelit dinner would be incomplete without ____.
 1: White people like ____.
 1: ____. Betcha can't have just one!
 1: War! What is it good for?
@@ -79,7 +76,6 @@
 1: What's the new fad diet?
 1: How am I maintaining my relationship status?
 1: What will I bring back in time to convince people that I am a powerful wizard?
-1: What don't you want to find in your Chinese food?
 1: What's my secret power?
 1: What never fails to liven up the party?
 1: The class field trip was completely ruined by ____.
@@ -98,7 +94,6 @@
 1: Let's all rock out to the sounds of ____.
 1: Take ____, it will last longer.
 1: ____ is my worst habit.
-1: Everything's better with ____.
 1: What have you accomplished today?
 1: Why are you frothing with rage?
 1: What made you happy today?
@@ -107,7 +102,6 @@
 1: ____ makes me uncomfortable.
 1: Stop, drop, and ____.
 1: Think before you ____.
-1: There's ____ in my soup.
 1: Who needs a bidet when you have ____?
 1: Kill it with ____!
 1: ____ for president!
@@ -115,7 +109,6 @@
 1: Don't get mad, get ____.
 1: I'm an expert on ____.
 1: ____ is the only thing that matters.
-1: Tastes like ____.
 1: What is the next great Kickstarter project?
 1: My life for ____!
 1: OH MY GOD THIS IS THE GREATEST ____ I'VE EVER SEEN IN MY LIFE!
@@ -175,7 +168,6 @@
 1: My life for ____!
 
 2: ____ was banned from tinychat because of ____.
-2: Rumor has it that Vladimir Putin's favorite delicacy is ____ stuffed with ____.
 2: ____ is a slippery slope that leads to ____.
 2: In a pinch, ____ can be a suitable substitute for ____.
 2: In a world ravaged by ____, our only solace is ____.
@@ -202,14 +194,11 @@
 2: You haven't truly lived until you've experienced ____ and ____ at the same time.
 2: ____ and ____ are the new hot couple.
 2: ____ is the name of my ____ cover band.
-2: The new fad diet is all about making people do ____ and eat ____.
 2: The next pokemon will combine ____ and ____.
 2: Here's what you can expect for the new year. Out: ____. In: ____.
 2: So wait, ____ was actually ____? Wow, I didn't see that one coming!
 2: No matter how you look at it, ultimately ____ is responsible for ____.
 
-3: Plan a three course meal.
-3: Best drink ever: One part ____, three parts ____, and a splash of ____.
 3: Make a haiku.
 3: Step 1: ____. Step 2: ____. Step 3: Profit.
 3: ____ + ____ = ____.
@@ -218,438 +207,617 @@
 
 
 
-
-
-
-
 # White cards
 
-White people
-An erection that lasts longer than four hours
-A middle-aged man on roller skates
-Dropping a chandelier on your enemies and riding the rope up
-Public ridicule
-Vehicular manslaughter
-The token minority
-German dungeon porn
-Praying the gay away
-Dying
-Same-sex ice dancing
-Dying of dysentery
-The Big Bang
-The Man
-Agriculture
-Making a pouty face
-YOU MUST CONSTRUCT ADDITIONAL PYLONS
-Object permanence
-Being marginalized
-Party poopers
-Nickelback
-Doing the right thing
-The invisible hand
-Heteronormativity
-Cuddling
-Fear itself
-Sniffing glue
-An icepick lobotomy
-Being rich
-Sexy pillow fights
-Sexting
-Hunting accidents
-A cartoon camel enjoying the smooth, refreshing taste of a cigarette
-Abstinence
-Mountain Dew Code Red
-"Tweeting"
-Stunt doubles
-Flavored condoms
-Sunshine and rainbows
-Flash flooding
-Goblins
-Spectacular abs
-Vigorous jazz hands
-Skeletor
-Vikings
-Genital piercings
-A really cool hat
-An Oedipus complex
-Heartwarming orphans
-Cheating in the Special Olympics
-Sharing needles
-Ethnic cleansing
-Eating all of the cookies before the AIDS bake-sale
-The violation of our most basic human rights
-Fingering
-Flightless birds
-Stranger danger
-Chivalry
-Jew-fros
-Self-loathing
-Geese
-Mutually-assured destruction
-All the bling
-The weather
-Pretending to care
-Arnold Schwarzenegger
-A sausage festival
-Being a dick to children
-Chainsaws for hands
-A Gypsy curse
-The Pope
-A balanced breakfast
-Science
-William Shatner
-Waterboarding
-A clandestine butt scratch
-Laying an egg
-The terrorists
-Friends who eat all the snacks
-Cookie Monster devouring the Eucharist wafers
-Letting yourself go
-A LAN party
-A grande sugar-free decaf iced soy caramel macchiato
-Substitute teachers
-That one gay Teletubby
-Passive-aggression
-Guys who don't call
-AIDS
-The Rapture
-Eugenics
-Taking off your shirt
-A drive-by shooting
-All-you-can-eat shrimp for $4.99
-Edible underpants
-Figgy pudding
-Nocturnal emissions
-Testicular torsion
-The folly of man
-Saxophone solos
-That thing that electrocutes your abs
-Oversized lollipops
-Friends with benefits
-Teaching a robot to love
-Me time
-The heart of a child
-Yeast
-Full frontal nudity
-Licking things to claim them as your own
-Genghis Khan
-RoboCop
-Spontaneous human combustion
-Natural selection
-A good sniff
-Leaving an awkward voicemail
-Assless chaps
-Sweet, sweet vengeance
-Keg stands
-Darth Vader
-Necrophilia
-Preteens
-A cooler full of organs
-Keanu Reeves
-A thermonuclear detonation
-A moment of silence
-Catapults
-Emotions
-Balls
-Homeless people
-The inevitable heat death of the universe
-Sperm whales
-A murder most foul
-Daddy issues
-The Holy Bible
-Pulling out
-Pixelated bukkake
-Waiting 'til marriage
-The World of Warcraft
-Global warming
-World peace
-A can of whoop-ass
-Land mines
-College
-A time travel paradox
-Seppuku
-Christopher Walken
-A tiny horse
-Child abuse
-Menstruation
-Re-gifting
-Penis envy
-Drinking alone
-Hulk Hogan
-Whipping it out
-Gandhi
-God
-Friction
-A sea of troubles
-Poor people
-Flesh-eating bacteria
-Lockjaw
-Take-backsies
-Opposable thumbs
-The homosexual agenda
-Cards Against Humanity
-Sean Connery
-The milk man
-The Chinese gymnastics team
-Soiling oneself
-Giving 110%
-Friendly fire
-Count Chocula
-Seduction
-Being a motherfucking sorcerer
-Eastern European Turbo-Folk music
-Douchebags on their iPhones
-Donald Trump
-This answer is postmodern
-African children
-Have some more kugel
-Crippling debt
-(I am doing Kegels right now)
-Bestiality
-Drum circles
-Inappropriate yelling
-The Thong Song
-A vajazzled vagina
-Tiger Woods
-PCP
-Mr Snuffleupagus
-A disappointing birthday party
+Making sex at {them}.
+A {bird} with a cap on its head.
+{Adults}.
+A middle-aged {adult} on roller skates.
+{Granda}.
+Getting in {their} pants, politely.
+A {adult} in yoga pants with a ponytail and feather earrings.
+Subduing a grizzly bear and making {them} your {spouse}.
+{Granda}'s ashes.
+Ripping into a {adult}'s chest and pulling out {their} still-beating heart.
+Wearing an {animal} for a hat.
+{mrms}. Fancy Pants.
+A neglected Tamagotchi®.
+Fancy Feast®.
+The Tempur-Pedic® Swedish Sleep System™.
+A Super Soaker™ full of cat pee.
+Apples to Apples®.
+Vigorous jazz hands.
+Flightless birds.
+Pictures of boobs.
+Doing the right thing.
+Hunting accidents.
+A cartoon camel enjoying the smooth, refreshing taste of a cigarette.
+The violation of our most basic human rights.
+Viagra.
+Self-loathing.
+Spectacular abs.
+Abstinence.
+A balanced breakfast.
+Concealing a boner.
+"Tweeting".
+The big bang.
+Being marginalized.
+Cuddling.
+Laying an egg.
+Genital piercings.
+Fear itself.
+Science.
+Stranger danger.
+The terrorists.
+Praying the gay away.
+Same-sex ice dancing.
+Ethnic cleansing.
+German dungeon porn.
+Making a pouty face.
+Heteronormativity.
+The placenta.
+Chainsaws for hands.
+An icepick lobotomy.
+Goblins.
+Object permanence.
+Dying.
+##		Foreskin.
+Hormone injections.
+Flash flooding.
+Flavored condoms.
+Dying of dysentery.
+Sexy pillow fights.
+Stunt doubles.
+The invisible hand.
+A really cool hat.
+Heartwarming orphans.
+Waterboarding.
+The clitoris.
+A sad handjob.
+Raptor attacks.
+Agriculture.
+A Gypsy curse.
+Friends who eat all the snacks.
+Vikings.
+Pretending to care.
+Consultants.
+Being a dick to children.
+Geese.
+A clandestine butt scratch.
+Bling.
+Sniffing glue.
+The South.
+An Oedipus complex.
+Eating all of the cookies before the AIDS bake-sale.
+Sexting.
+YOU MUST CONSTRUCT ADDITIONAL PYLONS.
+Mutually-assured destruction.
+Party poopers.
+Sunshine and rainbows.
+Sharing needles.
+Being rich.
+Skeletor.
+Chivalry.
+Uppercuts.
+Emotions.
+Farting and walking away.
+Global warming.
+Necrophilia.
+College.
+Spontaneous human combustion.
+Leaving an awkward voicemail.
+White people.
+Letting yourself go.
+Penis envy.
+Teaching a robot to love.
+Sperm whales.
+A drive-by shooting.
+Panda sex.
+Whipping it out.
+Catapults.
+Masturbation.
+Natural selection.
+A LAN party.
+Opposable thumbs.
+##		Soiling oneself.
+AIDS.
+The KKK.
+Seppuku.
+Gandhi.
+Preteens.
+Land mines.
+A sea of troubles.
+Friction.
+Balls.
+Dental dams.
+A can of whoop-ass.
+A tiny horse.
+Waiting 'til marriage.
+Genghis Khan.
+Pixelated bukkake.
+Re-gifting.
+Friends with benefits.
+The token minority.
+A thermonuclear detonation.
+Take-backsies.
+Substitute teachers.
+A moment of silence.
+Child abuse.
+Sweet, sweet vengeance.
+Drinking alone.
+Oversized lollipops.
+Giving 110%.
+Flesh-eating bacteria.
+Taking off your shirt.
+Me time.
+A murder most foul.
+Nocturnal emissions.
+The inevitable heat death of the universe.
+The folly of man.
+That thing that electrocutes your abs.
+Cards Against Society.
+Poor people.
+Pulling out.
+The homosexual agenda.
+Passive-agression.
+Vehicular manslaughter.
+Menstruation.
+Nipple blades.
+Assless chaps.
+Full frontal nudity.
+Saxophone solos.
+The World of Warcraft.
+Homeless people.
+Testicular torsion.
+Dropping a chandelier on your enemies and riding the rope up.
+World peace.
+A salty surprise.
+Poorly-timed Holocaust jokes.
+Licking things to claim them as your own.
+The heart of a child.
+Seduction.
+Lockjaw.
+Eugenics.
+Friendly fire.
+Wearing underwear inside-out to avoid doing laundry.
+Douchebags on their iPhones.
+Free samples.
+##		Jerking off into a pool of children's tears.
+A foul mouth.
+The glass ceiling.
+Explosions.
+Getting really high.
+Attitude.
+##		The Ubermensch.
+Pterodactyl eggs.
+My soul.
+My sex life.
+Raping and pillaging.
+Pedophiles.
+Virgins.
+Eastern European Turbo-Folk music.
+A snapping turtle biting the tip of your penis.
+Half-assed foreplay.
+My collection of high-tech sex toys.
+##		Bitches.
+Bill Nye the Science Guy.
+Italians.
+Her Royal Highness, Queen Elizabeth II.
+A windmill full of corpses.
+Crippling debt.
+A stray pube.
+Prancing.
+Passing a kidney stone.
+A brain tumor.
+Leprosy.
 Puppies!
-A windmill full of corpses
-Being on fire
-A lifetime of sadness
-Pterodactyl eggs
-Crumpets with the Queen
-Exchanging pleasantries
-Republicans
-Kim Jong-il
-Incest
-Nazis
-Repression
-Attitude
-Puberty
-A look-see
-Lactation
-Pabst Blue Ribbon
-The gays
-A foul mouth
-My collection of high-tech sex toys
 Bees?
-Getting drunk on mouthwash
-The glass ceiling
-Sarah Palin
-Team-building exercises
-Frolicking
-Not giving a shit about the Third World
-My relationship status
-Pedophiles
-Being fabulous
-An M Night Shyamalan plot twist
-A bag of magic beans
-Dead parents
-My sex life
-Riding off into the sunset
-Tangled Slinkys
-Civilian casualties
-Leprosy
-Grave robbing
-Tentacle porn
-Bill Nye the Science Guy
-New Age music
-72 virgins
-Hope
-Passing a kidney stone
-A mime having a stroke
-Classist undertones
-A mating display
-The Kool-Aid Man
-Not reciprocating oral sex
-Italians
-My soul
-A stray pube
-Jerking off into a pool of children's tears
-Getting really high
-Too much hair gel
-Overcompensation
-Free samples
-Shaquille O'Neal's acting career
-Half-assed foreplay
-Explosions
-White privilege
-Poorly-timed Holocaust jokes
-8 oz of sweet Mexican black-tar heroin
-Judge Judy
-Altar boys
-Scientology
-Justin Bieber
-Alcoholism
-Winking at old people
-Racism
-Raping and pillaging
-Hurricane Katrina
-Lumberjack fantasies
-American Gladiators
-An asymmetric boob job
-Asians who aren't good at math
-Loose lips
-The Blood of Christ
-A brain tumor
-Prancing
-The Hamburglar
-Police brutality
-Forgetting the Alamo
-Booby-trapping the house to foil burglars
-Estrogen
-Her Royal Highness, Queen Elizabeth II
-Stephen Hawking talking dirty
-Those times when you get sand in your vagina
-Faith healing
-Impotence
-Bananas in Pajamas
-Tasteful sideboob
-The forbidden fruit
-Anal beads
-Masturbation
-The Hustle
-Obesity
-Child beauty pageants
-Goats eating coins
-Kamikaze pilots
-Powerful thighs
-A big hoopla about nothing
-Women's suffrage
-Parting the Red Sea
-Harry Potter erotica
-Grandma
-Porn stars
-A monkey smoking a cigar
-Mathletes
-Lance Armstrong's missing testicle
-Children on leashes
-Multiple stab wounds
-Oompa-Loompas
-The miracle of childbirth
-Another goddamn vampire movie
-Active listening
+This answer is postmodern.
+Crumpets with the Queen.
+Frolicking.
+Team-building exercises.
+Repression.
+A bag of magic beans.
+An asymmetric boob job.
+Dead parents.
+Public ridicule.
+A mating display.
+Stephen Hawking talking dirty.
+African children.
+Mouth herpes.
+Overcompensation.
+Riding off into the sunset.
+A vajazzled vagina.
+Being on fire.
+Tangled Slinkys.
+Inappropriate yelling.
+Civilian casualties.
+My genitals.
+Not reciprocating oral sex.
+Lactation.
+Being fabulous.
+My relationship status.
+Exchanging pleasantries.
+Asians who aren't good at math.
+Alcoholism.
+Incest.
+Grave robbing.
+Hope.
+8 oz. of sweet Mexican black-tar heroin.
+Cockfights.
+Kim Jong-il.
+Kids with ass cancer.
+Loose lips.
+Winking at old people.
+Drum circles.
+Bestiality.
+(I am doing Kegels right now.)
+Doin' it in the butt.
+A lifetime of sadness.
+Swooping.
+Booby-trapping the house to foil burglars.
+Classist undertones.
+PCP.
+New Age music.
+American Gladiators.
+Not giving a shit about the Third World.
+Mr. Snuffleupagus.
+A hot mess.
+Tentacle porn.
+A look-see.
+Too much hair gel.
+Lumberjack fantasies.
+The gays.
+Estrogen.
+Date rape.
+Dick fingers.
+Racism.
+Police brutality.
+##    A fetus.
+Obesity.
+Tasteful sideboob.
+Hot people.
 BATMAN!!!
-Black people
-Serfdom
-Ghosts
-The Dance of the Sugar Plum Fairy
-Finger painting
-Robert Downey, Jr
-Muhammed (Praise Be Unto Him)
-Famine
-AXE Body Spray
-The Force
-Cybernetic enhancements
-Mr Clean
-Third base
-Dwarf tossing
-A fetus
-Women in yogurt commercials
-Copping a feel
-Sexual tension
-Dry heaving
-Centaurs
-Wifely duties
-Kanye West
-Viagra
-Twinkies
-Five-Dollar Footlongs
-The Tempur-Pedic Swedish Sleep System
-Fancy Feast
-Hot Pockets
-A neglected Tamagotchi
-The Ubermensch
-Adderall
-
-
-##      Removed White Cards
-
-##      When you fart and a little bit comes out
-##      A Super Soaker full of cat pee
-##      Surprise sex!
-##      Dead babies
-##      A gassy antelope
-##      Glenn Beck catching his scrotum on a curtain hook
-##      Getting so angry that you pop a boner
-##      Two midgets shitting into a bucket
-##      Pooping back and forth Forever
-##      Cockfights
-##      Bitches
-##      A robust mongoloid
-##      Garth Brooks
-##      Dave Matthews Band
-##      The People's Elbow
-##      Will Smith
-##      The taint; the grundle; the fleshy fun-bridge
-##      Uppercuts
-##      Scalping
-##      Dick fingers
-##      The Virginia Tech Massacre
-##      Queefing
-##      Mouth herpes
-##      Doin' it in the butt
-##      Swooping
-##      Wiping her butt
-##      Golden showers
-##      Kids with ass cancer
-##      My genitals
-##      Passable transvestites
-##      Gloryholes
-##      Nipple blades
-##      Britney Spears at 55
-##      Natalie Portman
-##      Feeding Rosie O'Donnell
-##      Shorties and blunts
-##      Old-people smell
-##      Farting and walking away
-##      Eating the last known bison
-##      Fiery poops
-##      Dental dams
-##      Glenn Beck being harried by a swarm of buzzards
-##      A salty surprise
-##      Picking up girls at the abortion clinic
-##      Sean Penn
-##      A sad handjob
-##      Foreskin
-##      The placenta
-##      My humps
-##      Muzzy
-##      Glenn Beck convulsively vomiting as a brood of crab spiders hatches in his brain and erupts from his tear ducts
-##      Man meat
-##      Elderly Japanese men
-##      A micropenis
-##      Bingeing and purging
-##      Pictures of boobs
-##      A bleached asshole
-##      Autocannibalism
-##      Horse meat
-##      Consultants
-##      Tom Cruise
-##      Heath Ledger
-##      The profoundly handicapped
-##      Michael Jackson
-##      Panda sex
-##      Stifling a giggle at the mention of Hutus and Tutsis
-##      Coat hanger abortions
-##      Concealing a boner
-##      Amputees
-##      Scrubbing under the folds
-##      A snapping turtle biting the tip of your penis
-##      Wearing underwear inside-out to avoid doing laundry
-##      date rape
-##      The Jews
-##      Auschwitz
-##      Roofies
-##      Date rape
-##      The Jews
-##      The deformed
-##      A sassy black woman
-##      Road head
-##      Toni Morrison's vagina
-##      Smegma
-##		  Peeing a little bit
-##      Making sex at her
-##      A falcon with a cap on its head
+Black people.
+A gassy antelope.
+Those times when you get sand in your vagina.
+Sexual tension.
+Third base.
+Porn stars.
+Puberty.
+A disappointing birthday party.
+An erection that lasts longer than four hours.
+White privilege.
+Wifely duties.
+Literal Nazis.
+Powerful thighs.
+Mr. Clean.
+Multiple stab wounds.
+Cybernetic enhancements.
+Serfdom.
+Women's suffrage.
+Children on leashes.
+Harry Potter erotica.
+The Dance of the Sugar Plum Fairy.
+Dwarf tossing.
+Mathletes.
+Child beauty pageants.
+Impotence.
+AXE Body Spray.
+Copping a feel.
+Famine.
+The miracle of childbirth.
+Finger painting.
+A monkey smoking a cigar.
+Goats eating coins.
+Anal beads.
+The Force.
+Kamikaze pilots.
+Dry heaving.
+Active listening.
+Bananas in Pajamas.
+Ghosts.
+The Hustle.
+Peeing a little bit.
+A big hoopla about nothing.
+Another goddamn vampire movie.
+A bitch slap.
+One trillion dollars.
+The female orgasm.
+Extremely tight pants.
+Throwing a virgin into a volcano.
+Gladiatorial combat.
+Good grammar.
+Hipsters.
+Fabricating statistics.
+Finding a skeleton.
+Suicidal thoughts.
+Dancing with a broom.
+Deflowering the princess.
+My machete.
+Ominous background music.
+Media coverage.
+Making the penises kiss.
+Moral ambiguity.
+Mad hacky-sack skills.
+Just the tip.
+Literally eating shit.
+Leveling up.
+Insatiable bloodlust.
+Historical revisionism.
+The economy.
+##		Statistically validated stereotypes.
+Slow motion.
+Space muffins.
+Sexual humiliation.
+Sexy Siamese twins.
+Santa Claus.
+##		Scrotum tickling.
+Quivering jowls.
+Revenge fucking.
+Pistol-whipping a hostage.
+Quiche.
+Words, words, words.
+Tripping balls.
+Being a busy adult with many important things to do.
+The hiccups.
+The harsh light of day.
+The Gulags.
+A big black dick.
+A beached whale.
+A low standard of living.
+A nuanced critique.
+Being a dinosaur.
+##		Beating your wives.
+Carnies.
+##		Bosnian chicken farmers.
+A web of lies.
+A rival dojo.
+A passionate Latino lover.
+Panty raids.
+Appreciative snapping.
+Apologizing.
+Clams.
+A woman scorned.
+Being awesome at sex.
+Spring break!
+Another shot of morphine.
+Making a friend.
+Intimacy problems.
+An army of skeletons.
+A squadron of moles wearing aviator goggles.
+Beefin' over turf.
+The Google.
+Bullshit.
+A sweet spaceship.
+A 55-gallon drum of lube.
+The human body.
+Mild autism.
+Nunchuck moves.
+Whipping a disobedient slave.
+An ether-soaked rag.
+Oncoming traffic.
+My first kill.
+Power.
+A Burmese tiger pit.
+Basic human decency.
+Fetal alcohol syndrome.
+Graphic violence, adult language, and some sexual content.
+A bigger, blacker dick.
+A sad fat dragon with no friends.
+Existing.
+Catastrophic urethral trauma.
+Double penetration.
+Swiftly achieving orgasm.
+Mooing.
+Rising from the grave.
+Some really fucked-up shit.
+Weapons-grade plutonium.
+All of this blood.
+The mixing of the races.
+Pumping out a baby every nine months.
+Tongue.
+Whining like a little bitch.
+An unhinged ferris wheel rolling toward the sea.
+A magic hippie love cloud.
+Fuck Mountain.
+Living in a trashcan.
+The corporations.
+Survivor's guilt.
+Me.
+Just the tip!
+SCIENCE!!!
+Landshark.
+The establishment.
+The revolution.
+Skittering ovaries.
+Drinking on live TV.
+Mandatory Sex Party.
+A WHOLE GALLON.
+Games you can play with bricks.
+Googly eyes on a cock.
+Typing with your genitals.
+Velociraptor.
+Werewolf.
+Fancy tampons.
+Tinychat.
+Moobs.
+Standing next to short people to use them as armrests.
+Making a random guess in Werewolf that gets you killed later.
+Hello Kitty.
+A test tube baby.
+Bounty, the Quicker Picker Upper.
+Lotion.
+More bandaids.
+Tears of manly pain.
+Cthulu.
+Not being pregnant.
+Thanking your sex slaves.
+Getting drunk before noon.
+The biggest, blackest dick.
+All my friends dying.
+Shutting the fuck up.
+The entire Internet.
+Going around punching people.
+A boo-boo.
+Indescribable loneliness.
+Chugging a lava lamp.
+Self-flagellation.
+The systematic destruction of an entire people and their way of life.
+Reverse cowgirl.
+Actually getting shot, for real.
+Not having sex.
+Dying alone and in pain.
+The way white people is.
+The primal, ball-slapping sex your parents are having right now.
+A black male in his early 20s, last seen wearing a hoodie.
+Jumping out at people.
+My manservant, Claude.
+Letting everyone down.
+Having shotguns for legs.
+Demonic possession.
+Fisting.
+The thin veneer of situational causality that underlies porn.
+Blowing some dudes in an alley.
+A spontaneous conga line.
+A vagina that leads to another dimension.
+Disco fever.
+Getting your dick stuck in a Chinese finger trap.
+Some douche with an acoustic guitar.
+Spending lots of money.
+An unstoppable wave of fire ants.
+Filling every orifice with butterscotch pudding.
+Screaming like a maniac.
+Not contributing to society in any meaningful way.
+Buying the right pants to be cool.
+A surprising amount of hair.
+Hoola hoops.
+A walrus with a beret.
+Indentured servants.
+Sex in your mouth.
+An 8-ball.
+Spanish soap operas.
+Made-for-TV movies.
+Rule 34.
+Terabytes of horse porn.
+The smallest, whitest dick.
+Spontaneous Combustion.
+Blowing your hand off with a firework.
+Beer Pong.
+Mating season.
+Catdog.
+Hipsters on their iPhones at Starbucks.
+Smooth jazz.
+A boat load of cocaine.
+A giant purple dildo sword.
+Outsourcing jobs to India.
+Soviet Russia.
+Hitler's mustache.
+ALL the things!
+Hentai.
+Sheepskin Condoms.
+Hump Day.
+Hordes of zombies.
+The Eiffel Tower.
+Shag carpeting.
+The Oculus Rift.
+Banana Hammocks.
+The tears of a college student.
+Two midgets stacked up pretending to be one person.
+Getting high on bath salts.
+LOOK AT THIS PHOTOGRAPH!
+Cards Against Society playing around with gender roles.
+Sponge baths.
+Canadian Kindness.
+Fuck you, I do what I want.
+FUCK YOU, I'M SPIDERMAN!
+Getting mauled by a mountain lion AND a grizzly bear at the same time.
+A zombie fisherman.
+An obscure reference only two people will get.
+Some god-damn peace and quiet.
+A tribe of warrior women.
+Funky fresh rhymes.
+The art of seduction.
+Advice from a wise, old black man.
+Destroying the evidence.
+The light of a billion suns.
+Wet dreams.
+Synergistic management solutions.
+Growing a pair.
+Silence.
+A live studio audience.
+A spastic nerd.
+Stalin.
+Brown people.
+Rehab.
+Battlefield amputations.
+An uppercut.
+Shiny objects.
+An ugly face.
+Menstrual rage.
+Powerful thighs.
+Passive-aggressive Post-it notes.
+Realizing, too late, that there is no toilet paper left.
+Scotch.
+A Facebook stalker.
+Talking like a pirate.
+A dead meme.
+The Card Czar.
+Reading the manual.
+DeviantArt.
+A tub of Vaseline.
+A cat's sand papery tongue bath.
+Toilet Wine.
+Leftist Propaganda.
+A box within a box.
+A box without hinges, key, or lid, yet golden treasure inside is hid.
+An alternate universe in which boxes store things inside of people.
+A box that is conscious and wishes it weren't a box.
+Something that looks like a box but turns out to be a crate.
+Boxing up my feelings.
+A world without boxes.
+Being banned from /r/pyongyang.
+An interracial handshake.
+Moderate-to-severe joint pain.
+The secret formula for ultimate female satisfaction.
+The complex geopolitical quagmire that is the Middle East.
+Calculating every mannerism so as not to suggest homosexuality.
+All the single ladies.
+Whispering all sexy.
+How awesome I am.
+A dance move that's just sex.
+A hopeless amount of spiders.
+The safe word.
+Bouncing up and down.
+Ambiguous sarcasm.
+A shiny rock that proves I love you.
+A kiss on the lips.
+The peaceful and nonthreatening rise of China.
+Unquestioning obedience.
+Three consecutive seconds of happiness.
+Grammar nazis who are also regular Nazis.
+Africa.
+Adderall.
+Velcro™.
+A PowerPoint presentation.
+An all white jury.
+A literal white knight.
+Depression.
+A gender identity that can only be conveyed through slam poetry.
+Almost giving money to a homeless person.
+A manhole.
+A bunch of idiots playing a card game instead of interacting like normal humans.
+Sharks with legs.
+Injecting speed into one arm and horse tranquilizer into the other.
+A wet paper towel.
+A smaller, whiter dick.
+A beautiful little moment.
+An expensive rental costume.
+Pretending to be happy.
+Socks. 
+Eating an entire snowman.
+A toxic family environment.
+A visually arresting turtleneck.
+Giving money and personal information to strangers on the Internet.
+These low, low prices!
+Making up for years of shitty parenting with a PlayStation.
