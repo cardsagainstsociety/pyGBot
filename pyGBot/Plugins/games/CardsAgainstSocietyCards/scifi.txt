@@ -5,6 +5,7 @@
 1: The sad truth is, that at the edge of the universe, there is nothing but ____.
 1: I'M-A FIRIN' MAH ____!
 1: Go-Go-Gadget, ____!
+1: Who would have guessed that the alien invasion would be easily thwarted by ____.
 
 #White cards
 Teaching a robot to love.
