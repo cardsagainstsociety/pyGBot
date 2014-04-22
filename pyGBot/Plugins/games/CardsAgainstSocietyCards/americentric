@@ -5,14 +5,28 @@ American:
 1: What does Dick Cheney prefer?
 1: BILLY MAYS HERE FOR ____.
 1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
+##    1: After the earthquake, Sean Penn brought ____ to the people of Haiti.
 1: When I am the President of the United States, I will create the Department of ____.
 1: What's Teach for America using to inspire inner city students to succeed?
 1: What did the U.S. airdrop to the children of Afghanistan?
-1: What helps Obama unwind?
 1: Major League Baseball has banned ____ for giving players an unfair advantage.
 1: Due to a PR fiasco, Walmart no longer offers ____.
 1: While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ____.
+1: In the distant future, historians will agree that ____ marked the beginning of America's decline.
+1: Members of New York's social elite are paying thousands of dollars just to experience ____.
+1: My country, 'tis of thee, sweet land of ____.
+1: After months of debate, the Occupy Wall Street General Assembly could only agree on "More ____!"
+1: Wake up, America. Christmas is under attack by secular liberals and their ____.
+1: Only two things in life are certain: death and ____.
+1: In L.A. County Jail, word is you can trade 200 cigarettes for ____.
+1: Life for American Indians was forever changed when the White Man introduced them to ____.
+1: Dear Abby, I'm having some trouble with ____ and would like your advice.
+2: When I was a kid, all we had in Lunchables were three ____ and ____.
 
+##obama cards
+1: What helps Obama unwind?
+1: In his second term, Obama will rid America of ____.
+1: In a news conference, Obama pulled out ____, to everyone's surprise.
 
 ##var black cards
 1: When I am the Mayor of {locnameUS}, I will create the Committee of ____.
@@ -20,10 +34,8 @@ American:
 
 #White cards
 
-##var white cards
 {locnameUS}
-##standard white cards
-Michelle Obama's arms
+
 The Three-Fifths compromise
 The Underground Railroad
 Historically black colleges
@@ -47,7 +59,6 @@ The Amish
 The Trail of Tears
 John Wilkes Booth
 Racially-biased SAT questions
-Barack Obama
 Dick Cheney
 The hardworking Mexican
 Marky Mark and the Funky Bunch
@@ -57,3 +68,6 @@ Smallpox blankets
 Authentic Mexican cuisine
 Ronald Reagan
 
+##obama cards
+Michelle Obama's arms
+Barack Obama
