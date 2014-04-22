@@ -1,103 +1,207 @@
-##    This card list is taken from the original Cards Against Humanity decks.
-##    A few cards have been edited, but the majority of the cards on this list
-##    are from the original decks. The original decks can be found here:
-##    http://www.cardsagainsthumanity.com/bcards.txt (black cards) and
-##    http://www.cardsagainsthumanity.com/wcards.txt (white cards).
-##    While we do not use all of the original cards, they have not been removed
-##    this file, but simply commented out.
+##    This card list is taken from the original Cards Against Humanity decks,
+##    expansion decks and some originals from the Cards Against Humanity knock-off
+##    Pretend You're Xyzzy. 
+##    A few cards have been edited,  but the majority of the cards on this list
+##    are from the original decks. Some cards have also been removed, or moved to 
+##    another deck. The original decks can be found here:
+##    http://www.cardsagainsthumanity.com/bcards.txt (black cards),
+##    http://www.cardsagainsthumanity.com/wcards.txt (white cards),
+##    and https://raw.githubusercontent.com/ajanata/PretendYoureXyzzy/master/cah_cards.sql
 
-##    If you submit a pull request commenting out cards, please also move those cards to the appropriate section.
+##    Please keep cards with variables together and please keep black cards organised by how
+##    many white cards they require.
 
 # Black cards
 
+##    Start var cards:
+
+1: What's a {kid}'s best friend?
+##		1: What is {superhero}'s guilty pleasure?
+1: During Picasso's often-overlooked {colourswatch} Period, he produced hundreds of paintings of ____.
+1: What would {granda} find disturbing, yet oddly charming?
+1: During his midlife crisis, my {parentshort} got really into ____.
+1: My {parentshort} freaked out when she looked at my browser history and found ____.com/____.
+1: {They} who controls ____ controls the world.
+1: Charades was ruined for me forever when my {parentshort} had to act out ____.
+1: Turns out that ____-{adult} was neither the hero we needed nor wanted.
+2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____.
+
+1: Daddy, why is Mommy crying?
 1: Why can't I sleep at night?
-1: What's that sound?
-1: What ended my last relationship?
-1: What is Batman's guilty pleasure?
-1: What does Dick Cheney prefer?
-1: What's the most emo?
-1: What are my parents hiding from me?
-1: What will always get you laid?
-1: What did I bring back from Mexico?
-1: What don't you want to find in your Chinese food?
-1: What will I bring back in time to convince people that I am a powerful wizard?
-1: How am I maintaining my relationship status?
-1: What do old people smell like? 
-1: What's my secret power?
-1: What's there a ton of in heaven?
-1: What would grandma find disturbing, yet oddly charming?
-1: What did the U.S. airdrop to the children of Afghanistan?
-1: What helps Obama unwind?
-1: What gets better with age?
-1: What's Teach for America using to inspire inner city students to succeed?
-1: Why do I hurt all over?
-1: What am I giving up for Lent?
-1: What's my anti-drug?
-1: What never fails to liven up the party?
-1: What's the new fad diet?
-1: I got 99 problems but ____ ain't one.
+1: ____? There's an app for that.
+1: This is the way the world ends \ This is the way the world ends \ Not with a bang but with ____.
 1: TSA guidelines now prohibit ____ on airplanes.
-1: MTV's new reality show features eight washed-up celebrities living with ____.
+1: What ended my last relationship?
 1: I drink to forget ____.
 1: I'm sorry, Professor, but I couldn't complete my homework because of ____.
 1: Alternative medicine is now embracing the curative powers of ____.
-1: Anthropologists have recently discovered a primitive tribe that worships ____.
+1: What's that sound?
+1: What's the next Happy Meal toy?
+1: Who stole the cookies from the cookie jar?
 1: It's a pity that kids these days are all getting involved with ____.
+1: Anthropologists have recently discovered a primitive tribe that worships ____.
 1: ____. That's how I want to die.
+1: I wish I hadn't lost the instruction manual for ____.
+1: What's the most emo?
 1: Instead of coal, Santa now gives the bad children ____.
+1: What's the next superhero?
 1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency.
 1: A romantic, candlelit dinner would be incomplete without ____.
-1: Next from J.K. Rowling: Harry Potter and the Chamber of ____.
-1: ____. Betcha can't have just one!
 1: White people like ____.
+1: ____. Betcha can't have just one!
+1: War! What is it good for?
 1: ____. High five, bro.
 1: During sex, I like to think about ____.
-1: BILLY MAYS HERE FOR ____.
+1: What did I bring back from Mexico?
+1: What are my parents hiding from me?
+1: What will always get you laid?
 1: When I'm in prison, I'll have ____ smuggled in.
-1: When I am the President of the United States, I will create the Department of ____.
-1: Major League Baseball has banned ____ for giving players an unfair advantage.
+1: What's there a ton of in heaven?
 1: When I am a billionare, I shall erect a 50-foot statue to commemorate ____.
-1: ____. It's a trap!
-1: Coming to Broadway this season, ____: The Musical.
-1: Due to a PR fiasco, Walmart no longer offers ____.
-1: But before I kill you, Mr. Bond, I must show you ____.
-1: When Pharaoh remained unmoved, Moses called down a plague of ____.
+1: What's the new fad diet?
+1: How am I maintaining my relationship status?
+1: What will I bring back in time to convince people that I am a powerful wizard?
+1: What don't you want to find in your Chinese food?
+1: What's my secret power?
+1: What never fails to liven up the party?
 1: The class field trip was completely ruined by ____.
-1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____.
-1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____.
 1: I do not know with which weapons World War III will be fought, but World War IV will be fought with ____.
 1: Life was difficult for cavemen before ____.
+1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____.
+1: Why do I hurt all over?
+1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____.
+1: What's my anti-drug?
+1: For my next trick, I will pull ____ out of ____.
 1: ____: Good to the last drop.
-1: ____: kid-tested, mother-approved.
-1: In the new Disney Channel Original Movie, Hannah Montana struggles with ____ for the first time.
-1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
-2: And the Academy Award for ____ goes to ____.
-2: For my next trick, I will pull ____ out of ____.
+1:  ____: kid-tested, mother-approved.
+1: What gets better with age?
+1: I never truly understood ____ until I encountered ____.
+1: What mildy annoyed you today?
+1: Let's all rock out to the sounds of ____.
+1: Take ____, it will last longer.
+1: ____ is my worst habit.
+1: Everything's better with ____.
+1: What have you accomplished today?
+1: Why are you frothing with rage?
+1: What made you happy today?
+1: My ____ is too big!
+1: ____. That is my fetish.
+1: ____ makes me uncomfortable.
+1: Stop, drop, and ____.
+1: Think before you ____.
+1: There's ____ in my soup.
+1: Who needs a bidet when you have ____?
+1: Kill it with ____!
+1: ____ for president!
+1: Have fun, don't be ____.
+1: Don't get mad, get ____.
+1: I'm an expert on ____.
+1: ____ is the only thing that matters.
+1: Tastes like ____.
+1: What is the next great Kickstarter project?
+1: My life for ____!
+1: OH MY GOD THIS IS THE GREATEST ____ I'VE EVER SEEN IN MY LIFE!
+1: No one wants to see your ____.
+1: STOP OR I WILL ____.
+1: ____! You know, for kids.
+1: What can you always find in between the couch cushions?
+1: What brought the orgy to a grinding halt?
+1: What's the gift that keeps on giving?
+1: What has been making life difficult at the nudist colony?
+1: Science will never explain the origin of ____.
+1: I learned the hard way that you can't cheer up a grieving friend with ____.
+1: The socialist governments of Scandinavia have declared that access to ____ is a basic human right.
+1: Dear Sir or Madam, We regret to inform you that the Office of ____ has denied your request for ____.
+1: The CIA now interrogates enemy agents by repeatedly subjecting them to ____.
+1: ____ would be woefully incomplete without ____.
+1: Before I run for president, I must destroy all evidence of my involvement with ____.
+1: This is your captain speaking. Fasten your seatbelts and prepare for ____.
+1: The Five Stages of Grief: denial, anger, bargaining, ____, acceptance.
+1: Everyone down on the ground! We don't want to hurt anyone. We're just here for ____.
+1: The healing process began when I joined a support group for victims of ____.
+1: The votes are in, and the new high school mascot is ____.
+1: ____: literally worse than Hitler.
+1: What doesn't work that way?
+1: What the fuck is wrong with you?
+1: After blacking out during New Year's Eve, I was awoken by ____.
+1: What keeps me warm during the cold, cold winter?
+1: Hey baby, come back to my place and I'll show you ____.
+1: My gym teacher got fired for adding ____ to the obstacle course.
+1: Finally! A service that delivers ____ right to your door.
+1: During high school, I never really fit in until I found ____ club.
+1: A successful job interview begins with a firm handshake and ends with ____.
+1: Call the law offices of Goldstein & Goldstein, because no one should have to tolerate ____ in the workplace.
+1: Lovin' you is easy 'cause you're ____.
+1: The blind date was going horribly until we discovered our shared interest in ____.
+1: And what did you bring for show and tell?
+1: ____. Awesome in theory, kind of a mess in practice.
+1: When I was 25, I won an award for ____.
+1: No one likes me after I posted ____ in the TMI thread.
+1: Have fun, don't be ____.
+1: Don't get mad, get ____.
+1: Alcoholic games of Clue lead to ____.
+1: ____.tumblr.com
+1: Everything's coming up ____.
+1: But that ____ has sailed.
+1: ____ sounds like a great alternative rock band.
+1: The latest novelty Twitter account is @____.
+1: Instead of playing Cards Against Society, you could be __
+1: In the future, ____ will fuel our cars.
+1: The victim was found with ____.
+1: What is love without ____?
+1: What is the next big sideshow attraction?
+1: ____ ruined many people's childhood.
+1: Who needs college when you have ____.
+1: When short on money, you can always ____.
+1: When North Korea gets ____, it will be the end of the world.
+1: My life for ____!
+
+2: ____ was banned from tinychat because of ____.
+2: Rumor has it that Vladimir Putin's favorite delicacy is ____ stuffed with ____.
 2: ____ is a slippery slope that leads to ____.
-2: In M. Night Shyamalan's new movie, Bruce Willis discovers that ____ had really been ____ all along.
+2: In a pinch, ____ can be a suitable substitute for ____.
 2: In a world ravaged by ____, our only solace is ____.
-2: In his new summer comedy, Rob Schneider is ____ trapped in the body of ____.
-2: I never truly understood ____ until I encountered ____.
-2: When I was tripping on acid, ____ turned into ____.
 2: That's right, I killed ____. How, you ask? ____.
-3: ____ + ____ = ____.
+2: I spent my whole life working toward ____, only to have it ruined by ____.
+2: An international tribunal has found ____ guilty of ____.
+2: When I was tripping on acid, ____ turned into ____.
+2: ____ uses ____. It is SUPER EFFECTIVE!
+2: Before ____, all we had was ____.
+2: A wild ____ appeared! It used ____!
+2: If life gives you ____, make ____.
+2: After I saw ____, I needed ____.
+2: And the Academy Award for ____ goes to ____.
+2: On its last dying breath, ____ sent out a cry for help. A bunch of ____ came to the rescue.
+2: I write slash fanfiction pairing ____ with ____.
+2: I'm not like the rest of you. I'm too rich and busy for ____.
+2: With enough time and pressure, ____ will turn into ____.
+2: ____: Hours of fun. Easy to use. Perfect for ____!
+2: After months of practice with ____, I think I'm finally ready for ____.
+2: When you get right down to it, ____ is just ____.
+2: Having problems with ____? Try ____!
+2: My life is ruled by a vicious cycle of ____ and ____.
+2: ____ and ____ are the new hot couple.
+2: You haven't truly lived until you've experienced ____ and ____ at the same time.
+2: ____ and ____ are the new hot couple.
+2: ____ is the name of my ____ cover band.
+2: The new fad diet is all about making people do ____ and eat ____.
+2: The next pokemon will combine ____ and ____.
+
+3: Plan a three course meal.
+3: Best drink ever: One part ____, three parts ____, and a splash of ____.
 3: Make a haiku.
+3: Step 1: ____. Step 2: ____. Step 3: Profit.
+3: ____ + ____ = ____.
+3: I went from ____ to ____, all thanks to ____.
 
 
-##      Removed Black Cards
-##      1: What's the crustiest?
-##      1: What's that smell?
-##      1: What gives me uncontrollable gas?
-##      1: What did Vin Diesel eat for dinner?
-##      1: Why am I sticky?
-##      1: In Michael Jackson's final moments, he thought about ____.
-##      1: In its new tourism campaign, Detroit proudly proclaims that it has finally eliminated __________.
-##      1: What's a girl's best friend?
-##      1: During Picasso's often-overlooked Brown Period, he produced hundreds of paintings of ____.
+
+
+
+
 
 # White cards
 
-Michelle Obama's arms
 White people
 An erection that lasts longer than four hours
 A middle-aged man on roller skates
@@ -140,14 +244,12 @@ Sunshine and rainbows
 Flash flooding
 Goblins
 Spectacular abs
-The Three-Fifths compromise
 Vigorous jazz hands
 Skeletor
 Vikings
 Genital piercings
 A really cool hat
 An Oedipus complex
-The Underground Railroad
 Heartwarming orphans
 Cheating in the Special Olympics
 Sharing needles
@@ -160,14 +262,10 @@ Stranger danger
 Chivalry
 Jew-fros
 Self-loathing
-Historically black colleges
-Aaron Burr
-Former President George W Bush
 Geese
 Mutually-assured destruction
 All the bling
 The weather
-The South
 Pretending to care
 Arnold Schwarzenegger
 A sausage festival
@@ -181,16 +279,13 @@ William Shatner
 Waterboarding
 A clandestine butt scratch
 Laying an egg
-An honest cop with nothing left to lose
 The terrorists
 Friends who eat all the snacks
 Cookie Monster devouring the Eucharist wafers
 Letting yourself go
 A LAN party
 A grande sugar-free decaf iced soy caramel macchiato
-Marky Mark and the Funky Bunch
 Substitute teachers
-Keeping Christ in Christmas
 That one gay Teletubby
 Passive-aggression
 Guys who don't call
@@ -199,17 +294,12 @@ The Rapture
 Eugenics
 Taking off your shirt
 A drive-by shooting
-Ronald Reagan
-Jewish fraternities
 All-you-can-eat shrimp for $4.99
 Edible underpants
 Figgy pudding
-Intelligent design
 Nocturnal emissions
-The American Dream
 Testicular torsion
 The folly of man
-The KKK
 Saxophone solos
 That thing that electrocutes your abs
 Oversized lollipops
@@ -217,13 +307,10 @@ Friends with benefits
 Teaching a robot to love
 Me time
 The heart of a child
-Smallpox blankets
 Yeast
 Full frontal nudity
-Authentic Mexican cuisine
 Licking things to claim them as your own
 Genghis Khan
-The hardworking Mexican
 RoboCop
 Spontaneous human combustion
 Natural selection
@@ -244,7 +331,6 @@ Emotions
 Balls
 Homeless people
 The inevitable heat death of the universe
-The Rev Dr Martin Luther King, Jr
 Sperm whales
 A murder most foul
 Daddy issues
@@ -256,12 +342,10 @@ The World of Warcraft
 Global warming
 World peace
 A can of whoop-ass
-A zesty breakfast burrito
 Land mines
 College
 A time travel paradox
 Seppuku
-Waking up half-naked in a Denny's parking lot
 Christopher Walken
 A tiny horse
 Child abuse
@@ -277,7 +361,6 @@ Friction
 A sea of troubles
 Poor people
 Flesh-eating bacteria
-Dick Cheney
 Lockjaw
 Take-backsies
 Opposable thumbs
@@ -337,7 +420,6 @@ Team-building exercises
 Frolicking
 Not giving a shit about the Third World
 My relationship status
-Barack Obama
 Pedophiles
 Being fabulous
 An M Night Shyamalan plot twist
@@ -403,7 +485,6 @@ Faith healing
 Impotence
 Bananas in Pajamas
 Tasteful sideboob
-Racially-biased SAT questions
 The forbidden fruit
 Anal beads
 Masturbation
@@ -415,7 +496,6 @@ Kamikaze pilots
 Powerful thighs
 A big hoopla about nothing
 Women's suffrage
-John Wilkes Booth
 Parting the Red Sea
 Harry Potter erotica
 Grandma
@@ -432,7 +512,6 @@ Active listening
 BATMAN!!!
 Black people
 Serfdom
-The Trail of Tears
 Ghosts
 The Dance of the Sugar Plum Fairy
 Finger painting
@@ -453,7 +532,6 @@ Dry heaving
 Centaurs
 Wifely duties
 Kanye West
-The Amish
 Viagra
 Twinkies
 Five-Dollar Footlongs
@@ -461,14 +539,8 @@ The Tempur-Pedic Swedish Sleep System
 Fancy Feast
 Hot Pockets
 A neglected Tamagotchi
-Domino's Oreo Dessert Pizza
 The Ubermensch
 Adderall
-Sobbing into a Hungry-Man Frozen Dinner
-Ring Pops
-GoGurt
-Lunchables
-The Make-A-Wish Foundation
 
 
 ##      Removed White Cards
