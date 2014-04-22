@@ -13,6 +13,8 @@
  "weatheradj": ["arid", "blusterous", " balmy", "calm", " cold", "cloudy", "crummy", "clear", "damp", "dark", "drizzly", "frosty", "hot", "humid", " hazy", "icy", "mild", "misty", "muggy", "rainy", "raw", "sunny", "stormy", "snow", "steamy", "showery", "scorching", "sultry", "tempestuous", "warm", "wet", "windy"],
  "swatchcolour": ["maroon", "tangerine", "burgandy", "azure", "indigo", "burnt sienna", "lilac", "lavender", "coral", "emerald", "sea foam green", "cerulean", "ivory", "periwinkle", "oxblood red", "aquamarine", "salmon", "mahagony", "aubergine", "fushia", "mauve", "garnet", "chartreuse", "vermillion", "obsidian", "taupe", "puce", "ocher"],
  "primarycolour": ["red", "orange", "yellow", "green", "blue", "purple", "brown", "black", "white", "grey"],
+ "AmericanFood": ["The Quesadilla Explosion Salad™ from Chili's®.", "Lunchables™.", "Rich, chocolatey Ovaltine®.", "Hot Pockets®.", "Ring Pops™.", "GoGurt®.", "Domino's™ Oreo™ Dessert Pizza.", "Quiznos®."],
+ "MountainDew": ["Mountain Dew® Baja Blast.", "Mountain Dew® Code Red."],
  "they": {"n": ["they"], "f": ["she"], "m": ["he"]},
  "they're": {"n": ["they're"], "f": ["she's"], "m": ["he's"]},
  "them": {"n": ["them"], "f": ["her"], "m": ["him"]},
@@ -23,6 +25,7 @@
  "adult": {"f": ["woman"], "m": ["man"]},
  "adults": {"f": ["women"], "m": ["men"]},
  "sirmadam": {"f": ["madam"], "m": ["sir"]},
+ "mrms": {"f": ["Ms."], "m": ["Mr."]},
  "parentshort": {"f": ["mom"], "m": ["dad"]},
  "parentlong": {"f": ["mother"], "m": ["father"]},
  "parentwhine": {"f": ["mommy"], "m": ["daddy"]},
@@ -37,4 +40,4 @@
  "monarch": {"f": ["Queen"], "m": ["King"]},
  "heir": {"f": ["Princess"], "m": ["Prince"]},
 ##   "isare": {"n": ["are"], "f": ["is"], "m": ["is"]}},
-"gendered_keys": ["pantheon", "tvtropeshair", "they", "they're", "them", "their", "themselves", "kid", "kids", "adult", "adults", "sirmadam", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "auntuncle", "deity", "monarch", "heir"]}
+"gendered_keys": ["pantheon", "tvtropeshair", "they", "they're", "them", "their", "themselves", "kid", "kids", "adult", "adults", "sirmadam", "mrms", "parentshot", "parentlong", "parentwhine", "grandparent", "granda", "sibling", "sib", "child", "grandchild", "auntuncle", "deity", "monarch", "heir"]}
