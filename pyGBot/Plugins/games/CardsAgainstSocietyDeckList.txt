@@ -1,11 +1,11 @@
-base.txt
-americentric.txt
-popculture.txt
-xkcd.txt
 religion.txt
+foonetic.txt
 fantasy.txt
+base.txt
 scifi.txt
 food.txt
-foonetic.txt
-gaming.txt
+xkcd.txt
 tf2.txt
+americentric.txt
+gaming.txt
+popculture.txt
