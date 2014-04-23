@@ -1381,23 +1381,27 @@ class CardsAgainstSociety(BasePlugin):
                        "You must be at least a botmod to change decks.")
             return
         else:
-            successes = []
-            for arg in _args:
-                try:
-                    self.toggle_deck(arg)
-                    successes.append(arg)
-                except ValueError:
+            arg = " ".join(_args)
+            try:
+                if arg in self.baseblackdeck.decks_enabled:
+                    self.disable_deck(arg)
                     self.reply(
                         channel,
                         user,
-                        "I don't have the deck {}. "
-                        "If you're sure it exists, do !loadcards".format(
-                            arg))
-            if successes:
-                self.reply(channel,
-                           user,
-                           "Toggled decks: {}".format(", ".join(
-                               successes)))
+                        "Deck {} disabled.".format(arg))
+                else:
+                    self.enable_deck(arg)
+                    self.reply(
+                        channel,
+                        user,
+                        "Deck {} enabled.".format(arg))
+            except ValueError:
+                self.reply(
+                    channel,
+                    user,
+                    "I don't have the deck {}. "
+                    "If you're sure it exists, do !loadcards".format(
+                        arg))
             
     def cmd_blacklist(self, _args, channel, user):
         userlevel = self.auth.get_userlevel(user)
