@@ -182,7 +182,6 @@ class CardsAgainstSociety(BasePlugin):
 
         # Initialize game
         self.loadcards()
-        self.resetdata()
 
     def timer_tick(self):
         # Handle time-based events
@@ -389,6 +388,7 @@ class CardsAgainstSociety(BasePlugin):
 
     def startgame(self):
         # Put the game into InProgress mode
+        self.resetdata()
         self.gamestate = self.GameState.inprogress
         self.bot.pubout(
             self.channel,
@@ -446,9 +446,6 @@ class CardsAgainstSociety(BasePlugin):
                     self.channel,
                     "Black cards per players: {}".format(
                         ", ".join(blackbuild)))
-
-        # Reset game data
-        self.resetdata()
 
     def newround(self):
         # Initialize round values
