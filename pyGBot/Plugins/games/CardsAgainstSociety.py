@@ -1,3 +1,4 @@
+# coding: utf-8
 ##
 ##      CardsAgainstSociety - a plugin for pyGBot
 ##      Copyright (C) 2008 Morgan Lokhorst-Blight
@@ -31,7 +32,7 @@ import os
 from urllib import urlopen
 from time import time
 from pyGBot.BasePlugin import BasePlugin
-from collections import Mapping, Set, defaultdict
+from collections import Set, defaultdict
 
 
 def enum(**enums):
@@ -95,7 +96,7 @@ def get_wiki_featured_article_titles(n=7):
     return titles
 
 
-class Subs(Mapping):
+class Subs(string.Formatter):
     def __init__(self, subfile):
         from random import Random
         self.randomizer = Random()
@@ -107,27 +108,30 @@ class Subs(Mapping):
         self.gender = 'n'
         self.fallback_gender = 'f'
 
-    def __iter__(self):
-        return iter(self.subs)
-
     def __len__(self):
         return len(self.subs)
 
-    def __getitem__(self, k):
+    def get_value(self, k, args, kwargs):
+        upper = k[0] in string.uppercase
+        k = k.lower()
         if k in self.gendered_vars:
             try:
                 return self.randomizer.choice(
                     self.subs[k][self.gender])
             except KeyError:
-                return self.randomizer.choice(
+                r = self.randomizer.choice(
                     self.subs[k][self.fallback_gender])
         else:
-            return self.randomizer.choice(self.subs[k])
+            r = self.randomizer.choice(self.subs[k])
+        if upper:
+            return r.capitalize()
+        else:
+            return r
 
-    def formatter(self, s):
+    def format(self, format_string, *args, **kwargs):
         self.gender = self.randomizer.choice(['n', 'f', 'm'])
         self.fallback_gender = self.randomizer.choice(['m', 'f'])
-        return s.format(**self)
+        return super(Subs, self).format(format_string, *args, **kwargs)
 
 
 class MetaDeck(Set):
@@ -298,7 +302,6 @@ class CardsAgainstSociety(BasePlugin):
                   'w') as decklist:
             for deck in self.baseblackdeck.decks_enabled:
                 decklist.write(deck+'\n')
-            
 
     def enable_deck(self, deck):
         if (deck not in self.baseblackdeck.decks and
@@ -321,7 +324,6 @@ class CardsAgainstSociety(BasePlugin):
         except KeyError:
             self.enable_deck(deck)
 
-
     def parsecardfile(self, f):
         for line in f:
             # Special case: escape percent signs
@@ -335,7 +337,8 @@ class CardsAgainstSociety(BasePlugin):
                         (line[3:].rstrip("\n"), int(line[0])))
                 else:
                     # This is a white card.
-                    self.basewhitedeck.decks[f.name].add(line.rstrip("\n"))
+                    self.basewhitedeck.decks[f.name].add(
+                        line.rstrip("\n."))
 
     def resetdata(self):
         # Initialize all game variables to new game values
@@ -357,32 +360,32 @@ class CardsAgainstSociety(BasePlugin):
         self.gamestate = self.GameState.none
 
         # Load deck instances and shuffle
-        cardlog = open('card.log', 'w')
-        cardlog.write('Blacklist:\n')
+#        cardlog = open('card.log', 'w')
+#        cardlog.write('Blacklist:\n')
         self.blackdeck = []
         for card in self.baseblackdeck:
             if card[0] not in self.blacklist:
                 self.blackdeck.append(
-                    (self.subs.formatter(card[0]),) + card[1:])
-            else:
-                cardlog.write(card[0] + '\n')
+                    (self.subs.format(card[0]),) + card[1:])
+#            else:
+#                cardlog.write(card[0] + '\n')
         random.shuffle(self.blackdeck)
         self.whitedeck = []
         for card in self.basewhitedeck:
             if card not in self.blacklist:
-                self.whitedeck.append(self.subs.formatter(card))
-            else:
-                cardlog.write(card + '\n')
+                self.whitedeck.append(self.subs.format(card))
+#            else:
+#                cardlog.write(card + '\n')
         if self.variants["wikifeature"][1]:
             self.whitedeck.extend(get_wiki_featured_article_titles())
         random.shuffle(self.whitedeck)
-        cardlog.write("\n\nBlack cards:\n")
-        for card in self.blackdeck:
-            cardlog.write(card[0] + '\n')
-        cardlog.write("\n\nWhite cards:\n")
-        for card in self.whitedeck:
-            cardlog.write(card + '\n')
-        cardlog.close()
+#        cardlog.write("\n\nBlack cards:\n")
+#        for card in self.blackdeck:
+#            cardlog.write(card[0] + '\n')
+#        cardlog.write("\n\nWhite cards:\n")
+#        for card in self.whitedeck:
+#            cardlog.write(card + '\n')
+#        cardlog.close()
 
     def startgame(self):
         # Put the game into InProgress mode
@@ -1378,23 +1381,27 @@ class CardsAgainstSociety(BasePlugin):
                        "You must be at least a botmod to change decks.")
             return
         else:
-            successes = []
-            for arg in _args:
-                try:
-                    self.toggle_deck(arg)
-                    successes.append(arg)
-                except ValueError:
+            arg = " ".join(_args)
+            try:
+                if arg in self.baseblackdeck.decks_enabled:
+                    self.disable_deck(arg)
                     self.reply(
                         channel,
                         user,
-                        "I don't have the deck {}. "
-                        "If you're sure it exists, do !loadcards".format(
-                            arg))
-            if successes:
-                self.reply(channel,
-                           user,
-                           "Toggled decks: {}".format(", ".join(
-                               successes)))
+                        "Deck {} disabled.".format(arg))
+                else:
+                    self.enable_deck(arg)
+                    self.reply(
+                        channel,
+                        user,
+                        "Deck {} enabled.".format(arg))
+            except ValueError:
+                self.reply(
+                    channel,
+                    user,
+                    "I don't have the deck {}. "
+                    "If you're sure it exists, do !loadcards".format(
+                        arg))
             
     def cmd_blacklist(self, _args, channel, user):
         userlevel = self.auth.get_userlevel(user)

@@ -2,7 +2,7 @@
 
 #Black cards
 
-1: What helps the {diety} {pantheon} unwind?
+1: What helps the {deity} {pantheon} unwind?
 1: The seldomly mentioned 4th little pig built {their} house out of ____.
 1: Next from J.K. Rowling: Harry Potter and the Chamber of ____.
 1: "Why Grandma", said Little Red Riding Hood, "What big ____ you have!"

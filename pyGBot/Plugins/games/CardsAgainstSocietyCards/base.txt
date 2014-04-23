@@ -8,7 +8,7 @@
 1: What's a {kid}'s best friend?
 ##		1: What is {superhero}'s guilty pleasure?
 ##    1: The government of {country} recently passed a law that effectively forbids all forms of ____.
-1: During Picasso's often-overlooked {colourswatch} Period, he produced hundreds of paintings of ____.
+1: During Picasso's often-overlooked {swatchcolour} Period, he produced hundreds of paintings of ____.
 1: What would {granda} find disturbing, yet oddly charming?
 1: During his midlife crisis, my {parentshort} got really into ____.
 1: My {parentshort} freaked out when she looked at my browser history and found ____.com/____.
@@ -19,7 +19,7 @@
 1: And it is said {their} ghost still wanders these halls, forever searching for his lost ____.
 1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____."
 2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____.
-3: Few people know that {pantheon} is also the {diety} of {tvtropeshair}. Write a prayer for your follicles to {them}:
+3: Few people know that {pantheon} is also the {deity} of {tvtropeshair}. Write a prayer for your follicles to {them}:
 
 
 ##    Start standard cards
@@ -209,9 +209,9 @@ A {adult} in yoga pants with a ponytail and feather earrings.
 Subduing a grizzly bear and making {them} your {spouse}.
 {Granda}'s ashes.
 Ripping into a {adult}'s chest and pulling out {their} still-beating heart.
-Wearing an {animal} for a hat.
+Wearing a poodle for a hat.
 {mrms}. Fancy Pants.
-Oddly {temp} man-nipples
+Oddly {tempadj} man-nipples
 Flying like a {bird}
 Installing {OS}
 A neglected Tamagotchi®.
