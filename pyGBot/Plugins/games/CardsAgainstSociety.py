@@ -182,6 +182,7 @@ class CardsAgainstSociety(BasePlugin):
 
         # Initialize game
         self.loadcards()
+        self.resetdata()
 
     def timer_tick(self):
         # Handle time-based events
