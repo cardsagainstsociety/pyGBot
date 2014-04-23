@@ -340,8 +340,7 @@ class CardsAgainstSociety(BasePlugin):
                     self.basewhitedeck.decks[f.name].add(
                         line.rstrip("\n."))
 
-    def resetdata(self):
-        # Initialize all game variables to new game values
+    def initvars(self):
         self.players = []
         self.live_players = []
         self.round_players = []
@@ -359,9 +358,16 @@ class CardsAgainstSociety(BasePlugin):
         self.judging = False
         self.gamestate = self.GameState.none
 
+    def resetdata(self):
+        # Initialize all game variables to new game values
+        self.initvars()
+
         # Load deck instances and shuffle
 #        cardlog = open('card.log', 'w')
 #        cardlog.write('Blacklist:\n')
+        self.resetdecks()
+
+    def resetdecks(self):
         self.blackdeck = []
         for card in self.baseblackdeck:
             if card[0] not in self.blacklist:
@@ -389,7 +395,7 @@ class CardsAgainstSociety(BasePlugin):
 
     def startgame(self):
         # Put the game into InProgress mode
-        self.resetdata()
+        self.resetdecks()
         self.gamestate = self.GameState.inprogress
         self.bot.pubout(
             self.channel,
@@ -447,6 +453,7 @@ class CardsAgainstSociety(BasePlugin):
                     self.channel,
                     "Black cards per players: {}".format(
                         ", ".join(blackbuild)))
+        self.resetdata()
 
     def newround(self):
         # Initialize round values
