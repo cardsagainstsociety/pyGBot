@@ -1,4 +1,4 @@
-American:
+
 
 #Black cards
 
@@ -7,9 +7,9 @@ American:
 1: What does Dick Cheney prefer?
 1: BILLY MAYS HERE FOR ____.
 1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans.
+##    1: After the earthquake, Sean Penn brought ____ to the people of Haiti.
 1: With Democrats and Republicans in a dead heat, the election was snatched by the ____ party.
 1: The best part of waking up is ____ in your cup.
-##    1: After the earthquake, Sean Penn brought ____ to the people of Haiti.
 1: When I am the President of the United States, I will create the Department of ____.
 1: What's Teach for America using to inspire inner city students to succeed?
 1: What did the U.S. airdrop to the children of Afghanistan?
@@ -34,6 +34,7 @@ American:
 
 #White cards
 {locnameUS}
+The Make-A-Wish® Foundation.
 Hurricane Katrina.
 John Wilkes Booth.
 Child Protective Services.
@@ -57,7 +58,6 @@ Chicken and Waffles.
 Forgetting the Alamo.
 The Columbine Shooting.
 The Harlem Globetrotters.
-The Make-A-Wish® Foundation.
 Life after Parole.
 Dirty hippies.
 Standing up to The Man.
