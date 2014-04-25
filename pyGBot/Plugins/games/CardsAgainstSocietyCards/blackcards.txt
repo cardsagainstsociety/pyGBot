@@ -1,0 +1,81 @@
+
+## multi-set black cards, organised by number of white cards required
+
+1: My {parentshort} freaked out when she looked at my browser history and found ____.com/____. | variable | vargender | internet | family |
+1: During his midlife crisis, my {parentshort} got really into ____. | variable | vargender | family |
+1: Charades was ruined for me forever when my {parentshort} had to act out ____. | variable | vargender | family |
+1: {parentshort}, I swear! Despite its name, ____ is NOT a porno! | variable | vargender | family | sex |
+1: And it is said {their} ghost still wanders these halls, forever searching for {their} lost ____. | variable | vargender | fantasy |
+1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____." | variable | vargender | sex |
+1: On the next episode of Dragon Ball Z, Goku has a fierce battle with ____. | anime | cartoons | 
+1: Daddy, why is Mommy crying? | family | gender | feminist+ | 
+1: Turns out that ____-{adult} was neither the hero we needed nor wanted. | variable | vargender | comics |
+1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency. | economy | future |
+1: Anthropologists have recently discovered a primitive tribe that worships ____. | religion | history | race | academic |
+1: The primitive villagers were both shocked and amazed when I showed them ____. | race | 
+1: Alternative medicine is now embracing the curative powers of ____. | medicine | religion | 
+1: What did I bring back from Mexico? | murica | race | 
+1: White people like ____. | murica | race | 
+1: I do not know with which weapons World War III will be fought, but World War IV will be fought with ____. | future | war |
+1: War! What is it good for? | politics | war | 
+1: ____. High five, bro. | gender |
+1: ____: Good to the last drop. | popculture | quotes | adline |
+1:  ____: kid-tested, mother-approved. | popculture | quotes | adline |
+1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____. | science | medicine | academic | 
+1: ____. That is my fetish. | sex | personal | 
+1: What is the next great Kickstarter project? | internet | economy |
+1: What's my anti-drug? | drugs | personal | 
+1: ____? There's an app for that. | tech | internet | 
+1: I never truly understood ____ until I encountered ____. | two | personal |
+1: How am I maintaining my relationship status? | relationships | sex | personal |
+1: Life was difficult for cavemen before ____. | history | academic | 
+1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____. | history | academic |
+1: What will I bring back in time to convince people that I am a powerful wizard? | scifi | timetravel | 
+1: What's my secret power? | comics | personal |
+1: Science will never explain the origin of ____. | science | history | 
+1: The CIA now interrogates enemy agents by repeatedly subjecting them to ____. | politics | murica | war |
+1: I learned the hard way that you can't cheer up a grieving friend with ____. | personal | relationships | 
+1: Before I run for president, I must destroy all evidence of my involvement with ____. | politics | murica |
+1: Instead of coal, Santa now gives the bad children ____. | religion | holdays |
+
+2: An international tribunal has found ____ guilty of ____. | politics | two | 
+2: When I was tripping on acid, ____ turned into ____. | drugs | two |
+2: What's the next superhero / sidekick duo? | comics | two |
+2: I write slash fanfiction pairing ____ with ____. | internet | gay |
+2: ____ and ____ are the new hot couple. | two | popculture |
+2: ____ is the name of my ____ cover band. | two | music | 
+2: The next pokemon will combine ____ and ____. | two | anime | 
+
+3: Just announced: The brand new anime adaptation of ____, starring ____ as the voice of ____. | three | anime |
+3: Step 1: ____. Step 2: ____. Step 3: Profit. | three | richyrich |
+3: Few people know that {pantheon} is also the {deity} of {tvtropeshair}. Write a prayer for your follicles to {them}: | variable | vargender | three | fantasy | tvtropes | 
+
+## single-set black cards, organised by number of white cards required 
+
+1: What ended my last relationship? | sex | relationships |
+1: I wish I hadn't lost the instruction manual for ____. | tech |
+1: During sex, I like to think about ____. | sex | 
+1: What are my parents hiding from me? | family |
+1: What will always get you laid? | sex |
+1: When I'm in prison, I'll have ____ smuggled in. | murica |
+1: When I am a billionare, I shall erect a 50-foot statue to commemorate ____. | richyrich |
+1: What's there a tonne of in heaven? | religion | 
+1: What mildy annoyed you today? | personal | 
+1: Let's all rock out to the sounds of ____. | music | 
+1: ____ is my worst habit. | personal |
+1: What have you accomplished today? | personal |
+1: Why are you frothing with rage? | personal |
+1: What made you happy today? | personal |
+1: My ____ is too big! | personal |
+1: ____ makes me uncomfortable. | personal |
+1: Why do I hurt all over? | personal |
+1: What brought the orgy to a grinding halt? | sex |
+1: What has been making life difficult at the nudist colony? | sex | 
+1: I'm an expert on ____. | personal |
+1: ____ for president! | politics |
+1: Stop, drop, and ____. | quotes |
+1: The socialist governments of Scandinavia have declared that access to ____ is a basic human right. | politics | 
+1: Dear Sir or Madam, We regret to inform you that the Office of ____ has denied your request for ____. | politics |
+1: This is your captain speaking. Fasten your seatbelts and prepare for ____. | quotes |
+1: The Five Stages of Grief: denial, anger, bargaining, ____, acceptance. | quotes | 
+1: Everyone down on the ground! We don't want to hurt anyone. We're just here for ____. | quotes |
