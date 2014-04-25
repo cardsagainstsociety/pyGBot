@@ -1,33 +1,33 @@
 ## Black cards. Organised in sets.
-
+##
 ## All cards must have at least one topical set, in additional to whatever organisational
 ## sets it may require.
-
+##
 ## Organisational sets:
-##    two, three, variable (subset: vargender) unicode, americentric (cards that are not easy
-##    for non-americans to understand), freestyle, none, double
-
+##    two / three / variable (subset: vargender) / unicode
+##    americentric / freestyle / none / double
+##
 ## Topical sets:
-
+##
 ##    personal / family / relationship / sex / advice / body image /
-
+##
 ##    corporate / political / economy / crime / war / murica / 
 ##    future / history 
 ##    drug (includes alcohol) / medicine / science / academic / tech (includes coding) 
 ##    school / work / food / animal / dino / sport
-
+##
 ##    gender / feminist+ / race / gay / class / 
 ##    religion / holiday / death
-
+##
 ##    popculture / celebrity / disney
 ##    music / movie / tv / literature /
 ##    art / comic / anime / cartoon / xkcd
-
+##
 ##    internet / gaming (includes board games)
 ##    fairy tale / nursery rhyme / fantasy / scifi / hero / 
-
-##    quote /
-
+##
+##    quote 
+##
 ##    sub sets: these sets are always paired with at least one other topical set:
 ##        scifi subsets:      doctor who / star wars / timetravel
 ##        fantasy subsets:    tolkein / timetravel 
