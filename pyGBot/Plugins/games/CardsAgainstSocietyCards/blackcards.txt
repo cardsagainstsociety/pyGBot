@@ -45,355 +45,355 @@
 
 ## multi-set black cards, organised by number of white cards required
 
-1: My {parentshort} freaked out when she looked at my browser history and found ____.com/____. | variable | vargender | internet | family |
-1: During his midlife crisis, my {parentshort} got really into ____. | variable | vargender | family |
-1: Charades was ruined for me forever when my {parentshort} had to act out ____. | variable | vargender | family |
-1: {parentshort}, I swear! Despite its name, ____ is NOT a porno! | variable | vargender | family | sex |
-1: And it is said {their} ghost still wanders these halls, forever searching for {their} lost ____. | variable | vargender | fantasy |
-1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____." | variable | vargender | sex |
+1: During his midlife crisis, my {parentshort} got really into ____. | variable | vargender | family 
+1: Charades was ruined for me forever when my {parentshort} had to act out ____. | variable | vargender | family 
+1: {parentshort}, I swear! Despite its name, ____ is NOT a porno! | variable | vargender | family | sex 
+1: And it is said {their} ghost still wanders these halls, forever searching for {their} lost ____. | variable | vargender | fantasy 
+1: And the award for the filthiest scene in an adult film goes to "5 {adults} and ____." | variable | vargender | sex 
 1: On the next episode of Dragon Ball Z, Goku has a fierce battle with ____. | anime | cartoon | 
-1: Daddy, why is Mommy crying? | family | gender | feminist+ | 
-1: Turns out that ____-{adult} was neither the hero we needed nor wanted. | variable | vargender | comic | hero | quote | movieline | movie |
-1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency. | economy | future |
-1: Anthropologists have recently discovered a primitive tribe that worships ____. | religion | history | race | academic |
-1: The primitive villagers were both shocked and amazed when I showed them ____. | race | 
-1: Alternative medicine is now embracing the curative powers of ____. | medicine | religion | 
-1: What did I bring back from Mexico? | murica | race | 
-1: White people like ____. | murica | race | 
-1: I do not know with which weapons World War III will be fought, but World War IV will be fought with ____. | future | war |
-1: War! What is it good for? | political | war | 
-1: ____. High five, bro. | gender |
-1: ____: Good to the last drop. | popculture | quote | adline |
-1: ____: kid-tested, mother-approved. | popculture | quote | adline |
-1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____. | science | medicine | academic | 
-1: ____. That is my fetish. | sex | personal | 
-1: What is the next great Kickstarter project? | internet | economy |
-1: What's my anti-drug? | drug | personal | 
-1: ____? There's an app for that. | tech | internet | 
-1: I never truly understood ____ until I encountered ____. | two | personal |
-1: How am I maintaining my relationship status? | relationship | sex | personal |
-1: Life was difficult for cavemen before ____. | history | academic | 
-1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____. | history | academic |
-1: What will I bring back in time to convince people that I am a powerful wizard? | scifi | timetravel | 
-1: What's my secret power? | hero | personal |
-1: Science will never explain the origin of ____. | science | history | 
-1: The CIA now interrogates enemy agents by repeatedly subjecting them to ____. | political | murica | war |
-1: I learned the hard way that you can't cheer up a grieving friend with ____. | personal | relationship | 
-1: Before I run for president, I must destroy all evidence of my involvement with ____. | political | murica |
-1: Instead of coal, Santa now gives the bad children ____. | religion | holday |
-1: When I'm in prison, I'll have ____ smuggled in. | murica | crime | 
-1: When North Korea gets ____, it will be the end of the world. | political | war | future | 
-1: After blacking out during New Year's Eve, I was awoken by ____. | drug | holiday |
-1: During high school, I never really fit in until I found ____ club. | school | relationship |
-1: The blind date was going horribly until we discovered our shared interest in ____. | relationship | sex |
-1: Lovin' you is easy 'cause you're ____. | relationship | sex |
-1: Alcoholic games of Clue lead to ____. | drug | gaming |
-1: What is love without ____? | relationship | sex |
-1: In the future, ____ will fuel our cars. | future | tech | science |
-1: Finally! A service that delivers ____ right to your door. | future | tech | economy |
-1: Who needs college when you have ____. | school | economy |
-1: Hey baby, come back to my place and I'll show you ____. | sex | relationship | gender |
-1: The road to success is paved with ____. | school | work |
-1: This is the way the world ends \ This is the way the world ends \ Not with a bang but with ____. | quote | literature |
-1: I drink to forget ____. | personal | drug |
-1: During Picasso's often-overlooked {swatchcolour} Period, he produced hundreds of paintings of ____. | variable | history | art |
-1: What would {granda} find disturbing, yet oddly charming? | variable | vargender | family | 
-1: When I am the Mayor of {locnameUS}, I will create the Committee of ____. | murica | americentric |
-1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________. | murica | americentric |
-1: What does Dick Cheney prefer? | murica | political |
-1: BILLY MAYS HERE FOR ____. | americentric | quote | adline | 
-1: With Democrats and Republicans in a dead heat, the election was snatched by the ____ party. | political | murica | 
-1: The best part of waking up is ____ in your cup. | quote | adline |
-1: When I am the President of the United States, I will create the Department of ____. | murica | political |
-1: What's Teach for America using to inspire inner city students to succeed? | murica | race | americentric | 
-1: What did the U.S. airdrop to the children of Afghanistan? | murica | political | war |
-1: Major League Baseball has banned ____ for giving players an unfair advantage. | murica | drug | americentric |
-1: Due to a PR fiasco, Walmart no longer offers ____. | murica | corporate |
-1: While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ____. | murica | history | economy | political | race |
-1: In the distant future, historians will agree that ____ marked the beginning of America's decline. | history | academic | murica |
-1: Members of New York's social elite are paying thousands of dollars just to experience ____. | murica | class | 
-1: My country, 'tis of thee, sweet land of ____. | murica | quote | songline | americentric | 
-1: After months of debate, the Occupy Wall Street General Assembly could only agree on "More ____!" | murica | corporate | political | economy |
-1: Wake up, America. Christmas is under attack by secular liberals and their ____. | murica | religion | political | americentric |
-1: Only two things in life are certain: death and ____. | quote | murica | economy | political |
-1: In L.A. County Jail, word is you can trade 200 cigarettes for ____. | murica | crime | economy | 
-1: Life for American Indians was forever changed when the White Man introduced them to ____. | race | murica | history | academic |
-1: Dear Abby, I'm having some trouble with ____ and would like your advice. | murica | americentric | advice |
-1: What helps Obama unwind? | murica | political | obama | 
-1: In his second term, Obama will rid America of ____. | murica | political | obama | 
-1: In a news conference, Obama pulled out ____, to everyone's surprise. | murica | political | obama | 
-1: I got 99 problems but ____ ain't one. | music | quote | songline |
-1: I whip my ____ back and forth. | music | quote | songline |
-1: Money can't buy me love, but it can buy me ____. | music | quote | songline |
-1: I've got the whole world in my ____. | music | quote | songline |
-1: It's the end of ____ as we know it. | music | quote | songline | future | 
-1: Who let the dogs out? | music | quote | songline |
-1: We'll always have ____. | movie | quote | movieline | 
-1: And I would have gotten away with it, too, if it hadn't been for ____! | tv | cartoon | quote | tvline | crime |
-1: In his new self-produced album, Kanye West raps over the sounds of ____. | popculture | music | celebrity |
-1: Lady Gaga has revealed her new dress will be made of ____. | popculture | music | celebrity |
-1: Justin Beiber's new song is all about ____. | popculture | music | celebrity | 
-1: As part of his contract, Prince won't perform without ____ in his dressing room. | popculture | celebrity |
-1: In the new Disney Channel Original Movie, Hannah Montana struggles with ____ for the first time. | popculture | disney | celebrity |
-1: But before I kill you, Mr. Bond, I must show you ____. | popculture | movie | quote | movieline | death |
-1: This holiday season, Tim Allen must overcome his fear of ____ to save Christmas. | religion | holiday | movie | popculture | 
-1: To prepare for his upcoming role, Daniel Day-Lewis immersed himself in the world of ____. | popculture | movie |
-1: In his next movie, Will Smith saves the world from ____. | popculture | movie | celebrity |
-1: In his newest and most difficult stunt, David Blaine must escape from ____. | popculture | celebrity |
-1: Next time on Dr. Phil: How to talk to your child about ____. | popculture | celebrity | family | relationship | advice |
-1: Tonight on 20/20: What you don't know about ____ could kill you. | popculture | americentric | 
-1: This month's Cosmo: "Spice up your sex life by bringing ____ into the bedroom." | popculture | gender | sex | relationship |
-1: As part of his daily regimen, Anderson Cooper sets aside 15 minutes for ____. | popculture | celebrity |
-1: Coming to Broadway this season, ____: The Musical. | popculture | music |
-1: Next on ESPN2, the World Series of ____. | sport | americentric |
-1: What is Curious George so curious about? | literature | popculture |
-1: In the next episode, SpongeBob gets introduced to ____. | popculture | tv | 
-1: MTV's new reality show features eight washed-up celebrities living with ____. | popculture | tv | reality |
-1: This season on Man vs. Wild, Bear Grylls must survive in the depths of the Amazon with only ____ and his wits. | popculture | tv | reality | 
-1: What helps the {deity} {pantheon} unwind? | variable | vargender | fantasy |
-1: The seldomly mentioned 4th little pig built {their} house out of ____. | variable | vargender | literature | fairy tale | 
-1: Next from J.K. Rowling: Harry Potter and the Chamber of ____. | fantasy | literature |
-1: "Why Grandma", said Little Red Riding Hood, "What big ____ you have!" | literature | fairy tale | quote | 
-1: Whenever I'm splashed with cold water, I turn into ____. | literature | fantasy |
-1: The lion, the witch, and ____. | fantasy | literature | religion |
-1: You have my bow. AND MY ____. | fantasy | tolkein | literature | movie | quote | movieline |
-1: One does not simply walk into ____. | fantasy | tolkein | literature | movie | quote | movieline |
-1: A romantic, candlelit dinner would be incomplete without ____. | food | relationship | sex |
-1: Everything's better with ____. | food | quote | adline |
-1: Little Miss Muffet sat on a tuffet, eating her curds and ____. | food | nursery rhyme | literature | quote |
-1: What's the next Happy Meal toy? | food | murica |
-1: Who stole the cookies from the cookie jar? | food | crime |
-1: {They} who controls ____ controls the world. | variable | vargender | political | class | 
-1: ______. Still better than Vista. | original | tech | corporate |
-1: You can't succeed in show business without ______. | original | popculture | movie | tv |
-1: The reason I type in ALL CAPS? _____. | original | personal |
-1: You know what should be a crime? ______. | original | crime |
-1: When Pharaoh remained unmoved, Moses called down a plague of ____. | religion | history |
-1: In Rome, there are whisperings that the Vatican has a secret room devoted to ____. | religion | political |
-1: Every Christmas, my {auntuncle} gets drunk and tells the story about ____. | variable | gendervar | religion | holiday |
-1: On the third day of Christmas, my true love gave to me: three French hens, two turtle doves, and ____. | religion | holiday |
-1: Why He Really Resigned! / Pope Benedict's Secret Struggle with ____! | religion | political |
-1: Here is the church / Here is the steeple / Open the doors / And see all the ____. | religion | quote |
-1: ____. It's a trap! | scifi | star wars | movie | quote | movieline | 
-1: Live long and ____. | scifi | star trek | quote | tvline | tv | 
-1: The sad truth is, that at the edge of the universe, there is nothing but ____. | scifi | science | 
-1: I'M-A FIRIN' MAH ____! | scifi | quote | science | internet | 
-1: Go-Go-Gadget, ____! | scifi | tech | quote | movieline | tvline | cartoon | movie | tv | 
-1: Who would have guessed that the alien invasion would be easily thwarted by ____. | scifi | war | 
-1: ____ makes terrible pillow talk. | xkcd | relationship | sex | 
-1: What is the best way to protect yourself from Velociraptors? | xkcd | dino | 
-1: I'm like ____, except with love. | xkcd | relationship | 
-1: Do you really expect ____? No, Mister Bond. I expect you to die! | xkcd | movie | popculture | 
-1: What do we miss most from the internet in 1998? | xkcd | internet | history |
-1: All of my algorithms were really just disguised ____. | xkcd | tech | 
-1: When I eat ____, I like to pretend I'm a Turing machine. | xkcd | tech |
-1: Kill it with ____! | quote | death | 
-1: I have never in my life laughed harder than the first time I watched ____. | personal | internet |
-1: ____. Betcha can't have just one! | quote | adline |
-1: Everything's coming up ____. | quote | music | songline |
-1: Freestyle rapping is really just ____. | xkcd | music |
-1: It turns out God created the universe using ____. | xkcd | religion |
-1: The #1 Programmer's excuse for legitimately slacking off: ____. | xkcd | tech | 
-1: Social rule 99.1: If friends spend more than 60 minutes deciding what to do, they must default to ____. | xkcd | relationship | 
-1: ____ linked to Acne! 95% confidence. | xkcd | science |
-1: How many Google results are there for "Died in a ____ accident?" | xkcd | internet | death |
-1: Real Programmers use ____. | xkcd | tech | 
-1: After finding Higgs-Boson, I can always use the LHC for ____. | xkcd | science | 
-1: My health declined when I realized I could eat ____ whenever I wanted. | xkcd | food | 
-1: What's my favorite unit of measurement? | xkcd | murica |
-1: In the extended base metaphor, shortstop is ____. | xkcd | sports | sex | relationship |
-1: Now I have to live my whole life pretending ____ never happened. It's going to be a fun 70 years. | xkcd | future |
-1: My new favorite game is Strip ____. | xkcd | sex |
-1: ____. That's right. Shit just got REAL. | xkcd | popculture |
-1: Just because I have ____ doesn't mean you could milk me now. I'd have to be lactating. | xkcd | gender | 
-1: 2009 called? Did you warn them about ____? | xkcd | history | timetravel |
-1: I'm going to name my child ____. | xkcd | family |
-1: ____. It works in Kerbal Space Program. | xkcd | gaming | 
-1: ____ is too big for small talk. | xkcd | relationship | 
-1: University Researchers create life in lab! ____ blamed! | xkcd | science | academic |
-1: New movie this summer: ____ beats up everyone. | xkcd | movie | 
-## 1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans. | murica | popculture | double | 
-1: After the earthquake, Sean Penn brought ____ to the people of Haiti. | murica | popculture | double | 
+1: Daddy, why is Mommy crying? | family | gender | feminist+ 
+1: Turns out that ____-{adult} was neither the hero we needed nor wanted. | variable | vargender | comic | hero | quote | movieline | movie 
+1: In 1,000 years, when paper money is but a distant memory, ____ will be our currency. | economy | future 
+1: Anthropologists have recently discovered a primitive tribe that worships ____. | religion | history | race | academic 
+1: The primitive villagers were both shocked and amazed when I showed them ____. | race 
+1: Alternative medicine is now embracing the curative powers of ____. | medicine | religion 
+1: What did I bring back from Mexico? | murica | race 
+1: White people like ____. | murica | race 
+1: I do not know with which weapons World War III will be fought, but World War IV will be fought with ____. | future | war 
+1: War! What is it good for? | political | war 
+1: ____. High five, bro. | gender 
+1: ____: Good to the last drop. | popculture | quote | adline 
+1: ____: kid-tested, mother-approved. | popculture | quote | adline 
+1: Studies show that lab rats navigate mazes 50% faster after being exposed to ____. | science | medicine | academic 
+1: ____. That is my fetish. | sex | personal 
+1: What is the next great Kickstarter project? | internet | economy 
+1: What's my anti-drug? | drug | personal 
+1: ____? There's an app for that. | tech | internet 
+1: I never truly understood ____ until I encountered ____. | two | personal 
+1: How am I maintaining my relationship status? | relationship | sex | personal 
+1: Life was difficult for cavemen before ____. | history | academic 
+1: In an attempt to reach a wider audience, the Smithsonian Museum of Natural History has opened an interactive exhibit on ____. | history | academic 
+1: What will I bring back in time to convince people that I am a powerful wizard? | scifi | timetravel 
+1: What's my secret power? | hero | personal 
+1: Science will never explain the origin of ____. | science | history 
+1: The CIA now interrogates enemy agents by repeatedly subjecting them to ____. | political | murica | war 
+1: I learned the hard way that you can't cheer up a grieving friend with ____. | personal | relationship 
+1: Before I run for president, I must destroy all evidence of my involvement with ____. | political | murica 
+1: Instead of coal, Santa now gives the bad children ____. | religion | holday 
+1: When I'm in prison, I'll have ____ smuggled in. | murica | crime 
+1: When North Korea gets ____, it will be the end of the world. | political | war | future 
+1: After blacking out during New Year's Eve, I was awoken by ____. | drug | holiday 
+1: During high school, I never really fit in until I found ____ club. | school | relationship 
+1: The blind date was going horribly until we discovered our shared interest in ____. | relationship | sex 
+1: Lovin' you is easy 'cause you're ____. | relationship | sex 
+1: Alcoholic games of Clue lead to ____. | drug | gaming 
+1: What is love without ____? | relationship | sex 
+1: In the future, ____ will fuel our cars. | future | tech | science 
+1: Finally! A service that delivers ____ right to your door. | future | tech | economy 
+1: Who needs college when you have ____. | school | economy 
+1: Hey baby, come back to my place and I'll show you ____. | sex | relationship | gender 
+1: The road to success is paved with ____. | school | work 
+1: This is the way the world ends \ This is the way the world ends \ Not with a bang but with ____. | quote | literature 
+1: I drink to forget ____. | personal | drug 
+1: During Picasso's often-overlooked {swatchcolour} Period, he produced hundreds of paintings of ____. | variable | history | art 
+1: What would {granda} find disturbing, yet oddly charming? | variable | vargender | family 
+1: When I am the Mayor of {locnameUS}, I will create the Committee of ____. | murica | americentric 
+1: In its new tourism campaign, {locnameUS} proudly proclaims that it has finally eliminated __________. | murica | americentric 
+1: What does Dick Cheney prefer? | murica | political 
+1: BILLY MAYS HERE FOR ____. | americentric | quote | adline 
+1: With Democrats and Republicans in a dead heat, the election was snatched by the ____ party. | political | murica 
+1: The best part of waking up is ____ in your cup. | quote | adline 
+1: When I am the President of the United States, I will create the Department of ____. | murica | political 
+1: What's Teach for America using to inspire inner city students to succeed? | murica | race | americentric 
+1: What did the U.S. airdrop to the children of Afghanistan? | murica | political | war 
+1: Major League Baseball has banned ____ for giving players an unfair advantage. | murica | drug | americentric 
+1: Due to a PR fiasco, Walmart no longer offers ____. | murica | corporate 
+1: While the United States raced the Soviet Union to the moon, the Mexican government funneled millions of pesos into research on ____. | murica | history | economy | political | race 
+1: In the distant future, historians will agree that ____ marked the beginning of America's decline. | history | academic | murica 
+1: Members of New York's social elite are paying thousands of dollars just to experience ____. | murica | class 
+1: My country, 'tis of thee, sweet land of ____. | murica | quote | songline | americentric 
+1: After months of debate, the Occupy Wall Street General Assembly could only agree on "More ____!" | murica | corporate | political | economy 
+1: Wake up, America. Christmas is under attack by secular liberals and their ____. | murica | religion | political | americentric 
+1: Only two things in life are certain: death and ____. | quote | murica | economy | political 
+1: In L.A. County Jail, word is you can trade 200 cigarettes for ____. | murica | crime | economy 
+1: Life for American Indians was forever changed when the White Man introduced them to ____. | race | murica | history | academic 
+1: Dear Abby, I'm having some trouble with ____ and would like your advice. | murica | americentric | advice 
+1: What helps Obama unwind? | murica | political | obama 
+1: In his second term, Obama will rid America of ____. | murica | political | obama 
+1: In a news conference, Obama pulled out ____, to everyone's surprise. | murica | political | obama 
+1: I got 99 problems but ____ ain't one. | music | quote | songline 
+1: I whip my ____ back and forth. | music | quote | songline 
+1: Money can't buy me love, but it can buy me ____. | music | quote | songline 
+1: I've got the whole world in my ____. | music | quote | songline 
+1: It's the end of ____ as we know it. | music | quote | songline | future 
+1: Who let the dogs out? | music | quote | songline 
+1: We'll always have ____. | movie | quote | movieline 
+1: And I would have gotten away with it, too, if it hadn't been for ____! | tv | cartoon | quote | tvline | crime 
+1: In his new self-produced album, Kanye West raps over the sounds of ____. | popculture | music | celebrity 
+1: Lady Gaga has revealed her new dress will be made of ____. | popculture | music | celebrity 
+1: Justin Beiber's new song is all about ____. | popculture | music | celebrity 
+1: As part of his contract, Prince won't perform without ____ in his dressing room. | popculture | celebrity 
+1: In the new Disney Channel Original Movie, Hannah Montana struggles with ____ for the first time. | popculture | disney | celebrity 
+1: But before I kill you, Mr. Bond, I must show you ____. | popculture | movie | quote | movieline | death 
+1: This holiday season, Tim Allen must overcome his fear of ____ to save Christmas. | religion | holiday | movie | popculture 
+1: To prepare for his upcoming role, Daniel Day-Lewis immersed himself in the world of ____. | popculture | movie 
+1: In his next movie, Will Smith saves the world from ____. | popculture | movie | celebrity 
+1: In his newest and most difficult stunt, David Blaine must escape from ____. | popculture | celebrity 
+1: Next time on Dr. Phil: How to talk to your child about ____. | popculture | celebrity | family | relationship | advice 
+1: Tonight on 20/20: What you don't know about ____ could kill you. | popculture | americentric 
+1: This month's Cosmo: "Spice up your sex life by bringing ____ into the bedroom." | popculture | gender | sex | relationship 
+1: As part of his daily regimen, Anderson Cooper sets aside 15 minutes for ____. | popculture | celebrity 
+1: Coming to Broadway this season, ____: The Musical. | popculture | music 
+1: Next on ESPN2, the World Series of ____. | sport | americentric 
+1: What is Curious George so curious about? | literature | popculture 
+1: In the next episode, SpongeBob gets introduced to ____. | popculture | tv 
+1: MTV's new reality show features eight washed-up celebrities living with ____. | popculture | tv | reality 
+1: This season on Man vs. Wild, Bear Grylls must survive in the depths of the Amazon with only ____ and his wits. | popculture | tv | reality 
+1: What helps the {deity} {pantheon} unwind? | variable | vargender | fantasy 
+1: The seldomly mentioned 4th little pig built {their} house out of ____. | variable | vargender | literature | fairy tale 
+1: Next from J.K. Rowling: Harry Potter and the Chamber of ____. | fantasy | literature 
+1: "Why Grandma", said Little Red Riding Hood, "What big ____ you have!" | literature | fairy tale | quote 
+1: Whenever I'm splashed with cold water, I turn into ____. | literature | fantasy 
+1: The lion, the witch, and ____. | fantasy | literature | religion 
+1: You have my bow. AND MY ____. | fantasy | tolkein | literature | movie | quote | movieline 
+1: One does not simply walk into ____. | fantasy | tolkein | literature | movie | quote | movieline 
+1: A romantic, candlelit dinner would be incomplete without ____. | food | relationship | sex 
+1: Everything's better with ____. | food | quote | adline 
+1: Little Miss Muffet sat on a tuffet, eating her curds and ____. | food | nursery rhyme | literature | quote 
+1: What's the next Happy Meal toy? | food | murica 
+1: Who stole the cookies from the cookie jar? | food | crime 
+1: {They} who controls ____ controls the world. | variable | vargender | political | class 
+1: ______. Still better than Vista. | original | tech | corporate 
+1: You can't succeed in show business without ______. | original | popculture | movie | tv 
+1: The reason I type in ALL CAPS? _____. | original | personal 
+1: You know what should be a crime? ______. | original | crime 
+1: When Pharaoh remained unmoved, Moses called down a plague of ____. | religion | history 
+1: In Rome, there are whisperings that the Vatican has a secret room devoted to ____. | religion | political 
+1: Every Christmas, my {auntuncle} gets drunk and tells the story about ____. | variable | gendervar | religion | holiday 
+1: On the third day of Christmas, my true love gave to me: three French hens, two turtle doves, and ____. | religion | holiday 
+1: Why He Really Resigned! / Pope Benedict's Secret Struggle with ____! | religion | political 
+1: Here is the church / Here is the steeple / Open the doors / And see all the ____. | religion | quote 
+1: ____. It's a trap! | scifi | star wars | movie | quote | movieline 
+1: Live long and ____. | scifi | star trek | quote | tvline | tv 
+1: The sad truth is, that at the edge of the universe, there is nothing but ____. | scifi | science 
+1: I'M-A FIRIN' MAH ____! | scifi | quote | science | internet 
+1: Go-Go-Gadget, ____! | scifi | tech | quote | movieline | tvline | cartoon | movie | tv 
+1: Who would have guessed that the alien invasion would be easily thwarted by ____. | scifi | war 
+1: ____ makes terrible pillow talk. | xkcd | relationship | sex 
+1: What is the best way to protect yourself from Velociraptors? | xkcd | dino 
+1: I'm like ____, except with love. | xkcd | relationship 
+1: Do you really expect ____? No, Mister Bond. I expect you to die! | xkcd | movie | popculture 
+1: What do we miss most from the internet in 1998? | xkcd | internet | history 
+1: All of my algorithms were really just disguised ____. | xkcd | tech 
+1: When I eat ____, I like to pretend I'm a Turing machine. | xkcd | tech 
+1: Kill it with ____! | quote | death 
+1: I have never in my life laughed harder than the first time I watched ____. | personal | internet 
+1: ____. Betcha can't have just one! | quote | adline 
+1: Everything's coming up ____. | quote | music | songline 
+1: Freestyle rapping is really just ____. | xkcd | music 
+1: It turns out God created the universe using ____. | xkcd | religion 
+1: The #1 Programmer's excuse for legitimately slacking off: ____. | xkcd | tech 
+1: Social rule 99.1: If friends spend more than 60 minutes deciding what to do, they must default to ____. | xkcd | relationship 
+1: ____ linked to Acne! 95% confidence. | xkcd | science 
+1: How many Google results are there for "Died in a ____ accident?" | xkcd | internet | death 
+1: Real Programmers use ____. | xkcd | tech 
+1: After finding Higgs-Boson, I can always use the LHC for ____. | xkcd | science 
+1: My health declined when I realized I could eat ____ whenever I wanted. | xkcd | food 
+1: What's my favorite unit of measurement? | xkcd | murica 
+1: In the extended base metaphor, shortstop is ____. | xkcd | sports | sex | relationship 
+1: Now I have to live my whole life pretending ____ never happened. It's going to be a fun 70 years. | xkcd | future 
+1: My new favorite game is Strip ____. | xkcd | sex 
+1: ____. That's right. Shit just got REAL. | xkcd | popculture 
+1: Just because I have ____ doesn't mean you could milk me now. I'd have to be lactating. | xkcd | gender 
+1: 2009 called? Did you warn them about ____? | xkcd | history | timetravel 
+1: I'm going to name my child ____. | xkcd | family 
+1: ____. It works in Kerbal Space Program. | xkcd | gaming 
+1: ____ is too big for small talk. | xkcd | relationship 
+1: University Researchers create life in lab! ____ blamed! | xkcd | science | academic 
+1: New movie this summer: ____ beats up everyone. | xkcd | movie 
+## 1: After Hurricane Katrina, Sean Penn brought ____ to all the people of New Orleans. | murica | popculture | double 
+1: After the earthquake, Sean Penn brought ____ to the people of Haiti. | murica | popculture | double 
 
-2: ____'s fetish: ____. | two | xkcd | sex |
-2: When I was a kid, all we had in Lunchables were three ____ and ____. | two | murica | americentric | food |
-2: ____ was banned from tinychat because of ____. | two | internet | 
-2: And the Academy Award for ____ goes to ____. | two | popculture | murica | 
-2: Here's what you can expect for the new year. Out: ____. In: ____. | two | popculture |
-2: An international tribunal has found ____ guilty of ____. | political | two | 
-2: When I was tripping on acid, ____ turned into ____. | drug | two |
-2: What's the next superhero / sidekick duo? | comic | two | hero | 
-2: I write slash fanfiction pairing ____ with ____. | internet | gay |
-2: ____ and ____ are the new hot couple. | two | popculture |
-2: ____ is the name of my ____ cover band. | two | music | 
-2: The next pokemon will combine ____ and ____. | two | anime | 
-2: If God didn't want us to enjoy ____, {they} wouldn't have given us ____. | two | variable | gendervar | religion |
-2: Rumor has it that Vladimir Putin's favorite delicacy is ____ stuffed with ____. | two | food | political |
-2: The new fad diet is all about making people do ____ and eat ____. | two | food |
-2: Michael Bay's new three-hour action epic pits ____ against ____. | two | popculture | movie | celebrity | 
-2: In his new summer comedy, Rob Schneider is ____ trapped in the body of ____. | two | popculture | movie | celebrity |
-2: On its last dying breath, ____ sent out a cry for help. A bunch of ____ came to the rescue. | two | animal |
-2: With enough time and pressure, ____ will turn into ____. | two | science |
-2: ____: Hours of fun. Easy to use. Perfect for ____! | two | quote | adline | 
-2: After months of practice with ____, I think I'm finally ready for ____. | two | personal |
-2: If life gives you ____, make ____. | two | quote |
-2: After I saw ____, I needed ____. | two | personal | 
-2: In M. Night Shyamalan's new movie, Bruce Willis discovers that ____ had really been ____ all along. | two | popculture | movie | celebrity |
-2: The hills are alive with ____ of ____. | movie | music | quote | movieline | songline | 
-2: Lifetime presents ____, the story of ____. | popculture | gender | tv |
-2: By 2019, ____ will be outnumbered by ____. | two | xkcd | future |
-2: I got a lot more interested in ____ when I made the connection to ____. | two | xkcd |
-2: If I could rearrange the alphabet, I'd put ____ and ____ together. | two | xkcd | 
-2: I like to alter songs by replacing ____ with ____. | two | xkcd | music |
-2: Ebay review: Instead of ____, package contained ____. Would not buy again. | two | xkcd | internet |
-2: ____ is just applied ____. | two | xkcd |
-2: I don't actually care about ____, I just like ____. | two | xkcd |
-2: Until I see more data, I'm going to assume ____ causes ____. | two | xkcd | science | academic |
-2: It's fun to mentally replace the word ____ with ____. | two | xkcd |
-2: The past is a foreign country... with ____ and ____! | two | xkcd | past | race |
-2: What role has social media played in ____? Well, it's certainly made ____ stupider. | two | xkcd | internet | relationship |
-2: I didn't actually want you to be ____; I just wanted you to be ____. | two | xkcd | relationship |
-2: That's right, I killed ____. How, you ask? ____. | two | death | crime |
-2: A wild ____ appeared! It used ____! | two | animal | 
-2: ____ and ____ are the new hot couple. | two | popculture | relationship | 
-2: Before ____, all we had was ____. | two | history |
-2: ____ is a slippery slope that leads to ____. | two | political |
-2: In a pinch, ____ can be a suitable substitute for ____. | two | food | science |
-2: In a world ravaged by ____, our only solace is ____. | two | war | future |
-2: I spent my whole life working toward ____, only to have it ruined by ____. | two | work |
-2: Having problems with ____? Try ____! | two | advice |
+2: My {parentshort} freaked out when she looked at my browser history and found ____.com/____. | variable | vargender | internet | family 
+2: ____'s fetish: ____. | two | xkcd | sex 
+2: When I was a kid, all we had in Lunchables were three ____ and ____. | two | murica | americentric | food 
+2: ____ was banned from tinychat because of ____. | two | internet 
+2: And the Academy Award for ____ goes to ____. | two | popculture | murica 
+2: Here's what you can expect for the new year. Out: ____. In: ____. | two | popculture 
+2: An international tribunal has found ____ guilty of ____. | political | two 
+2: When I was tripping on acid, ____ turned into ____. | drug | two 
+2: What's the next superhero / sidekick duo? | comic | two | hero 
+2: I write slash fanfiction pairing ____ with ____. | internet | gay 
+2: ____ and ____ are the new hot couple. | two | popculture 
+2: ____ is the name of my ____ cover band. | two | music 
+2: The next pokemon will combine ____ and ____. | two | anime 
+2: If God didn't want us to enjoy ____, {they} wouldn't have given us ____. | two | variable | gendervar | religion 
+2: Rumor has it that Vladimir Putin's favorite delicacy is ____ stuffed with ____. | two | food | political 
+2: The new fad diet is all about making people do ____ and eat ____. | two | food 
+2: Michael Bay's new three-hour action epic pits ____ against ____. | two | popculture | movie | celebrity 
+2: In his new summer comedy, Rob Schneider is ____ trapped in the body of ____. | two | popculture | movie | celebrity 
+2: On its last dying breath, ____ sent out a cry for help. A bunch of ____ came to the rescue. | two | animal 
+2: With enough time and pressure, ____ will turn into ____. | two | science 
+2: ____: Hours of fun. Easy to use. Perfect for ____! | two | quote | adline 
+2: After months of practice with ____, I think I'm finally ready for ____. | two | personal 
+2: If life gives you ____, make ____. | two | quote 
+2: After I saw ____, I needed ____. | two | personal 
+2: In M. Night Shyamalan's new movie, Bruce Willis discovers that ____ had really been ____ all along. | two | popculture | movie | celebrity 
+2: The hills are alive with ____ of ____. | movie | music | quote | movieline | songline 
+2: Lifetime presents ____, the story of ____. | popculture | gender | tv 
+2: By 2019, ____ will be outnumbered by ____. | two | xkcd | future 
+2: I got a lot more interested in ____ when I made the connection to ____. | two | xkcd 
+2: If I could rearrange the alphabet, I'd put ____ and ____ together. | two | xkcd 
+2: I like to alter songs by replacing ____ with ____. | two | xkcd | music 
+2: Ebay review: Instead of ____, package contained ____. Would not buy again. | two | xkcd | internet 
+2: ____ is just applied ____. | two | xkcd 
+2: I don't actually care about ____, I just like ____. | two | xkcd 
+2: Until I see more data, I'm going to assume ____ causes ____. | two | xkcd | science | academic 
+2: It's fun to mentally replace the word ____ with ____. | two | xkcd 
+2: The past is a foreign country... with ____ and ____! | two | xkcd | past | race 
+2: What role has social media played in ____? Well, it's certainly made ____ stupider. | two | xkcd | internet | relationship 
+2: I didn't actually want you to be ____; I just wanted you to be ____. | two | xkcd | relationship 
+2: That's right, I killed ____. How, you ask? ____. | two | death | crime 
+2: A wild ____ appeared! It used ____! | two | animal 
+2: ____ and ____ are the new hot couple. | two | popculture | relationship 
+2: Before ____, all we had was ____. | two | history 
+2: ____ is a slippery slope that leads to ____. | two | political 
+2: In a pinch, ____ can be a suitable substitute for ____. | two | food | science 
+2: In a world ravaged by ____, our only solace is ____. | two | war | future 
+2: I spent my whole life working toward ____, only to have it ruined by ____. | two | work 
+2: Having problems with ____? Try ____! | two | advice 
 
 
-3: The Holy Trinity: ____, ____, and ____! | three | religion | freestyle | 
-3: Plan a three course meal. | three | food | freestyle |
-3: Best drink ever: One part ____, three parts ____, and a splash of ____. | three | food | drug | freestyle |
-3: Spoiler Alert! ____ kills ____ with ____! | three | xkcd | death | movie | tv |
-3: I set up script to buy things on ebay for $1, but then it bought ____, ____, and ____. | three | xkcd | relationship | economy |
-3: Take me down to the ____, where the ____ is green and the ____ are pretty. | three | xkcd | music | songline |
-3: Just announced: The brand new anime adaptation of ____, starring ____ as the voice of ____. | three | anime |
-3: Step 1: ____. Step 2: ____. Step 3: Profit. | three | class | economy | corporate | freestyle |
-3: Few people know that {pantheon} is also the {deity} of {tvtropeshair}. Write a prayer for your follicles to {them}: | variable | vargender | three | fantasy | tvtropes | freestyle |
-3: Make a haiku. | three | end game | freestyle |
-3: ____ + ____ = ____. | three | freestyle |
-3: I went from ____ to ____, all thanks to ____. | three | quote | adline |
+3: The Holy Trinity: ____, ____, and ____! | three | religion | freestyle 
+3: Plan a three course meal. | three | food | freestyle 
+3: Best drink ever: One part ____, three parts ____, and a splash of ____. | three | food | drug | freestyle 
+3: Spoiler Alert! ____ kills ____ with ____! | three | xkcd | death | movie | tv 
+3: I set up script to buy things on ebay for $1, but then it bought ____, ____, and ____. | three | xkcd | relationship | economy 
+3: Take me down to the ____, where the ____ is green and the ____ are pretty. | three | xkcd | music | songline 
+3: Just announced: The brand new anime adaptation of ____, starring ____ as the voice of ____. | three | anime 
+3: Step 1: ____. Step 2: ____. Step 3: Profit. | three | class | economy | corporate | freestyle 
+3: Few people know that {pantheon} is also the {deity} of {tvtropeshair}. Write a prayer for your follicles to {them}: | variable | vargender | three | fantasy | tvtropes | freestyle 
+3: Make a haiku. | three | end game | freestyle 
+3: ____ + ____ = ____. | three | freestyle 
+3: I went from ____ to ____, all thanks to ____. | three | quote | adline 
 
 
 ## single-set black cards
 
-1: I'm sorry, Professor, but I couldn't complete my homework because of ____. | school | 
-1: Instead of playing Cards Against Society, you could be ____. | gaming |
-1: Who the hell do you think I am?! | personal |
-1: WANTED: $50,000,000,000 reward for the apprehension of____. | crime |
-1: Of my entire collection, my most prized possession is ____. | personal | 
-1: Why can't I sleep at night? | personal | 
-1: ____ is the root of all evil. | religion |
-1: The votes are in, and the new high school mascot is ____. | school |
-1: ____ sounds like a great alternative rock band. | music | 
-1: The latest novelty Twitter account is @____. | internet |
-1: My gym teacher got fired for adding ____ to the obstacle course. | school | 
-1: And what did you bring for show and tell? | school |
-1: ____.tumblr.com | internet |
-1: ____: literally worse than Hitler. | internet | political | 
-1: But that ____ has sailed. | quote | 
-1: The class field trip was completely ruined by ____. | school | 
-1: Don't get mad, get ____. | quote |
-1: A successful job interview begins with a firm handshake and ends with ____. | work | 
-1: Call the law offices of Goldstein & Goldstein, because no one should have to tolerate ____ in the workplace. | work | 
-1: What's the gift that keeps on giving? | quote |
-1: When short on money, you can always ____. | economy | 
-1: No one likes me after I posted ____ in the TMI thread. | internet | 
-1: What the fuck is wrong with you? | personal |
-1: I'm not like the rest of you. I'm too rich and busy for ____. | class |
-1: What ended my last relationship? | sex | relationship |
-1: I wish I hadn't lost the instruction manual for ____. | tech |
-1: During sex, I like to think about ____. | sex | 
-1: What are my parents hiding from me? | family |
-1: I finally realized I hit rock bottom when I started digging through dumpsters for ____. | class |
-1: ____. That's how I want to die. | death | 
-1: Don't get mad, get ____. | quote |
-1: ____. Awesome in theory, kind of a mess in practice. | science | 
-1: The victim was found with ____. | death |
-1: What keeps me warm during the cold, cold winter? | personal | 
-1: When I was 25, I won an award for ____. | personal | 
-1: Think before you ____. | quote | drug |
-1: OH MY GOD THIS IS THE GREATEST ____ I'VE EVER SEEN IN MY LIFE! | internet | 
-1: What will always get you laid? | sex |
-1: When I am a billionare, I shall erect a 50-foot statue to commemorate ____. | class |
-1: What's there a tonne of in heaven? | religion | 
-1: What mildy annoyed you today? | personal | 
-1: Let's all rock out to the sounds of ____. | music | 
-1: ____ is my worst habit. | personal |
-1: What have you accomplished today? | personal |
-1: Why are you frothing with rage? | personal |
-1: What made you happy today? | personal |
-1: My ____ is too big! | personal |
-1: ____ makes me uncomfortable. | personal |
-1: Why do I hurt all over? | personal |
-1: What brought the orgy to a grinding halt? | sex |
-1: What has been making life difficult at the nudist colony? | sex | 
-1: I'm an expert on ____. | personal |
-1: ____ for president! | political |
-1: Stop, drop, and ____. | quote |
-1: The socialist governments of Scandinavia have declared that access to ____ is a basic human right. | political | 
-1: Dear Sir or Madam, We regret to inform you that the Office of ____ has denied your request for ____. | political |
-1: This is your captain speaking. Fasten your seatbelts and prepare for ____. | quote |
-1: The Five Stages of Grief: denial, anger, bargaining, ____, acceptance. | quote | 
-1: Everyone down on the ground! We don't want to hurt anyone. We're just here for ____. | quote |
-1: Tastes like ____. | food |
-1: Waiter, what's this ____ doing in my soup? | food | 
-1: What don't you want to find in your Chinese food? | food | 
-1: Jesus is ____. | religion | 
-1: In the seventh circle of Hell, sinners must endure ____ for all eternity. | religion |
-1: What am I giving up for Lent? | religion | holiday |
-1: Praise ____! | religion | 
-1: I'm pretty sure you can't send ____ through the mail. | xkcd | 
-1: Dreaming about ____ in Cirque du Soleil. | xkcd | 
-1: Human intelligence decreases with increasing proximity to ____. | xkcd | 
-1: Did you know you can just buy ____? | xkcd | 
-1: Why do you have a crossbow in your desk? | xkcd | 
-1: If you really hate someone, teach them to recognize ____. | xkcd | 
-1: Did you know November is ____ Awareness Month? | xkcd | 
-1: ____. So it has come to this. | xkcd | 
-1: ____ would be a good name for a band. | xkcd | 
-1: ____ wouldn't be funny if not for the irony. | xkcd | 
-1: Help, I'm trapped in a ____ factory! | xkcd | 
-1: None of the places I floated to had ____. | xkcd | 
-1: ____. My normal method is useless here. | xkcd | 
-1: We had a ____ party, but it turned out not to be very much fun. | xkcd | 
-1: My hobby: ____. | xkcd | 
+1: I'm sorry, Professor, but I couldn't complete my homework because of ____. | school 
+1: Instead of playing Cards Against Society, you could be ____. | gaming 
+1: Who the hell do you think I am?! | personal 
+1: WANTED: $50,000,000,000 reward for the apprehension of____. | crime 
+1: Of my entire collection, my most prized possession is ____. | personal 
+1: Why can't I sleep at night? | personal 
+1: ____ is the root of all evil. | religion 
+1: The votes are in, and the new high school mascot is ____. | school 
+1: ____ sounds like a great alternative rock band. | music 
+1: The latest novelty Twitter account is @____. | internet 
+1: My gym teacher got fired for adding ____ to the obstacle course. | school 
+1: And what did you bring for show and tell? | school 
+1: ____.tumblr.com | internet 
+1: ____: literally worse than Hitler. | internet | political 
+1: But that ____ has sailed. | quote 
+1: The class field trip was completely ruined by ____. | school 
+1: Don't get mad, get ____. | quote 
+1: A successful job interview begins with a firm handshake and ends with ____. | work 
+1: Call the law offices of Goldstein & Goldstein, because no one should have to tolerate ____ in the workplace. | work 
+1: What's the gift that keeps on giving? | quote 
+1: When short on money, you can always ____. | economy 
+1: No one likes me after I posted ____ in the TMI thread. | internet 
+1: What the fuck is wrong with you? | personal 
+1: I'm not like the rest of you. I'm too rich and busy for ____. | class 
+1: What ended my last relationship? | sex | relationship 
+1: I wish I hadn't lost the instruction manual for ____. | tech 
+1: During sex, I like to think about ____. | sex 
+1: What are my parents hiding from me? | family 
+1: I finally realized I hit rock bottom when I started digging through dumpsters for ____. | class 
+1: ____. That's how I want to die. | death 
+1: Don't get mad, get ____. | quote 
+1: ____. Awesome in theory, kind of a mess in practice. | science 
+1: The victim was found with ____. | death 
+1: What keeps me warm during the cold, cold winter? | personal 
+1: When I was 25, I won an award for ____. | personal 
+1: Think before you ____. | quote | drug 
+1: OH MY GOD THIS IS THE GREATEST ____ I'VE EVER SEEN IN MY LIFE! | internet 
+1: What will always get you laid? | sex 
+1: When I am a billionare, I shall erect a 50-foot statue to commemorate ____. | class 
+1: What's there a tonne of in heaven? | religion 
+1: What mildy annoyed you today? | personal 
+1: Let's all rock out to the sounds of ____. | music 
+1: ____ is my worst habit. | personal 
+1: What have you accomplished today? | personal 
+1: Why are you frothing with rage? | personal 
+1: What made you happy today? | personal 
+1: My ____ is too big! | personal 
+1: ____ makes me uncomfortable. | personal 
+1: Why do I hurt all over? | personal 
+1: What brought the orgy to a grinding halt? | sex 
+1: What has been making life difficult at the nudist colony? | sex 
+1: I'm an expert on ____. | personal 
+1: ____ for president! | political 
+1: Stop, drop, and ____. | quote 
+1: The socialist governments of Scandinavia have declared that access to ____ is a basic human right. | political 
+1: Dear Sir or Madam, We regret to inform you that the Office of ____ has denied your request for ____. | political 
+1: This is your captain speaking. Fasten your seatbelts and prepare for ____. | quote 
+1: The Five Stages of Grief: denial, anger, bargaining, ____, acceptance. | quote 
+1: Everyone down on the ground! We don't want to hurt anyone. We're just here for ____. | quote 
+1: Tastes like ____. | food 
+1: Waiter, what's this ____ doing in my soup? | food 
+1: What don't you want to find in your Chinese food? | food 
+1: Jesus is ____. | religion 
+1: In the seventh circle of Hell, sinners must endure ____ for all eternity. | religion 
+1: What am I giving up for Lent? | religion | holiday 
+1: Praise ____! | religion 
+1: I'm pretty sure you can't send ____ through the mail. | xkcd 
+1: Dreaming about ____ in Cirque du Soleil. | xkcd 
+1: Human intelligence decreases with increasing proximity to ____. | xkcd 
+1: Did you know you can just buy ____? | xkcd 
+1: Why do you have a crossbow in your desk? | xkcd 
+1: If you really hate someone, teach them to recognize ____. | xkcd 
+1: Did you know November is ____ Awareness Month? | xkcd 
+1: ____. So it has come to this. | xkcd 
+1: ____ would be a good name for a band. | xkcd 
+1: ____ wouldn't be funny if not for the irony. | xkcd 
+1: Help, I'm trapped in a ____ factory! | xkcd 
+1: None of the places I floated to had ____. | xkcd 
+1: ____. My normal method is useless here. | xkcd 
+1: We had a ____ party, but it turned out not to be very much fun. | xkcd 
+1: My hobby: ____. | xkcd 
 
 
 ## no set blackcards (technical sets don't count)
-1: Take ____, it will last longer. | none |
-1: There are guilty pleasures. And then there's ____. | none |
-1: What do I keep hidden in the crawlspace? | none |
-1: The Himalayas are filled with many perils, such as ____. | none | 
-1: TSA guidelines now prohibit ____ on airplanes. | none | 
-1: I can extrude ____, but I can't retract it. | xkcd | 
-1: What's that sound? | none | 
-1: It's a pity that kids these days are all getting involved with ____. | none | 
-1: What's the most emo? | none | 
-1: ____ would be woefully incomplete without ____. | none | 
-1: The healing process began when I joined a support group for victims of ____. | none | 
-1: Have fun, don't be ____. | none | 
-1: What is the next big sideshow attraction? | none | 
-1: ____ ruined many people's childhood. | none | 
-1: My life for ____! | none | 
-1: What never fails to liven up the party? | none | 
-1: What gets better with age? | none | 
-1: Who needs a bidet when you have ____? | none | 
-1: ____ is the only thing that matters. | none | 
-1: My life for ____! | none | 
-1: No one wants to see your ____. | none | 
-1: STOP OR I WILL ____. | none | 
-1: ____! You know, for kids. | none | 
-1: What can you always find in between the couch cushions? | none | 
-1: What's a {kid}'s best friend? | variable | vargender | none | 
-2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____. | variable | vargender | two | none | 
-2: For my next trick, I will pull ____ out of ____. | two | none |
-2: My life is ruled by a vicious cycle of ____ and ____. | two | none | 
-2: You haven't truly lived until you've experienced ____ and ____ at the same time. | two | none | 
-2: So wait, ____ was actually ____? Wow, I didn't see that one coming! | two | none |
-2: No matter how you look at it, ultimately ____ is responsible for ____. | two | none |
+1: Take ____, it will last longer. | none 
+1: There are guilty pleasures. And then there's ____. | none 
+1: What do I keep hidden in the crawlspace? | none 
+1: The Himalayas are filled with many perils, such as ____. | none 
+1: TSA guidelines now prohibit ____ on airplanes. | none 
+1: I can extrude ____, but I can't retract it. | xkcd 
+1: What's that sound? | none 
+1: It's a pity that kids these days are all getting involved with ____. | none 
+1: What's the most emo? | none 
+1: ____ would be woefully incomplete without ____. | none 
+1: The healing process began when I joined a support group for victims of ____. | none 
+1: Have fun, don't be ____. | none 
+1: What is the next big sideshow attraction? | none 
+1: ____ ruined many people's childhood. | none 
+1: My life for ____! | none 
+1: What never fails to liven up the party? | none 
+1: What gets better with age? | none 
+1: Who needs a bidet when you have ____? | none 
+1: ____ is the only thing that matters. | none 
+1: My life for ____! | none 
+1: No one wants to see your ____. | none 
+1: STOP OR I WILL ____. | none 
+1: ____! You know, for kids. | none 
+1: What can you always find in between the couch cushions? | none 
+1: What's a {kid}'s best friend? | variable | vargender | none 
+2: Listen, {child}. If you want to get involved with ____, I won't stop you. Just steer clear of ____. | variable | vargender | two | none 
+2: For my next trick, I will pull ____ out of ____. | two | none 
+2: My life is ruled by a vicious cycle of ____ and ____. | two | none 
+2: You haven't truly lived until you've experienced ____ and ____ at the same time. | two | none 
+2: So wait, ____ was actually ____? Wow, I didn't see that one coming! | two | none 
+2: No matter how you look at it, ultimately ____ is responsible for ____. | two | none 
 2: ____ uses ____. It is SUPER EFFECTIVE! | two | none 
 2: When you get right down to it, ____ is just ____. | two | none
