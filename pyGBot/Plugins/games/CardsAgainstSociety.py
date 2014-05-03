@@ -334,11 +334,13 @@ class CardsAgainstSociety(BasePlugin):
                 if line[1] == ":":
                     # This is a black card.
                     self.baseblackdeck.decks[f.name].add(
-                        (line[3:].rstrip("\n"), int(line[0])))
+                        (''.join(char for char in line[3:].rstrip("\n")
+                                 if ord(char) < 128), int(line[0])))
                 else:
                     # This is a white card.
                     self.basewhitedeck.decks[f.name].add(
-                        line.rstrip("\n."))
+                        ''.join(char for char in line.rstrip("\n.")
+                                if ord(char) < 128))
 
     def initvars(self):
         self.players = []
@@ -535,9 +537,12 @@ class CardsAgainstSociety(BasePlugin):
             # Rando Cardissian! (add a random card)
             if self.variants["rando"][1]:
                 playcards = []
-                for i in range(0, self.blackcard[1]):
-                    playcards.append(self.whitedeck.pop(0))
-                self.playedcards.append(["Rando Cardrissian", playcards])
+                # make sure there are enough cards to add
+                if len(self.whitedeck) >= self.blackcard[1]:
+                    for i in range(0, self.blackcard[1]):
+                        playcards.append(self.whitedeck.pop(0))
+                    self.playedcards.append(
+                        ["Rando Cardrissian", playcards])
 
             # Output cards and ask judge to make selection
             self.bot.pubout(
@@ -545,7 +550,8 @@ class CardsAgainstSociety(BasePlugin):
                 "Black card is: \"\x02\x0303{}\x0F\"".format(
                     self.blackcard[0]))
             random.shuffle(self.playedcards)
-            if self.blackcard[0].find("____") == -1:
+            blanks = re.findall("_+", self.blackcard[0])
+            if len(blanks) == 0:
                 for i in range(0, len(self.playedcards)):
                     self.bot.pubout(
                         self.channel,
@@ -553,8 +559,10 @@ class CardsAgainstSociety(BasePlugin):
                             i+1,
                             " / ".join(self.playedcards[i][1:][0])))
             else:
-                black_card_fmtstr = self.blackcard[0].replace(
-                    "____", "\x0304{}\x0F")
+                black_card_fmtstr = self.blackcard[0]
+                for blank in blanks:
+                    black_card_fmtstr = black_card_fmtstr.replace(
+                        blank, "\x0304{}\x0F")
                 for i in xrange(0, len(self.playedcards)):
                     self.bot.pubout(
                         self.channel,
@@ -663,13 +671,33 @@ class CardsAgainstSociety(BasePlugin):
                 while None in self.hands[user]:
                     self.hands[user].remove(None)
                 while len(self.hands[user]) < 10 + extra:
-                    self.hands[user].append(self.whitedeck.pop(0))
+                    try:
+                        self.hands[user].append(self.whitedeck.pop(0))
+                    except KeyError:
+                        # Ran out of white cards.
+                        # Reshuffle them.
+                        self.reshuffle_whitedeck()
+                        self.hands[user].append(self.whitedeck.pop(0))
                     # self.privreply(user, "You draw: \x0304{}\x0F.".format(
                     #     self.hands[user][len(self.hands[user])-1]))
 
         # Full hand output to each player
         for user in self.live_players:
             self.showhand(user)
+
+    def reshuffle_whitedeck(self):
+        # Make a set of cards currently in someone's hand, which,
+        # therefore, should not go into the deck
+        inplay = set()
+        for hand in self.hands.itervalues():
+            for card in hand:
+                inplay.add(card)
+        # Add all the other white cards back into the white deck
+        for card in self.basewhitedeck:
+            if card not in inplay:
+                self.whitedeck.append(card)
+        # Shuffle proper
+        random.shuffle(self.whitedeck)
 
     def showhand(self, user):
         if user != self.live_players[self.judgeindex]:
@@ -678,7 +706,8 @@ class CardsAgainstSociety(BasePlugin):
                 if self.hands[user][i]:
                     hand.append("{}: \x0304{}\x0F".format(
                         i+1,
-                        self.hands[user][i]))
+                        ''.join(x for x in self.hands[user][i] if ord(x) < 128)
+                    ))
             self.privreply(user, "Your hand: {}".format(
                 ", ".join(hand)))
 
@@ -1082,7 +1111,7 @@ class CardsAgainstSociety(BasePlugin):
                 self.channel,
                 "Player order: {}. "
                 "{} is the current Card Czar. "
-                "Current black card is: \x0303{}\x0F".format(
+                "Current black card is: \x02\x0303{}\x0F".format(
                     ", ".join(self.live_players),
                     self.live_players[self.judgeindex],
                     self.blackcard[0]))
@@ -1428,44 +1457,23 @@ class CardsAgainstSociety(BasePlugin):
                 "You must be at least a botmod to alter the blacklist."
                 "(your level: {} needed level: 100)".format(userlevel))
             return
-        if self.gamestate == self.GameState.inprogress:
+        arg = " ".join(_args)
+        if arg in self.blacklist:
+            self.blacklist.remove(arg)
             self.reply(
                 channel,
                 user,
-                "You can't alter the blacklist during a game.")
-            return
-        # Expressions are surrounded with curly braces to make it easy
-        # to include spaces, punctuation, etc. Group them accordingly
-        args = []
-        cur_arg = []
-        in_arg = False
-        for arg in _args:
-            if arg[0] == "[" and arg[-1] == "]":
-                args.append(arg[1:-1])
-            elif arg[0] == "[":
-                in_arg = True
-                cur_arg.append(arg[1:])
-            elif arg[-1] == "]":
-                in_arg = False
-                cur_arg.append(arg[:-1])
-                args.append(" ".join(cur_arg))
-            elif in_arg:
-                cur_arg.append(arg)
-        (added, removed, unmatched) = self.blacklist_cards(*args)
-        if added:
+                "{} removed from blacklist.".format(arg))
+        else:
+            self.blacklist.add(arg)
             self.reply(
                 channel,
                 user,
-                "Freshly blacklisted cards: {}".format(*added))
-        if removed:
-            self.reply(
-                channel,
-                user,
-                "Removed cards from blacklist: {}".format(*removed))
-        # Write new blacklist to disk
-        with open('./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt', 'w') as blf:
+                "Blacklisted {}.".format(arg))
+        with open("./pyGBot/Plugins/games/CardsAgainstSocietyBlacklist.txt",
+                  "r") as blaf:
             for blc in self.blacklist:
-                blf.write(blc + "\n")
+                blaf.write(blc + "\n")
 
     def do_command(self, channel, user, cmd):
         # Handle commands
