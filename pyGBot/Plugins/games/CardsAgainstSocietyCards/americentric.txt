@@ -34,7 +34,7 @@
 
 #White cards
 {locnameUS}
-The Make-A-Wish® Foundation.
+The Make-A-Wish Foundation.
 Hurricane Katrina.
 John Wilkes Booth.
 Child Protective Services.
