@@ -1,5 +1,9 @@
-religion.txt
-foonetic.txt
-food.txt
-xkcd.txt
 americentric.txt
+fantasy.txt
+food.txt
+foonetic.txt
+gaming.txt
+popculture.txt
+religion.txt
+scifi.txt
+xkcd.txt
