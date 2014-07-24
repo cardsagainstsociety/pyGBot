@@ -111,6 +111,11 @@ class Subs(string.Formatter):
     def __len__(self):
         return len(self.subs)
 
+    def get_field(self, field_name, args, kwargs):
+        if "|" in field_name:
+            return (random.choice(field_name.split("|")), None)
+        return super(Subs, self).get_field(field_name, args, kwargs)
+
     def get_value(self, k, args, kwargs):
         upper = k[0] in string.uppercase
         k = k.lower()
@@ -478,18 +483,24 @@ class CardsAgainstSociety(BasePlugin):
 
         # Output black card, changing output for "Play" value
         self.blackcard = self.blackdeck.pop(0)
-        if self.blackcard[1] == 1:
+        # If there are long underscores in the card text, those determine
+        # the correct number of white cards to play. Otherwise the
+        # number does.
+        whites = len(re.findall("__+", self.blackcard[0]))
+        if whites == 0:
+            whites = self.blackcard[1]
+        if whites == 1:
             self.bot.pubout(
                 self.channel,
                 "\"\x02\x0303{}\x0F\" Please play ONE card from your hand "
                 "using '!play <number>'.".format(self.blackcard[0]))
-        elif self.blackcard[1] == 2:
+        elif whites == 2:
             self.bot.pubout(
                 self.channel,
                 "\"\x02\x0303{}\x0F\" Please play TWO cards from your hand, "
                 "in desired order, using '!play <number> <number>'.".format(
                     self.blackcard[0]))
-        elif self.blackcard[1] == 3:
+        elif whites == 3:
             self.bot.pubout(
                 self.channel,
                 "\"\x02\x0303{}\x0F\" Please play THREE cards from your hand, "
@@ -555,9 +566,10 @@ class CardsAgainstSociety(BasePlugin):
                 for i in range(0, len(self.playedcards)):
                     self.bot.pubout(
                         self.channel,
-                        "{}. \x0304{}\x0F".format(
+                        ''.join(c for c in "{}. \x0304{}\x0F".format(
                             i+1,
-                            " / ".join(self.playedcards[i][1:][0])))
+                            " / ".join(self.playedcards[i][1]))
+                        if ord(c) < 128))
             else:
                 black_card_fmtstr = self.blackcard[0]
                 for blank in blanks:
@@ -566,10 +578,11 @@ class CardsAgainstSociety(BasePlugin):
                 for i in xrange(0, len(self.playedcards)):
                     self.bot.pubout(
                         self.channel,
-                        "{}. {}".format(
+                        ''.join(c for c in "{}. {}".format(
                             i+1,
                             black_card_fmtstr.format(
-                                *self.playedcards[i][1:][0])))
+                                    *self.playedcards[i][1])
+                        ) if ord(c) < 128))
             self.bot.pubout(
                 self.channel,
                 "\x02\x0312{}\x0F: "
