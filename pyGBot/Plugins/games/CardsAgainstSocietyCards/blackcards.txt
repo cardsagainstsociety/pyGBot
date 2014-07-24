@@ -300,7 +300,7 @@
 1: A successful job interview begins with a firm handshake and ends with ____. | work 
 1: Call the law offices of Goldstein & Goldstein, because no one should have to tolerate ____ in the workplace. | work 
 1: What's the gift that keeps on giving? | quote 
-1: When short on money, you can always ____. | economy 
+1: When short on money, you can always try ____. | economy 
 1: No one likes me after I posted ____ in the TMI thread. | internet 
 1: What the fuck is wrong with you? | personal 
 1: I'm not like the rest of you. I'm too rich and busy for ____. | class 
